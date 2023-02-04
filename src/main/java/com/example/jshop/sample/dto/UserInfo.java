@@ -9,7 +9,7 @@ public class UserInfo {
     private String user_email;
     private String user_nm;
 
-    private String zipCd;
-    private String addressInfo;
-    private String addressDetail;
+    private String zip_cd;
+    private String address_info;
+    private String address_detail;
 }
