@@ -1,11 +1,14 @@
-package com.example.jshop.sample.dto;
+package com.example.jshop.dto;
 
 import lombok.Data;
+import lombok.ToString;
 
+@ToString
 @Data
-public class UserInfo {
-    private String user_id;
+public class MemberDTO {
+	private String user_id;
     private String user_pw;
+    private String user_pw_check;
     private String user_email;
     private String user_nm;
 
