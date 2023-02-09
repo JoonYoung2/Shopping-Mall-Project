@@ -87,36 +87,13 @@
 			    <div class="input-form-backgroud row">
 			      <div class="input-form col-md-12 mx-auto">
 			        <h4 class="mb-3">회원가입</h4>
-			        <form class="validation-form" novalidate action="register" method="post">
+			        <form class="validation-form" novalidate action="kakao_register" method="post">
+			    
 			          <div class="row">
-			            <div class="col-md-6 mb-3">
-			              <label for="id">아이디</label>
-			              <input type="text" class="form-control" name="user_id" placeholder="" value="" required>
-			              <div class="invalid-feedback">
-			                	아이디를 입력해주세요.
-			              </div>
-			            </div>
-			            <div class="col-md-6 mb-3">
-			              <label for="password">비밀번호</label>
-			              <input type="password" class="form-control" name="user_pw" placeholder="" value="" required>
-			              <div class="invalid-feedback">
-			                	비밀번호를 입력해주세요.
-			              </div>
-			            </div>
-			            <div class="col-md-6 mb-3">
-			              <label for="password">비밀번호 확인</label>
-			              <input type="password" class="form-control" name="user_pw_check" placeholder="" value="" required>
-			              <div class="invalid-feedback">
-			                	비밀번호를 입력해주세요.
-			              </div>
-			            </div>
-			            <div class="col-md-6 mb-3">
-			              <label for="name">이름</label>
-			              <input type="text" class="form-control" name="user_nm" placeholder="" value="" required>
-			              <div class="invalid-feedback">
-			                	이름을 입력해주세요.
-			              </div>
-			            </div>
+
+			              <input type="hidden" class="form-control" name="user_id" placeholder="" value="${msg1 }" required>
+			              <input type="hidden" class="form-control" name="user_nm" placeholder="" value="${msg2 }" required>
+
 			            <div class="col-md-6 mb-3">
 				            <label for="email">이메일</label>
 				            <input type="email" class="form-control" name="user_email" placeholder="you@example.com" required>
