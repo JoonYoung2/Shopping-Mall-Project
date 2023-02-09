@@ -56,9 +56,11 @@ public class KakaoController {
 	public String kakao_register(MemberDTO member, Model model) {
 		try {
 			String msg = service.kakao_register(member);
-			if("이미 등록".equals(msg) || "등록 성공".equals(msg))
-				return "index";
+			if("이미 등록".equals(msg) || "등록 완료".equals(msg))
+				return "redirect:/";
 			model.addAttribute("msg", msg);
+			model.addAttribute("msg1", member.getUser_id());
+			model.addAttribute("msg2", member.getUser_nm());
 			return "signup/kakao_register";
 		} catch (Exception e) {
 			e.printStackTrace();
