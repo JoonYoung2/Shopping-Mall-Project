@@ -108,10 +108,6 @@ public class KakaoService {
 			MemberDTO member = new MemberDTO();
 			member.setUser_id(user_id);
 			member.setUser_nm(user_nm);
-//			result.put("user_id", id);
-//			result.put("user_nm", nickname);
-			ArrayList<MemberDTO> members = new ArrayList<>();
-			members.add(member);
 			br.close();
 			return member;
 
