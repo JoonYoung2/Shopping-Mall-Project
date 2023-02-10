@@ -14,7 +14,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <c:choose>
-						<c:when test="${empty sessionScope.user_id || empty sessionScope.kakaoToken }">
+						<c:when test="${empty sessionScope.user_id }">
 	                        <li class="nav-item"><a class="nav-link" href="register">signup</a></li>
                         	<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 	                     </c:when>

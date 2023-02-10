@@ -1,5 +1,7 @@
 package com.example.jshop.service;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -21,6 +23,7 @@ import java.util.Map;
 @Service
 public class KakaoService {
 	@Autowired private MemberRepository repo;
+	@Autowired private HttpSession session;
 	public String getReturnAccessToken(String code) throws IOException{
 		final String HOST = "https://kauth.kakao.com/oauth/token";
 		URL url = new URL(HOST);
@@ -121,8 +124,10 @@ public class KakaoService {
 	
 	public String kakao_register(MemberDTO member) throws Exception {
 		MemberDTO check = repo.findId(member.getUser_id());
-		if(check != null)
-			return "이미 등록";
+		if(check != null) {
+			session.setAttribute("user_id", check.getUser_id());
+			return "이미 등록";			
+		}
 		
 		if(member.getUser_email() == null || member.getUser_email() == "")	
 			return "이메일을 입력하세요";			
