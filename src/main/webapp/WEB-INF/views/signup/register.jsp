@@ -91,10 +91,8 @@
 			          <div class="row">
 			            <div class="col-md-6 mb-3">
 			              <label for="id">아이디</label>
-			              <input type="text" class="form-control" name="user_id" placeholder="" value="" required>
-			              <div class="invalid-feedback">
-			                	아이디를 입력해주세요.
-			              </div>
+			              <input type="text" class="form-control" name="user_id" placeholder="" value="" oninput="test(this.value)">
+			              <p id="check_id"></p>
 			            </div>
 			            <div class="col-md-6 mb-3">
 			              <label for="password">비밀번호</label>
@@ -168,4 +166,34 @@
     }, false);
   </script> -->
         </section>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	function test(o){
+		console.log("data:"+o);
+		var object = {
+			'user_id': o,
+		}
+		$.ajax({
+			url: '/rest-api/member/id',
+			type: 'post',
+			contentType : "application/json; charset=utf-8",
+			data: JSON.stringify(object),
+			success:function(data) {
+				if(data === 200){
+					console.log("중복x");
+				}else if (data === 500){
+					console.log("중복o");
+
+				}else{
+
+					console.log("기타");
+				}
+
+			}, error: function (){
+				console.log("onload function 실패")
+			}
+		});
+	}
+
+</script>
 <%@ include file="../footer.jsp" %>

@@ -6,11 +6,14 @@ import com.example.jshop.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +63,10 @@ public class MemberController {
     }
     
     @PostMapping("register")
-    public String register(MemberDTO member, Model model) {
+    public String register(@Valid MemberDTO member, BindingResult bindingResult, Model model,
+						   HttpServletRequest request) {
+		log.info("Request url -> {}", request.getRequestURI());
+		log.info("params -> {}", member);
     	try {
 			MemberDTO check = repo.findId(member.getUser_id());
 			if(check != null) {
@@ -71,7 +77,21 @@ public class MemberController {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-    	
+
+		if(bindingResult.hasErrors()){
+			String msg = "비밀번호는 필수 입니다.";
+			if(member.getUser_pw() == null || member.getUser_pw().equals("")){
+				log.warn("Password esential..");
+				model.addAttribute("msg", msg);
+				return "signup/register";
+
+			}
+			log.warn("Password esential..");
+			msg = "비밀번호형식이 올바르지않습니다.";
+			model.addAttribute("msg", msg);
+			return "signup/register";
+		}
+
         String msg = "null";
         try{
             msg = service.register(member);
