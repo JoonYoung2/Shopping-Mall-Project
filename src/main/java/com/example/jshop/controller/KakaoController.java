@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.jshop.dto.MemberDTO;
@@ -18,8 +17,8 @@ import com.example.jshop.service.KakaoService;
 
 @Controller
 public class KakaoController {
-	@Autowired private KakaoService service;
 	@Autowired private HttpSession session;
+	@Autowired private KakaoService service;
 	@Autowired private MemberRepository repo;
 	
 	@GetMapping("kakao_login")
@@ -38,26 +37,29 @@ public class KakaoController {
             model.addAttribute("msg1", user_id);
             model.addAttribute("msg2", user_nm);
             
-            try {
-				if(repo.findId(user_id) != null)
-					return "redirect:/";
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
             System.out.println(user_id);
-            return "signup/kakao_register";
+            return "forward:kakao_register?id=" + user_id;
     }
 	@GetMapping("kakao_register")
-	public String kakao_register() {
+	public String kakao_register(@RequestParam("id") String id) {
+		try {
+			MemberDTO check = repo.findId(id);
+			if(check.getUser_id() != null || check.getUser_id() != "") {
+				session.setAttribute("user_id", check.getUser_id());
+				return "redirect:/";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "signup/kakao_register";
 	}
 	@PostMapping("kakao_register")
 	public String kakao_register(MemberDTO member, Model model) {
 		try {
 			String msg = service.kakao_register(member);
-			if("이미 등록".equals(msg) || "등록 완료".equals(msg))
+			if("이미 등록".equals(msg) || "등록 완료".equals(msg)) {
 				return "redirect:/";
+			}
 			model.addAttribute("msg", msg);
 			model.addAttribute("msg1", member.getUser_id());
 			model.addAttribute("msg2", member.getUser_nm());

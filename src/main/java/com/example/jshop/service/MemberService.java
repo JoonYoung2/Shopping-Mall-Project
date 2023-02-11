@@ -10,11 +10,11 @@ import com.example.jshop.repository.MemberRepository;
 
 @Service("memberSvc")
 public class MemberService {
-	@Autowired
-    private MemberRepository repo;
+	@Autowired private MemberRepository repo;
 	
 	public String register(MemberDTO member) throws Exception {
 		if(member.getUser_pw().equals(member.getUser_pw_check())) {
+			
 			repo.register(member);
 			return "등록 완료";			
 		}
