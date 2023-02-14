@@ -22,8 +22,10 @@ import java.util.Map;
 
 @Service
 public class KakaoService {
-	@Autowired private MemberRepository repo;
-	@Autowired private HttpSession session;
+	@Autowired 
+	private MemberRepository repo;
+	@Autowired 
+	private HttpSession session;
 	public String getReturnAccessToken(String code) throws IOException{
 		final String HOST = "https://kauth.kakao.com/oauth/token";
 		URL url = new URL(HOST);

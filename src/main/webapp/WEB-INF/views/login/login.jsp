@@ -34,7 +34,7 @@
 			    <div class="input-form-backgroud row">
 			      <div class="input-form col-md-12 mx-auto">
 			        <h4 class="mb-3">로그인</h4>
-			        <form class="validation-form" novalidate action="login" method="post">
+			        <form class="validation-form" novalidate action="login_2" method="post">
 			          <div class="row">
 			            <div class="col-md-6 mb-3">
 			              <label for="id">ID</label>

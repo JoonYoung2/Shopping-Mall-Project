@@ -10,6 +10,6 @@
     	INSERT INTO sh_join_info VALUES(#{user_id}, #{user_pw}, #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 1)
     </insert>
     <insert id="kakao_register" parameterType="com.example.jshop.dto.MemberDTO">
-    	INSERT INTO sh_join_info VALUES(#{user_id}, '', #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 2)
+    	INSERT INTO sh_join_info VALUES(#{user_id}, ' ', #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 2)
     </insert>
 </mapper>

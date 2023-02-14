@@ -123,19 +123,19 @@
 				            </div>
 			          	</div>
 			          	<div class="col-md-7 mb-3">
-				            <input type="text" id="sample6_postcode" placeholder="우편번호" name="zip_cd">
+				            <input type="text" id="sample6_postcode" placeholder="우편번호" name="zip_cd" readonly="readonly">
 			          	</div>
 			          	<div class="col-md-7 mb-3">
 				            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 			          	</div>
 			          	<div class="col-md-7 mb-3">
-				            <input type="text" id="sample6_address" placeholder="주소" name="address_info"><br>
+				            <input type="text" id="sample6_address" placeholder="주소" name="address_info" readonly="readonly"><br>
 				        </div>
 			          	<div class="col-md-7 mb-3">
 				            <input type="text" id="sample6_detailAddress" placeholder="상세주소" name="address_detail">
 			          	</div>
 			          	<div class="col-md-7 mb-3">
-				            <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+				            <input type="text" id="sample6_extraAddress" placeholder="참고항목" readonly="readonly">
 			          	</div>
 			          </div>
           <hr class="mb-4">

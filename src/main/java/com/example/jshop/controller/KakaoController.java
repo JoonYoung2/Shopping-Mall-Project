@@ -15,7 +15,10 @@ import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.service.KakaoService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class KakaoController {
 	@Autowired private HttpSession session;
 	@Autowired private KakaoService service;
@@ -49,7 +52,7 @@ public class KakaoController {
 				return "redirect:/";
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("error -> {}", e);
 		}
 		return "signup/kakao_register";
 	}
@@ -65,7 +68,7 @@ public class KakaoController {
 			model.addAttribute("msg2", member.getUser_nm());
 			return "signup/kakao_register";
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("error -> {}", e);
 		}
 		return "redirect:kakao_register";
 	}

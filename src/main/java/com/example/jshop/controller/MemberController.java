@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,9 +26,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @Slf4j
 public class MemberController {
-	@Autowired private MemberService service;
-	@Autowired private MemberRepository repo;
-	@Autowired private HttpSession session;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	@Autowired 
+	private MemberService service;
+	@Autowired 
+	private MemberRepository repo;
+	@Autowired 
+	private HttpSession session;
     
     @RequestMapping("/")
     public String index() {
@@ -38,14 +44,19 @@ public class MemberController {
     public String login() {
     	return "login/login";
     }
-    @PostMapping("login")
+    @PostMapping("login_2")
     public String login(MemberDTO member, Model model) {
+    	String rawPassword = member.getUser_pw();
+    	passwordEncoder.encode(rawPassword);
+    	log.info("암호화 : {}", passwordEncoder.encode(rawPassword));
+    	System.out.println("비밀번호 암호화 : " + passwordEncoder.encode(rawPassword));
     	try {
 			MemberDTO check = repo.findId(member.getUser_id());
+			System.out.println("비밀번호 복호화 : " + passwordEncoder.matches(member.getUser_pw(), check.getUser_pw()));
+			log.info("복호화 : {}", passwordEncoder.matches(member.getUser_pw(), check.getUser_pw()));
 			if(check != null) {
-				if(check.getUser_id().equals(member.getUser_id()) && check.getUser_pw().equals(member.getUser_pw())) {
+				if(check.getUser_id().equals(member.getUser_id()) && passwordEncoder.matches(member.getUser_pw(), check.getUser_pw())) {
 					session.setAttribute("user_id", member.getUser_id());
-					session.setAttribute("user_pw", member.getUser_pw());
 					return "redirect:/";
 				}
 			}
@@ -57,6 +68,7 @@ public class MemberController {
     	
     	return "login/login";
     }
+    
     @GetMapping("register")
     public String register() {
     	return "signup/register";
