@@ -22,9 +22,8 @@ public class AdminService {
 	@Autowired
 	private AdminRepository repo;
 	
-	private String path = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
-	
 	public String prdtWrite(MultipartHttpServletRequest multi) {
+		String path = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
 		String admin_id = multi.getParameter("admin_id");
 		String prdt_title = multi.getParameter("prdt_title");
 		String prdt_nm = multi.getParameter("prdt_nm");
