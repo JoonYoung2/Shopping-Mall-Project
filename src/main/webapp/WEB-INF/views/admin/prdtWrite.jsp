@@ -43,7 +43,7 @@
 					<input type=text name='prdt_price'/> 
 				</td>
 			</tr>
-			<tr>
+			<tr> 
 				<td style="width: 80px; height:40px;" align="right">색 상</td>
 				<td style="width: 570px; height:40px;">
 					<input type=text name='prdt_color'/> 

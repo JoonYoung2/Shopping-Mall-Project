@@ -25,3 +25,4 @@ public class MemberDTO {
     private String address_detail;
     private int loginType;
 }
+ 

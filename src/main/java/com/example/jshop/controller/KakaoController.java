@@ -59,7 +59,7 @@ public class KakaoController {
 	}
 	@PostMapping("kakao_register")
 	public String kakao_register(MemberDTO member, Model model) {
-		try {
+		try { 
 			String msg = service.kakao_register(member);
 			if("이미 등록".equals(msg) || "등록 완료".equals(msg)) {
 				return "redirect:/";

@@ -45,7 +45,7 @@ public class MemberController {
     }
     
     @GetMapping("login")
-    public String login() {
+    public String login() { 
     	return "login/login";
     }
     @PostMapping("login_2")

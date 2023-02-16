@@ -143,3 +143,4 @@ public class KakaoService {
 		return "등록 완료";
 	}
 }
+ 

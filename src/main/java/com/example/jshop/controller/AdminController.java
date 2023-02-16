@@ -39,6 +39,6 @@ public class AdminController {
 			return "/admin/adminView";			
 		}
 		
-		return "/admin/prdtWrite";
+		return "/admin/prdtWrite"; 
 	}
 }

@@ -21,7 +21,7 @@
         <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-	<%@ include file="navbar.jsp" %>
+	<%@ include file="navbar.jsp" %> 
 	<%@ include file="header.jsp" %>
 	<%@ include file="footer.jsp" %>
 </body>

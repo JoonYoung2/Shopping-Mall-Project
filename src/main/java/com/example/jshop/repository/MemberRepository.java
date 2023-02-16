@@ -11,3 +11,4 @@ public interface MemberRepository {
 	
 	public void kakao_register(MemberDTO member) throws Exception;
 }
+ 

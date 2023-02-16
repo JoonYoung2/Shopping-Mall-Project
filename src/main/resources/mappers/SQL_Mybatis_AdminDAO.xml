@@ -18,4 +18,4 @@
     <select id="getImgView" resultType="com.example.jshop.dto.AdminDTO">
     	SELECT * FROM sh_prdt_info ORDER BY prdt_id DESC
     </select>
-</mapper>
+</mapper> 

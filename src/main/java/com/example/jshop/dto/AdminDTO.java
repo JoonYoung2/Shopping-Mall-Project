@@ -15,3 +15,4 @@ public class AdminDTO {
 	private int purchase_cnt;
 	private int review_cnt ;
 }
+ 
