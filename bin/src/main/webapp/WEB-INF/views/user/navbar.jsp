@@ -19,6 +19,9 @@
                         	<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 	                     </c:when>
 	                     <c:otherwise>
+	                     <c:if test="${sessionScope.loginType eq 3}">
+	                     	<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
+	                     </c:if>
 	                     	<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
 <!-- 	                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li> -->
 	                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
@@ -30,4 +33,4 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> 

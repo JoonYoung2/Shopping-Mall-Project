@@ -22,7 +22,7 @@
         <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-	<!-- login-->
+	<!-- login--> 
         <section class="page-section bg-light" id="login">
             <div class="container">
                 <div class="text-center">
@@ -62,4 +62,4 @@
     </footer>
   </div>
 </section>
-<%@ include file="../footer.jsp" %>
+<%@ include file="../user/footer.jsp" %>

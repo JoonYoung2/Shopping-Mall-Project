@@ -23,7 +23,7 @@
     	<link href="resources/css/styles.css" rel="stylesheet" />
     	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    function sample6_execDaumPostcode() {
+    function sample6_execDaumPostcode() { 
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -196,4 +196,4 @@
 	}
 
 </script>
-<%@ include file="../footer.jsp" %>
+<%@ include file="../user/footer.jsp" %>

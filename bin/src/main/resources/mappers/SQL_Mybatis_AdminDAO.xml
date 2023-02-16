@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jshop.repository.AdminRepository">
+    <insert id="prdt_write" parameterType="com.example.jshop.dto.AdminDTO">
+    	<selectKey order="BEFORE" keyProperty="prdt_id" resultType="Integer">
+			SELECT nvl(max(prdt_id),10000)+1 FROM sh_prdt_info
+		</selectKey>
+    	INSERT INTO sh_prdt_info VALUES(#{prdt_id}, #{admin_id}, #{prdt_title}, #{prdt_nm}, #{prdt_price}, #{prdt_color}, #{prdt_info}, #{img_id}, #{purchase_cnt}, #{review_cnt})
+    </insert>
+    <select id="maxFindId" resultType="Integer">
+		SELECT max(prdt_id) FROM sh_prdt_info
+    </select>
+    <update id="imgUpdate" parameterType="com.example.jshop.dto.AdminDTO">
+    	UPDATE sh_prdt_info SET img_id=#{img_id} WHERE prdt_id = #{prdt_id}
+    </update>
+    <select id="getImgView" resultType="com.example.jshop.dto.AdminDTO">
+    	SELECT * FROM sh_prdt_info ORDER BY prdt_id DESC
+    </select>
+</mapper> 
