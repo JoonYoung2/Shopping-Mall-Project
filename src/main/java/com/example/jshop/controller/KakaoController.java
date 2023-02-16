@@ -49,6 +49,7 @@ public class KakaoController {
 			MemberDTO check = repo.findId(id);
 			if(check.getUser_id() != null || check.getUser_id() != "") {
 				session.setAttribute("user_id", check.getUser_id());
+				session.setAttribute("loginType", check.getLoginType());
 				return "redirect:/";
 			}
 		} catch (Exception e) {

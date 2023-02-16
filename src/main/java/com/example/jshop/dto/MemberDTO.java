@@ -23,4 +23,5 @@ public class MemberDTO {
     private String zip_cd;
     private String address_info;
     private String address_detail;
+    private int loginType;
 }

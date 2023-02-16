@@ -196,4 +196,4 @@
 	}
 
 </script>
-<%@ include file="../footer.jsp" %>
+<%@ include file="../user/footer.jsp" %>

@@ -3,6 +3,7 @@ package com.example.jshop.controller;
 import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.service.MemberService;
+import com.example.jshop.service.PrdtViewService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,10 +35,13 @@ public class MemberController {
 	private MemberRepository repo;
 	@Autowired 
 	private HttpSession session;
+//	@Autowired
+//	private PrdtViewService prdt;
     
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index() {
-    	return "index";
+//    	model.addAttribute("prdts", prdt.getImgView());
+    	return "user/index";
     }
     
     @GetMapping("login")
@@ -57,6 +61,7 @@ public class MemberController {
 			if(check != null) {
 				if(check.getUser_id().equals(member.getUser_id()) && passwordEncoder.matches(member.getUser_pw(), check.getUser_pw())) {
 					session.setAttribute("user_id", member.getUser_id());
+					session.setAttribute("loginType", check.getLoginType());
 					return "redirect:/";
 				}
 			}

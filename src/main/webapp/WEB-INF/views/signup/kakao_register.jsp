@@ -145,4 +145,4 @@
     }, false);
   </script> -->
         </section>
-<%@ include file="../footer.jsp" %>
+<%@ include file="../user/footer.jsp" %>
