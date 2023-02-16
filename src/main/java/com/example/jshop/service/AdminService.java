@@ -23,7 +23,7 @@ public class AdminService {
 	private AdminRepository repo;
 	
 	public String prdtWrite(MultipartHttpServletRequest multi) {
-		String path = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
+		String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
 		String admin_id = multi.getParameter("admin_id");
 		String prdt_title = multi.getParameter("prdt_title");
 		String prdt_nm = multi.getParameter("prdt_nm");
@@ -66,9 +66,7 @@ public class AdminService {
 			Calendar cal = Calendar.getInstance();
 			fName = sdf.format(cal.getTime()) + fName;
 			
-			path = path + max_id + "\\";
-			path = path + fName;
-			
+			String path = dir + max_id + "\\" + fName;
 			
 			File file = new File(path);
 			if(file.exists() == false) 
