@@ -11477,7 +11477,7 @@ header.masthead .masthead-heading {
 #portfolio .portfolio-item .portfolio-link:hover .portfolio-hover {
   opacity: 1;
 }
-#portfolio .portfolio-item .portfolio-caption {
+#portfolio .portfolio-item .portfolio-caption #newarrivals {
   padding: 1.5rem;
   text-align: center;
   background-color: #fff;

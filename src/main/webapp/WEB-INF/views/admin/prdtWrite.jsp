@@ -60,13 +60,14 @@
 			</tr>
 			<tr>
 				<td align='center' height=40 colspan=2>
-					<input type=submit value='글쓰기' style="width: 120px; "/>
-					<input type=reset value='취소' style="width: 120px; "/>	 
+					<input type=submit value='등록' style="width: 120px; "/>
+					<input type=reset value='취소' style="width: 120px; "/>
+					<input type=button value='뒤로가기' style="width: 120px; " onclick="history.back()"/>	 
 				</td>
 			</tr>
 		</table>
 	</form>
 </center>
-	<%@ include file="footer.jsp" %>
+	<%@ include file="../adminFixBar/footer.jsp" %>
 </body>
 </html>

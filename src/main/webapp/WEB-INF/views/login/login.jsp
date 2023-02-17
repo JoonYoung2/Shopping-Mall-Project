@@ -62,4 +62,4 @@
     </footer>
   </div>
 </section>
-<%@ include file="../user/footer.jsp" %>
+<%@ include file="../userFixBar/footer.jsp" %>

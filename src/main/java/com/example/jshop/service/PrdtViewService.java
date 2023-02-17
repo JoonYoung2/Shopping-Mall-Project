@@ -10,13 +10,11 @@ import com.example.jshop.repository.AdminRepository;
 
 @Service
 public class PrdtViewService {
-//	@Autowired
-//	private AdminDTO admin;
-//	@Autowired
-//	private AdminRepository repo;
+	@Autowired
+	private AdminRepository repo;
 	
-//	public List<AdminDTO> getImgView() {
-//		return repo.getImgView();
-//	}
+	public List<AdminDTO> getImgView() {
+		return repo.getImgView();
+	}
 }
  

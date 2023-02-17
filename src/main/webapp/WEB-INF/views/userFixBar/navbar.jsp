@@ -15,6 +15,11 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <c:choose>
 						<c:when test="${empty sessionScope.user_id }">
+							<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#portfolio">NEW ARRIVALS</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 	                        <li class="nav-item"><a class="nav-link" href="register">signup</a></li>
                         	<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 	                     </c:when>
@@ -23,7 +28,7 @@
 	                     	<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
 	                     </c:if>
 	                     	<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-<!-- 	                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li> -->
+	                        <li class="nav-item"><a class="nav-link" href="#portfolio">NEW ARRIVALS</a></li>
 	                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
 	                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
 	                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>

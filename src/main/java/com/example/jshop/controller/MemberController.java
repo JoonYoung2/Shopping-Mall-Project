@@ -1,11 +1,14 @@
 package com.example.jshop.controller;
 
 import com.example.jshop.dto.MemberDTO;
+import com.example.jshop.dto.AdminDTO;
 import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.service.MemberService;
 import com.example.jshop.service.PrdtViewService;
 
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,11 +21,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-
 
 @Controller
 @Slf4j
@@ -35,12 +33,13 @@ public class MemberController {
 	private MemberRepository repo;
 	@Autowired 
 	private HttpSession session;
-//	@Autowired
-//	private PrdtViewService prdt;
+	@Autowired
+	private PrdtViewService prdt;
     
     @GetMapping("/")
-    public String index() {
-//    	model.addAttribute("prdts", prdt.getImgView());
+    public String index(Model model) {
+    	System.out.println("userView test -------------->");
+    	model.addAttribute("prdts", prdt.getImgView());
     	return "user/index";
     }
     

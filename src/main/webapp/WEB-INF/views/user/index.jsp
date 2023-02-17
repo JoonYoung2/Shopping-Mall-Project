@@ -23,9 +23,9 @@
 </head>
 <body id="page-top">
 
-<%@ include file="navbar.jsp" %>
+<%@ include file="../userFixBar/navbar.jsp" %>
 
-<%@ include file="header.jsp" %>
+<%@ include file="../userFixBar/header.jsp" %>
 
 		<section class="page-section" id="services">
             <div class="container">
@@ -65,8 +65,8 @@
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">NEW ARRIVALS</h2>
+                    <h3 class="section-subheading text-muted">NEW ARRIVALS</h3>
                 </div>
                 <div class="row">
                 <c:forEach var="prdt" items="${prdts }">
@@ -77,11 +77,11 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="resources/upload/${prdt.prdt_id }/iu.jpg" alt="..." />
+                                <img class="img-fluid" src="resources/upload/${prdt.prdt_id }/${prdt.img_id}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                                <div class="portfolio-caption-heading" style="text-align:center;">${prdt.prdt_title }</div>
+                                <div class="portfolio-caption-subheading text-muted" style="text-align:center;">${prdt.prdt_price }윈</div>
                             </div>
                         </div>
                     </div>
@@ -369,6 +369,7 @@
             </div>
         </section>
         <!-- Services-->
+        <%@ include file="../userFixBar/footer.jsp" %>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
