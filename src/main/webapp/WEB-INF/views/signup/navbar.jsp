@@ -19,16 +19,18 @@
                         	<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 	                     </c:when>
 	                     <c:otherwise>
-	                     	<li class="nav-item"><a class="nav-link" href="/">Jshop</a></li>
-	                     	<li class="nav-item"><a class="nav-link" href="/prdtWrite">상품등록하기</a></li>
-<!-- 	                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li> -->
-<!-- 	                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li> -->
-<!-- 	                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li> -->
-<!-- 	                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
+	                     <c:if test="${sessionScope.loginType eq 3}">
+	                     	<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
+	                     </c:if>
+	                     	<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#portfolio">NEW ARRIVALS</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+	                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 	                        <li class="nav-item"><a class="nav-link" href="logout">logout</a></li>
 	                     </c:otherwise>
 	                </c:choose>
                     </ul>
-                </div> 
+                </div>
             </div>
-        </nav>
+        </nav> 

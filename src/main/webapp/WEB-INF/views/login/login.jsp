@@ -22,6 +22,7 @@
         <link href="resources/css/styles.css" rel="stylesheet" />
 </head>
 <body>
+	<%@ include file="navbar.jsp" %>
 	<!-- login--> 
         <section class="page-section bg-light" id="login">
             <div class="container">

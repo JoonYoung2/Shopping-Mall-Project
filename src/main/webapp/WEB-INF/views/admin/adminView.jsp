@@ -22,7 +22,6 @@
 </head>
 <body>
 	<%@ include file="../adminFixBar/navbar.jsp" %> 
-	<%@ include file="../adminFixBar/header.jsp" %>
 	<%@ include file="../adminFixBar/footer.jsp" %>
 </body>
 </html>

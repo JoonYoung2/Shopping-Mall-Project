@@ -73,7 +73,7 @@
 </script>
 </head>
 <body>
-	
+	<%@ include file="navbar.jsp" %>
 	<!-- sign up-->
         <section class="page-section bg-light" id="register">
             <div class="container">
