@@ -50,7 +50,6 @@ public class MemberController {
     @PostMapping("login_2")
     public String login(MemberDTO member, Model model) {
     	String rawPassword = member.getUser_pw();
-    	passwordEncoder.encode(rawPassword);
     	log.info("암호화 : {}", passwordEncoder.encode(rawPassword));
     	System.out.println("비밀번호 암호화 : " + passwordEncoder.encode(rawPassword));
     	try {

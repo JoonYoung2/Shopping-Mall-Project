@@ -76,11 +76,15 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
+                               
                                 <img class="img-fluid" src="resources/upload/${prdt.prdt_id }/${prdt.img_id}" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading" style="text-align:center;">${prdt.prdt_title }</div>
-                                <div class="portfolio-caption-subheading text-muted" style="text-align:center;">${prdt.prdt_price }윈</div>
+                                <div class="portfolio-caption-subheading text-muted" style="text-align:center;">
+                                <span class="text-muted text-decoration-line-through"><!-- sale price --></span>
+                                	${prdt.prdt_price }윈
+                                </div>
                             </div>
                         </div>
                     </div>
