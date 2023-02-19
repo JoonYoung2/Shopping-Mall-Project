@@ -24,4 +24,4 @@
 	<%@ include file="../adminFixBar/navbar.jsp" %> 
 	<%@ include file="../adminFixBar/footer.jsp" %>
 </body>
-</html>
+</html> 
