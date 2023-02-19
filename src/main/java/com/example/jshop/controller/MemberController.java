@@ -2,6 +2,7 @@ package com.example.jshop.controller;
 
 import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.dto.AdminDTO;
+import com.example.jshop.dto.LoginLoggerDTO;
 import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.service.MemberService;
 import com.example.jshop.service.PrdtViewService;
@@ -21,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
@@ -38,19 +40,20 @@ public class MemberController {
     
     @GetMapping("/")
     public String index(Model model) {
-    	System.out.println("userView test -------------->");
     	model.addAttribute("prdts", prdt.getImgView());
     	return "user/index";
     }
     
     @GetMapping("login")
-    public String login() { 
+    public String login() {
+    	if(session.getAttribute("loginType") != null) {
+    		return "redirect:/";
+    	}
     	return "login/login";
     }
     @PostMapping("login_2")
     public String login(MemberDTO member, Model model) {
     	String rawPassword = member.getUser_pw();
-    	passwordEncoder.encode(rawPassword);
     	log.info("암호화 : {}", passwordEncoder.encode(rawPassword));
     	System.out.println("비밀번호 암호화 : " + passwordEncoder.encode(rawPassword));
     	try {
@@ -61,6 +64,7 @@ public class MemberController {
 				if(check.getUser_id().equals(member.getUser_id()) && passwordEncoder.matches(member.getUser_pw(), check.getUser_pw())) {
 					session.setAttribute("user_id", member.getUser_id());
 					session.setAttribute("loginType", check.getLoginType());
+					service.loginLogger(check);
 					return "redirect:/";
 				}
 			}
@@ -75,6 +79,9 @@ public class MemberController {
     
     @GetMapping("register")
     public String register() {
+    	if(session.getAttribute("loginType") != null) {
+    		return "redirect:/";
+    	}
     	return "signup/register";
     }
     
@@ -108,7 +115,7 @@ public class MemberController {
 			return "signup/register";
 		}
 
-        String msg = "null";
+        String msg = "null"; 
         try{
             msg = service.register(member);
             
@@ -125,9 +132,13 @@ public class MemberController {
         return "signup/register";
     }
     
-    @GetMapping("logout")
-    public String logout() {
-    	session.invalidate();
+    @GetMapping("logout2")
+    public String logout() throws Exception {
+    	String login_time = (String)session.getAttribute("login_time");
+    	LoginLoggerDTO logger = repo.findLoginLogger(login_time);
+    	service.logoutLogger(logger);
+    	
+		session.invalidate();
     	return "redirect:/";
     }
 }

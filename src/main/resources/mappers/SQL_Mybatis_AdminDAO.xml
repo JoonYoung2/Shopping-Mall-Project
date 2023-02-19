@@ -7,15 +7,30 @@
     	<selectKey order="BEFORE" keyProperty="prdt_id" resultType="Integer">
 			SELECT nvl(max(prdt_id),10000)+1 FROM sh_prdt_info
 		</selectKey>
-    	INSERT INTO sh_prdt_info VALUES(#{prdt_id}, #{admin_id}, #{prdt_title}, #{prdt_nm}, #{prdt_price}, #{prdt_color}, #{prdt_info}, #{img_id}, #{purchase_cnt}, #{review_cnt})
+    	INSERT INTO sh_prdt_info VALUES(#{prdt_id}, #{admin_id}, #{prdt_title}, #{prdt_nm}, #{prdt_price}, #{prdt_color}, #{prdt_info}, #{prdt_list}, #{img_id}, #{purchase_cnt}, #{review_cnt})
     </insert>
+    
     <select id="maxFindId" resultType="Integer">
 		SELECT max(prdt_id) FROM sh_prdt_info
     </select>
+    
     <update id="imgUpdate" parameterType="com.example.jshop.dto.AdminDTO">
     	UPDATE sh_prdt_info SET img_id=#{img_id} WHERE prdt_id = #{prdt_id}
     </update>
-    <select id="getImgView" resultType="com.example.jshop.dto.AdminDTO">
+    
+    <select id="getAllPrdtInfo" resultType="com.example.jshop.dto.AdminDTO">
     	SELECT * FROM sh_prdt_info ORDER BY prdt_id DESC
     </select>
-</mapper> 
+    
+    <select id="getSelectPrdtInfo" resultType="com.example.jshop.dto.AdminDTO">
+    	SELECT * FROM sh_prdt_info WHERE prdt_id = #{prdt_id}
+    </select>
+    
+    <update id="prdtUpdate" parameterType="com.example.jshop.dto.AdminDTO">
+    	UPDATE sh_prdt_info SET prdt_title=#{prdt_title}, prdt_nm=#{prdt_nm}, prdt_price=#{prdt_price}, prdt_color=#{prdt_color}, prdt_list=#{prdt_list}, prdt_info=#{prdt_info} WHERE prdt_id = #{prdt_id}
+    </update>
+    
+    <delete id="prdtDelete" parameterType="String">
+    	DELETE FROM sh_prdt_info WHERE prdt_id = #{prdt_id}
+    </delete>
+</mapper>  

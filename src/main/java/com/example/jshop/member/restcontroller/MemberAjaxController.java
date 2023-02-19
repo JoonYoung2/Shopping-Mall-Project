@@ -38,7 +38,7 @@ public class MemberAjaxController {
             log.info("duplicated id");
             return 200;
         }
-
+ 
         return 500;
     }
 }

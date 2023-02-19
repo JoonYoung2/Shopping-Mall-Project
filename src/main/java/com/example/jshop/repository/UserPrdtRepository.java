@@ -8,3 +8,4 @@ import com.example.jshop.dto.AdminDTO;
 public interface UserPrdtRepository {
 	public AdminDTO getData(String prdt_id);
 }
+ 

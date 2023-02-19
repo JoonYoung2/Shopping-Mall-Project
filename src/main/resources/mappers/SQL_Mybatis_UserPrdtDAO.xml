@@ -6,4 +6,4 @@
     <select id="getData" resultType="com.example.jshop.dto.AdminDTO">
 		SELECT * FROM sh_prdt_info WHERE prdt_id = #{prdt_id}
     </select>
-</mapper> 
+</mapper>  

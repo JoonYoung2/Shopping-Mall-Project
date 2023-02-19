@@ -14,16 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.service.KakaoService;
+import com.example.jshop.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
 public class KakaoController {
-	@Autowired private HttpSession session;
-	@Autowired private KakaoService service;
-	@Autowired private MemberRepository repo;
-	
+	@Autowired 
+	private HttpSession session;
+	@Autowired 
+	private KakaoService service;
+	@Autowired
+	private MemberService memberService;
+	@Autowired 
+	private MemberRepository repo;
+	 
 	@GetMapping("kakao_login")
     public String redirectkakao(@RequestParam("code") String code, Model model) throws IOException {
             System.out.println("code : " + code);
@@ -50,6 +56,7 @@ public class KakaoController {
 			if(check.getUser_id() != null || check.getUser_id() != "") {
 				session.setAttribute("user_id", check.getUser_id());
 				session.setAttribute("loginType", check.getLoginType());
+				memberService.loginLogger(check);
 				return "redirect:/";
 			}
 		} catch (Exception e) {
@@ -72,5 +79,11 @@ public class KakaoController {
 			log.error("error -> {}", e);
 		}
 		return "redirect:kakao_register";
+	}
+	
+	@GetMapping("/kakao_logout")
+	public String kakao_logout() {
+		session.invalidate();
+		return "redirect:/";
 	}
 }

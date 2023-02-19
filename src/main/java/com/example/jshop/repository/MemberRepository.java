@@ -1,6 +1,8 @@
 package com.example.jshop.repository;
 
 import org.apache.ibatis.annotations.Mapper;
+
+import com.example.jshop.dto.LoginLoggerDTO;
 import com.example.jshop.dto.MemberDTO;
 
 @Mapper
@@ -10,5 +12,9 @@ public interface MemberRepository {
 	public void register(MemberDTO member) throws Exception;
 	
 	public void kakao_register(MemberDTO member) throws Exception;
+	
+	public void loginLogger(LoginLoggerDTO log) throws Exception;
+	
+	public LoginLoggerDTO findLoginLogger(String login_time) throws Exception;
 }
- 
+  

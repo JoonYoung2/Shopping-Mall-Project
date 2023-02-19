@@ -6,10 +6,23 @@
     <select id="findId" resultType="com.example.jshop.dto.MemberDTO">
     	SELECT * FROM sh_join_info WHERE user_id=#{id}
     </select>
+    
     <insert id="register" parameterType="com.example.jshop.dto.MemberDTO">
     	INSERT INTO sh_join_info VALUES(#{user_id}, #{user_pw}, #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 1)
     </insert>
+    
     <insert id="kakao_register" parameterType="com.example.jshop.dto.MemberDTO">
     	INSERT INTO sh_join_info VALUES(#{user_id}, ' ', #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 2)
     </insert>
-</mapper> 
+    
+    <insert id="loginLogger" parameterType="com.example.jshop.dto.LoginLoggerDTO">
+    	<selectKey order="BEFORE" keyProperty="log_id" resultType="Integer">
+			SELECT nvl(max(log_id),10000)+1 FROM sh_login_logout_history
+		</selectKey>
+    	INSERT INTO sh_login_logout_history VALUES(1001, #{log_id}, #{user_id}, #{loginType}, #{user_ip}, #{login_time}, #{logout_time})
+    </insert>
+    
+    <select id="findLoginLogger" resultType="com.example.jshop.dto.LoginLoggerDTO">
+    	SELECT * FROM sh_login_logout_history WHERE login_time = #{login_time}
+    </select>
+</mapper>  

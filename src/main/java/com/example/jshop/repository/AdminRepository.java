@@ -15,7 +15,12 @@ public interface AdminRepository {
 	
 	public void imgUpdate(int prdt_id, String img_id);
 
-	public List<AdminDTO> getImgView();
-
+	public List<AdminDTO> getAllPrdtInfo();
+	
+	public AdminDTO getSelectPrdtInfo(int prdt_id);
+	
+	public void prdtUpdate(AdminDTO datas);
+	
+	public void prdtDelete(String prdt_id);
 }
- 
+  

@@ -46,7 +46,7 @@ public class KakaoService {
 
 			bw.write(sb);
 			bw.flush();
-
+ 
 			int responseCode = urlConnection.getResponseCode();
 			System.out.println("responseCode = " + responseCode);
 
