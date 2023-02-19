@@ -24,6 +24,7 @@ public class AdminService {
 	
 	public String prdtWrite(MultipartHttpServletRequest multi) {
 		String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
+//		String dir = "D:\\springs\\jshop\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
 		String admin_id = multi.getParameter("admin_id");
 		String prdt_title = multi.getParameter("prdt_title");
 		String prdt_nm = multi.getParameter("prdt_nm");
@@ -40,25 +41,15 @@ public class AdminService {
 		admin.setPrdt_color(prdt_color);
 		admin.setPrdt_info(prdt_info);
 		admin.setImg_id("임시저장");
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		try {
+		try { 
 			repo.prdt_write(admin);
-			try {
-
-				Thread.sleep(1000); //1초 대기
-
-			} catch (InterruptedException e) {
-
-				e.printStackTrace();
-
-			}
 		} catch (IOException e) {
 			log.error("service repo.prdt_write error ========> {}", e);;
 		}
 		
 		int max_id = repo.maxFindId(); //고유한 폴더에 img파일을 보관하기 or img_id를 update하기 위해서..
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String fName = "";
 		if(img_id != null && img_id.getSize() != 0) {
 			fName = img_id.getOriginalFilename();
@@ -82,6 +73,38 @@ public class AdminService {
 		repo.imgUpdate(max_id, fName);
 		
 		return "등록 완료";
+	}
+	
+	public String prdtUpdate(AdminDTO datas) {
+		repo.prdtUpdate(datas);
+		return "수정 완료";
+	}
+
+	public String folderDelete(String id) {
+		int prdt_id = Integer.parseInt(id);
+		AdminDTO datas = repo.getSelectPrdtInfo(prdt_id);
+		String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
+//		String dir = "D:\\springs\\jshop\\jshop_Springboot\\src\\main\\webapp\\resources\\upload\\";
+		String path = dir + datas.getPrdt_id();
+		File folder = new File(path);
+		try {
+		    while(folder.exists()) {
+			File[] folder_list = folder.listFiles(); //파일리스트 얻어오기
+					
+			for (int j = 0; j < folder_list.length; j++) {
+				folder_list[j].delete(); //파일 삭제 
+				System.out.println("파일이 삭제되었습니다.");
+						
+			}
+			if(folder_list.length == 0 && folder.isDirectory()) {
+				folder.delete();
+				return "폴더 삭제 완료";
+			}
+		    }
+		}catch(Exception e) {
+			log.error("folder error : {}", e);
+		}
+		return "폴더가 없습니다";
 	}
 }
  

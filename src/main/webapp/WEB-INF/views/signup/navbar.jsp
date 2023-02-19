@@ -6,7 +6,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="/"><img src="resources/assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="/"><img src="resources/main_templates/assets/img/navbar-logo.svg" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -18,19 +18,8 @@
 	                        <li class="nav-item"><a class="nav-link" href="register">signup</a></li>
                         	<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 	                     </c:when>
-	                     <c:otherwise>
-	                     <c:if test="${sessionScope.loginType eq 3}">
-	                     	<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
-	                     </c:if>
-	                     	<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-	                        <li class="nav-item"><a class="nav-link" href="#portfolio">NEW ARRIVALS</a></li>
-	                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-	                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-	                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-	                        <li class="nav-item"><a class="nav-link" href="logout">logout</a></li>
-	                     </c:otherwise>
 	                </c:choose>
                     </ul>
                 </div>
             </div>
-        </nav> 
+        </nav>  

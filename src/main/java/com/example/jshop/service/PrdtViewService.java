@@ -14,7 +14,7 @@ public class PrdtViewService {
 	private AdminRepository repo;
 	
 	public List<AdminDTO> getImgView() {
-		return repo.getImgView();
+		return repo.getAllPrdtInfo();
 	}
 }
- 
+  

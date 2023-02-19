@@ -25,4 +25,4 @@ public class UserPrdtController {
 		
 		return "/user_prdt/prdt_index";
 	}
-}
+} 

@@ -12,23 +12,23 @@
 <meta name="author" content="" />
 <title>Joon - shop</title>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
-<!-- Font Awesome icons (free version)-->
+<link rel="icon" type="image/x-icon" href="resources/main_templates/assets/favicon.ico" />
+<!-- Font Awesome icons (free version) -->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
-<!-- Google fonts-->
+<!-- Google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css" />
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
 	rel="stylesheet" type="text/css" />
 <c:url var="context" value="/" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="resources/css/styles.css" rel="stylesheet" />
+<!-- Core theme CSS (includes Bootstrap) -->
+<link href="resources/main_templates/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 	<%@ include file="../user_prdtFixBar/navbar.jsp"%>
-	<div>
+	<div> 
 		<span class="text-muted text-decoration-line-through">$20.00</span>
 		$18.00<br> ${datas.prdt_id }<br> ${datas.admin_id }<br>
 		${datas.prdt_title }<br> ${datas.prdt_nm }<br>

@@ -11,8 +11,9 @@ public class AdminDTO {
 	private String prdt_price;
 	private String prdt_color;
 	private String prdt_info;
+	private int prdt_list;
 	private String img_id;
 	private int purchase_cnt;
-	private int review_cnt ;
+	private int review_cnt ; 
 }
  

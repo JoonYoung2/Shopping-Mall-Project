@@ -10,7 +10,7 @@
         <meta name="author" content="" />
         <title>Agency - Start Bootstrap Theme</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="resources/main_templates/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -19,7 +19,7 @@
 		<c:url var="context" value="/" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="resources/css/styles.css" rel="stylesheet" />
+        <link href="resources/main_templates/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 	<%@ include file="navbar.jsp" %>
@@ -31,7 +31,7 @@
                     <h3 class="section-subheading text-muted">After login, you can use.</h3>
                     <font color="red"> ${msg }</font>
                 </div>
-                <!-- login-form -->
+                <!-- login-form --> 
 			    <div class="input-form-backgroud row">
 			      <div class="input-form col-md-12 mx-auto">
 			        <h4 class="mb-3">로그인</h4>

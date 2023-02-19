@@ -10,7 +10,7 @@
         <meta name="author" content="" />
         <title>Joon - shop</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="resources/main_templates/assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -18,7 +18,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 		<c:url var="context" value="/" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="resources/css/styles.css" rel="stylesheet" />
+        <link href="resources/main_templates/css/styles.css" rel="stylesheet" />
 </head>
 <body>
 <center>
@@ -29,7 +29,7 @@
 				<td style="width: 80px; height:40px;" align="right">제 목</td>
 				<td style="width: 570px; height:40px;">
 					<input type=text name='prdt_title'/> 
-				</td>
+				</td> 
 			</tr>
 			<tr>
 				<td style="width: 80px; height:40px;" align="right">상품명</td>
