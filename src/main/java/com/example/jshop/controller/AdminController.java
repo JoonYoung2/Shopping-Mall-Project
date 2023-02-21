@@ -44,12 +44,16 @@ public class AdminController {
 		return "/admin/prdtWrite";
 	}
 	@PostMapping("write")
-	public String prdtFrom(MultipartHttpServletRequest multi) {
+	public String prdtFrom(MultipartHttpServletRequest multi, Model model) {
 		String msg = "";
 		try {
 			msg = service.prdtWrite(multi);
 		}catch(Exception e) {
 			log.error("error -> {}", e);
+		}
+		if(msg.equals("업로드 파일을 등록해주세요.")) {
+			model.addAttribute("msg", msg);
+			return "/admin/prdtWrite";
 		}
 		if(msg.equals("등록 완료")) {
 			return "redirect:/admin";			
