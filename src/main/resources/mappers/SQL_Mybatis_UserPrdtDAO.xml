@@ -6,4 +6,31 @@
     <select id="getData" resultType="com.example.jshop.dto.AdminDTO">
 		SELECT * FROM sh_prdt_info WHERE prdt_id = #{prdt_id}
     </select>
-</mapper>  
+    
+    <select id="findSamePrdtId" resultType="com.example.jshop.dto.AddCartDTO">
+    	SELECT * FROM sh_prdt_tmp WHERE prdt_id = #{prdt_id} AND user_id = #{user_id}
+    </select>
+    
+    <update id="cartUpdate" parameterType="com.example.jshop.dto.AddCartDTO">
+    	UPDATE sh_prdt_tmp SET addCart_cnt=#{addCart_cnt}, total_price=#{total_price} WHERE user_id = #{user_id} AND prdt_id = #{prdt_id} 
+    </update>
+    
+    <insert id="cartInsert" parameterType="com.example.jshop.dto.AddCartDTO">
+    	INSERT INTO sh_prdt_tmp VALUES(#{user_id}, #{prdt_id}, #{prdt_price}, #{addCart_cnt}, #{total_price})
+    </insert>
+    
+    <select id="selectTotalTmpInfo" resultType="com.example.jshop.dto.AddCartDTO">
+    	SELECT * FROM sh_prdt_tmp WHERE user_id=#{user_id}
+    </select>
+    
+    <select id="cartInfoSelect" resultType="String">
+    	SELECT i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
+    </select>
+    
+<!--     <update id="totalCntUpdate" parameterType="String"> -->
+<!--     	<selectkey order="BEFORE" keyProperty="user_id" resultType="Integer"> -->
+<!--     		SELECT count(addCart_cnt) as total_cnt FROM sh_prdt_tmp WHERE user_id=#{user_id} -->
+<!--     	</selectkey> -->
+<!--     	UPDATE sh_join_info SET total_cnt=#{total_cnt} WHERE user_id=#{user_id} -->
+<!--     </update> -->
+</mapper>

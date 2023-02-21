@@ -33,4 +33,5 @@
     <delete id="prdtDelete" parameterType="String">
     	DELETE FROM sh_prdt_info WHERE prdt_id = #{prdt_id}
     </delete>
+    
 </mapper>  

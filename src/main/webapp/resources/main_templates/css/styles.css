@@ -3444,30 +3444,6 @@ textarea.form-control-lg {
   background-color: transparent;
 }
 
-.btn-outline-dark {
-  color: #212529;
-  border-color: #212529;
-}
-.btn-outline-dark:hover {
-  color: #fff;
-  background-color: #212529;
-  border-color: #212529;
-}
-.btn-check:focus + .btn-outline-dark, .btn-outline-dark:focus {
-  box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5);
-}
-.btn-check:checked + .btn-outline-dark, .btn-check:active + .btn-outline-dark, .btn-outline-dark:active, .btn-outline-dark.active, .btn-outline-dark.dropdown-toggle.show {
-  color: #fff;
-  background-color: #212529;
-  border-color: #212529;
-}
-.btn-check:checked + .btn-outline-dark:focus, .btn-check:active + .btn-outline-dark:focus, .btn-outline-dark:active:focus, .btn-outline-dark.active:focus, .btn-outline-dark.dropdown-toggle.show:focus {
-  box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5);
-}
-.btn-outline-dark:disabled, .btn-outline-dark.disabled {
-  color: #212529;
-  background-color: transparent;
-}
 
 .btn-link {
   font-weight: 400;
@@ -7843,7 +7819,7 @@ textarea.form-control-lg {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgba(255, 200, 0, 0.5); -
 }
 
 .bg-black {
@@ -11360,17 +11336,7 @@ p {
 #mainNav .navbar-brand img {
   height: 1.5rem;
 }
-#mainNav .navbar-nav .nav-item .nav-link {
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 0.95rem;
-/*   color: #fff; */
-  color: rgba(255, 200, 0, 0.9);
-  letter-spacing: 0.0625em;
-}
-#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-/*   color: #ffc800; */
-  color: rgba(255, 200, 0, 0.5);
-}
+
 
 @media (min-width: 992px) {
   #mainNav {
@@ -11831,12 +11797,6 @@ section#contact form#contactForm :-ms-input-placeholder {
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
   
-  
-  
-  
-  
-  
-  
 @media only screen and (min-width: 768px) {
 	.c32afc579-1c6e-450c-a8de-fbff9b2f70d7-text {
 		font-family: noto-serif-jp;
@@ -11893,19 +11853,6 @@ section#contact form#contactForm :-ms-input-placeholder {
 		margin-top: 0px;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media only screen and (min-width: 768px) {
 	.c4b222a02-29ea-4f8f-aa06-ecf412eff63b-border {
@@ -11960,6 +11907,54 @@ section#contact form#contactForm :-ms-input-placeholder {
 		margin-top: 0px;
 	}
 }
+
+
+
+/* 장바구니 nav */
+
+.btn-outline-dark {
+  color: rgba(255, 200, 0, 0.9);
+/*   border-bottom-color: rgba(255, 200, 0, 0.9); */
+}
+.btn-outline-dark:hover {
+  color: rgba(255, 200, 0, 0.9);
+/*   background-color: rgba(255, 200, 0, 0.1); */
+/*   border-color: rgba(255, 200, 0, 0.9); */
+}
+/* .btn-check:focus + .btn-outline-dark, .btn-outline-dark:focus { */
+/*   box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.1); */
+/* } */
+/* .btn-check:checked + .btn-outline-dark, .btn-check:active + .btn-outline-dark, .btn-outline-dark:active, .btn-outline-dark.active, .btn-outline-dark.dropdown-toggle.show { */
+/*   color: rgba(255, 200, 0, 0.1); */
+/*   background-color: rgba(255, 200, 0, 0.1); */
+/*   border-color: rgba(255, 200, 0, 0.1); */
+/* } */
+/* .btn-check:checked + .btn-outline-dark:focus, .btn-check:active + .btn-outline-dark:focus, .btn-outline-dark:active:focus, .btn-outline-dark.active:focus, .btn-outline-dark.dropdown-toggle.show:focus { */
+/*   box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.1); */
+/* } */
+/* .btn-outline-dark:disabled, .btn-outline-dark.disabled { */
+/*   color: rgba(255, 200, 0, 0.1); */
+/*   background-color: transparent; */
+/* } */
+
+/* 장바구니 nav */
+
+
+/* navText Color */
+#mainNav .navbar-nav .nav-item .nav-link {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.95rem;
+/*   color: #fff; */
+  color: rgba(255, 200, 0, 0.9);
+  letter-spacing: 0.0625em;
+}
+#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
+/*   color: #ffc800; */
+  color: rgba(255, 200, 0, 0.5);
+}
+/* navText Color */
+
+
 
 a{
 	text-decoration:none !important;

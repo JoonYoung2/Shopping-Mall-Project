@@ -8,11 +8,11 @@
     </select>
     
     <insert id="register" parameterType="com.example.jshop.dto.MemberDTO">
-    	INSERT INTO sh_join_info VALUES(#{user_id}, #{user_pw}, #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 1)
+    	INSERT INTO sh_join_info VALUES(#{user_id}, #{user_pw}, #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 1, 0)
     </insert>
     
     <insert id="kakao_register" parameterType="com.example.jshop.dto.MemberDTO">
-    	INSERT INTO sh_join_info VALUES(#{user_id}, ' ', #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 2)
+    	INSERT INTO sh_join_info VALUES(#{user_id}, ' ', #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 2, 0)
     </insert>
     
     <insert id="loginLogger" parameterType="com.example.jshop.dto.LoginLoggerDTO">
@@ -25,4 +25,8 @@
     <select id="findLoginLogger" resultType="com.example.jshop.dto.LoginLoggerDTO">
     	SELECT * FROM sh_login_logout_history WHERE login_time = #{login_time}
     </select>
+    
+        <update id="totalCntUpdate" parameterType="com.example.jshop.dto.MemberDTO">
+    	UPDATE sh_join_info SET totalCart_cnt = #{totalCart_cnt} WHERE user_id=#{user_id}
+    </update>
 </mapper>  
