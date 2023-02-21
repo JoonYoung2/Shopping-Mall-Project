@@ -26,7 +26,12 @@
     	SELECT * FROM sh_login_logout_history WHERE login_time = #{login_time}
     </select>
     
-        <update id="totalCntUpdate" parameterType="com.example.jshop.dto.MemberDTO">
+    <update id="totalCntUpdate" parameterType="com.example.jshop.dto.MemberDTO">
     	UPDATE sh_join_info SET totalCart_cnt = #{totalCart_cnt} WHERE user_id=#{user_id}
     </update>
+    
+    <update id="resultPriceUpdate" parameterType="com.example.jshop.dto.MemberDTO">
+    	UPDATE sh_join_info SET result_price = #{result_price} WHERE user_id=#{user_id}
+    </update>
+    
 </mapper>  

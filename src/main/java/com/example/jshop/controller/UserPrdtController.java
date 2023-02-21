@@ -36,7 +36,7 @@ public class UserPrdtController {
 	
 	@GetMapping("/cartInfo")
 	public String cartInfo(@RequestParam("user_id") String user_id, Model model) {
-		model.addAttribute("datas", repo.selectTotalTmpInfo(user_id));
+		model.addAttribute("datas", repo.cartInfoSelect(user_id));
 		return "/user_cart/cart_index";
 	}
 } 

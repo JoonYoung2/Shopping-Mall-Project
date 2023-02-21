@@ -23,8 +23,8 @@
     	SELECT * FROM sh_prdt_tmp WHERE user_id=#{user_id}
     </select>
     
-    <select id="cartInfoSelect" resultType="String">
-    	SELECT i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
+    <select id="cartInfoSelect" resultType="com.example.jshop.dto.AddCartDTO">
+    	SELECT i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
     </select>
     
 <!--     <update id="totalCntUpdate" parameterType="String"> -->

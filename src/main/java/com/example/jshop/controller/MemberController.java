@@ -65,6 +65,7 @@ public class MemberController {
 					session.setAttribute("user_id", member.getUser_id());
 					session.setAttribute("loginType", check.getLoginType());
 					session.setAttribute("totalCart_cnt", check.getTotalCart_cnt());
+					session.setAttribute("result_price", check.getResult_price());
 					service.loginLogger(check);
 					return "redirect:/";
 				}

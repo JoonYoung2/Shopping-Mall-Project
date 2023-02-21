@@ -11,7 +11,7 @@ public class AddCartDTO {
 	private int total_price;
 	
 //	cartInfo에서 쓰임
-	private String title;
+	private String prdt_title;
 	private String prdt_color;
 	private String img_id;
 }
