@@ -64,6 +64,7 @@ public class MemberController {
 				if(check.getUser_id().equals(member.getUser_id()) && passwordEncoder.matches(member.getUser_pw(), check.getUser_pw())) {
 					session.setAttribute("user_id", member.getUser_id());
 					session.setAttribute("loginType", check.getLoginType());
+					session.setAttribute("totalCart_cnt", check.getTotalCart_cnt());
 					service.loginLogger(check);
 					return "redirect:/";
 				}

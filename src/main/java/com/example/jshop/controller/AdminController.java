@@ -90,7 +90,7 @@ public class AdminController {
 	public String prdtDelete(String prdt_id) {
 		String msg = service.folderDelete(prdt_id);
 		if(msg.equals("폴더가 없습니다")) {
-			return "/admin/prdt/Delete";
+			return "/admin/prdtDelete";
 		}
 		repo.prdtDelete(prdt_id);
 		return "redirect:/admin";

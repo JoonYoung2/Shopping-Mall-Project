@@ -12,7 +12,8 @@
 <meta name="author" content="" />
 <title>Joon - shop</title>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="resources/main_templates/assets/favicon.ico" />
+<link rel="icon" type="image/x-icon"
+	href="resources/main_templates/assets/favicon.ico" />
 <!-- Font Awesome icons (free version) -->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -25,16 +26,44 @@
 <c:url var="context" value="/" />
 <!-- Core theme CSS (includes Bootstrap) -->
 <link href="resources/main_templates/css/styles.css" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	rel="stylesheet" />
 </head>
 <body>
 	<%@ include file="../user_prdtFixBar/navbar.jsp"%>
-	<div> 
-		<span class="text-muted text-decoration-line-through">$20.00</span>
-		$18.00<br> ${datas.prdt_id }<br> ${datas.admin_id }<br>
-		${datas.prdt_title }<br> ${datas.prdt_nm }<br>
-		${datas.prdt_price }<br> ${datas.prdt_color }<br>
-		${datas.prdt_info }<br> ${datas.img_id }<br>
-	</div>
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="row gx-4 gx-lg-5 align-items-center">
+				<div class="col-md-6">
+					<img class="card-img-top mb-5 mb-md-0"
+						src="resources/upload/${datas.prdt_id }/${datas.img_id}" alt="..." />
+				</div>
+				<div class="col-md-6">
+					<div class="small mb-1">Product : ${datas.prdt_nm }</div>
+					<h1 class="display-5 fw-bolder">${datas.prdt_title }</h1>
+					<div class="fs-5 mb-5">
+						<span class="text-decoration-line-through">
+							<!-- sale price -->
+						</span> <span>${datas.prdt_price }원</span>
+					</div>
+					<p class="lead">${datas.prdt_info }</p>
+					<div class="d-flex">
+						<form action="addCart" method="post">
+							<input type="hidden" name="prdt_id" value="${datas.prdt_id }"/>
+							<input type="hidden" name="prdt_price" value="${datas.prdt_price }"/>
+							<input type="hidden" name="user_id" value="${sessionScope.user_id}"/>
+							<input class="form-control text-center me-3" id="inputQuantity"
+								name="addCart_cnt" type="text" value="1" style="max-width: 3rem" />
+							<button class="btn btn-outline-dark flex-shrink-0" type="submit">
+								<i class="bi-cart-fill me-1"></i> 장바구니 담기
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 	<section class="page-section" id="services">
 		<div class="container">
 			<div class="text-left">
@@ -77,7 +106,7 @@
 						현저히 감소한 경우<br> - 시간의 경과에 의하여 재판매가 곤란할 정도로 제품의 가치가 현저히 감소한 경우<br>
 						- 고객님의 주문에 따라 개별적으로 생산되는 제품의 경우<br> <br> <b>교환∙반품 방법</b><br>
 						<br> 교환∙반품 가능기간 이내에 아래 문의처로 접수 부탁드립니다.<br> (미접수 시 별도의 확인
-						시간이 소요될 수 있습니다).<br> 보내주실 때 받아보신 그대로 포장하시면 방문하여 회수합니다.<br>
+						시간이 소요될 수 있습니다.)<br> 보내주실 때 받아보신 그대로 포장하시면 방문하여 회수합니다.<br>
 
 						교환∙반품 배송비는 단순 변심의 경우 고객님 부담, 상품 하자 및 오배송의 경우 저희가 부담합니다.<br>
 

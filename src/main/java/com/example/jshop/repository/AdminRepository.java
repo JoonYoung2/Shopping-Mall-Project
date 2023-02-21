@@ -22,5 +22,6 @@ public interface AdminRepository {
 	public void prdtUpdate(AdminDTO datas);
 	
 	public void prdtDelete(String prdt_id);
+
 }
   
