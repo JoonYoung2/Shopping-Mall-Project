@@ -42,7 +42,13 @@ public class UserPrdtService {
 				
 				//----------------------Cart총 결재 금액-------------------------
 				
-				
+				List<AddCartDTO> list2 = repo.cartInfoSelect(add.getUser_id());
+				int sum2 = 0;
+				for(int i = 0; i < list2.size(); ++i) {
+					sum2 += list2.get(i).getTotal_price();
+				}
+				MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
+				session.setAttribute("result_price", sum2);
 				
 				//----------------------Cart총 결재 금액-------------------------
 				
@@ -64,6 +70,18 @@ public class UserPrdtService {
 		session.setAttribute("totalCart_cnt", sum);
 		
 		//----------------------CartAdd 갯수 파악-----------------------
+		
+		//----------------------Cart총 결재 금액-------------------------
+		
+		List<AddCartDTO> list2 = repo.cartInfoSelect(add.getUser_id());
+		int sum2 = 0;
+		for(int i = 0; i < list2.size(); ++i) {
+			sum2 += list2.get(i).getTotal_price();
+		}
+		MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
+		session.setAttribute("result_price", sum2);
+		
+		//----------------------Cart총 결재 금액-------------------------
 		return "담기 완료";
 	}
 }

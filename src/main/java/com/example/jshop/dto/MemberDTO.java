@@ -25,5 +25,6 @@ public class MemberDTO {
     private String address_detail;
     private int loginType;
     private int totalCart_cnt;
+    private int result_price;
 } 
   

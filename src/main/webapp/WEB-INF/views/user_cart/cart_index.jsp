@@ -32,9 +32,55 @@
 </head>
 <body>
 	<%@ include file="../user_prdtFixBar/navbar.jsp"%>
-		<c:forEach var="data" items="${datas }">
-			<div>${data.prdt_id }</div>
-		</c:forEach>
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="row gx-4 gx-lg-5 align-items-center">
+				<div class="col-md-9">
+					<c:forEach var="datas" items="${datas }">
+						<div class="container px-4 px-lg-5 my-5">
+							<div class="row gx-4 gx-lg-5 align-items-center">
+								<div class="col-md-4">
+									<img class="card-img-top mb-5 mb-md-0"
+										src="resources/upload/${datas.prdt_id }/${datas.img_id}"
+										alt="..." />
+								</div>
+								<div class="col-md-4">
+									<h1 class="display-5 fw-bolder">${datas.prdt_title }</h1>
+									<div class="fs-5 mb-5">
+										<span class="text-decoration-line-through"> <!-- sale price -->
+										</span> <span>가격 : ${datas.prdt_price }원</span>
+									</div>
+									<div class="fs-5 mb-5">
+										<span class="text-decoration-line-through"> <!-- sale price -->
+										</span> <span>색상 : ${datas.prdt_color }</span>
+									</div>
+
+								</div>
+								<div class="col-md-4">
+									<div class="fs-5 mb-5">${datas.total_price }원</div>
+									<div class="fs-5 mb-5">
+										<span class="text-decoration-line-through"> 
+											<!-- sale price -->
+										</span> 
+										<span>수량 <input type="text" value="${datas.addCart_cnt }" readonly="readonly" style="width:15%; text-align:center;"/></span>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+		
+				<div class="col-md-3">
+				<div class="fs-5 mb-5">장바구니 요약</div>
+					<div class="fs-5 mb-5">상품 금액 ${sessionScope.result_price }</div>
+					<div class="fs-5 mb-5">합계 ${sessionScope.result_price }</div>
+					<button class="btn btn-primary btn-lg btn-block">결재진행</button>
+				</div>
+				</div>
+				</div>
+
+	</section>
 	<%@ include file="../user_prdtFixBar/footer.jsp"%>
 </body>
 </html>
