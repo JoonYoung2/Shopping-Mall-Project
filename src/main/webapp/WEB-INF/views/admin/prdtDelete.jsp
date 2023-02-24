@@ -49,6 +49,12 @@
 					<input type=text name='prdt_color' value="${datas.prdt_color }" readonly="readonly"/> 
 				</td>
 			</tr>
+			<tr> 
+				<td style="width: 80px; height:40px;" align="right">상품 분류</td>
+				<td style="width: 570px; height:40px;">
+					<input type=text name='prdt_list' value="${datas.prdt_list }" readonly="readonly"/> 
+				</td>
+			</tr>
 			<tr>
 				<td colspan=2 align="right">
 				<textarea style="width: 650px; height: 300px" name="prdt_info" readonly="readonly">${datas.prdt_info }</textarea></td>

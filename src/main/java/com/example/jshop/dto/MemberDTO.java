@@ -19,6 +19,7 @@ public class MemberDTO {
     private String user_pw_check;
     private String user_email;
     private String user_nm;
+    private String user_phoneNum;
 
     private String zip_cd;
     private String address_info;

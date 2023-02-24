@@ -94,13 +94,20 @@
 			              <input type="hidden" class="form-control" name="user_id" placeholder="" value="${msg1 }" required>
 			              <input type="hidden" class="form-control" name="user_nm" placeholder="" value="${msg2 }" required>
 
-			            <div class="col-md-6 mb-3">
+			            <div class="col-md-7 mb-3">
 				            <label for="email">이메일</label>
 				            <input type="email" class="form-control" name="user_email" placeholder="you@example.com" required>
 				            <div class="invalid-feedback">
 				              	이메일을 입력해주세요.
 				            </div>
 			          	</div>
+			          	<div class="col-md-7 mb-3">
+			              <label for="name">핸드폰</label>
+			              <input type="text" class="form-control" name="user_phoneNum" placeholder="(-제외 ex.01012345678)" value="" required>
+			              <div class="invalid-feedback">
+			                	핸드폰 번호를 입력해주세요(-제외)
+			              </div>
+			            </div>
 			          	<div class="col-md-7 mb-3">
 				            <input type="text" id="sample6_postcode" placeholder="우편번호" name="zip_cd" readonly="readonly">
 			          	</div>

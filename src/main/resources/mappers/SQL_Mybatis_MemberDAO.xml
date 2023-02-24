@@ -8,11 +8,11 @@
     </select>
     
     <insert id="register" parameterType="com.example.jshop.dto.MemberDTO">
-    	INSERT INTO sh_join_info VALUES(#{user_id}, #{user_pw}, #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 1, 0, 0)
+    	INSERT INTO sh_join_info VALUES(#{user_id}, #{user_pw}, #{user_email}, #{user_nm}, #{user_phoneNum}, #{zip_cd}, #{address_info}, #{address_detail}, 1, 0, 0)
     </insert>
     
     <insert id="kakao_register" parameterType="com.example.jshop.dto.MemberDTO">
-    	INSERT INTO sh_join_info VALUES(#{user_id}, ' ', #{user_email}, #{user_nm}, #{zip_cd}, #{address_info}, #{address_detail}, 2, 0, 0)
+    	INSERT INTO sh_join_info VALUES(#{user_id}, ' ', #{user_email}, #{user_nm}, #{user_phoneNum}, #{zip_cd}, #{address_info}, #{address_detail}, 2, 0, 0)
     </insert>
     
     <insert id="loginLogger" parameterType="com.example.jshop.dto.LoginLoggerDTO">

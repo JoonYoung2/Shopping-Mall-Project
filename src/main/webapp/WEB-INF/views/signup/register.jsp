@@ -95,6 +95,13 @@
 			              <p id="check_id"></p>
 			            </div>
 			            <div class="col-md-6 mb-3">
+			              <label for="name">핸드폰</label>
+			              <input type="text" class="form-control" name="user_phoneNum" placeholder="(-제외 ex.01012345678)" value="" required>
+			              <div class="invalid-feedback">
+			                	핸드폰 번호를 입력해주세요(-제외)
+			              </div>
+			            </div>
+			            <div class="col-md-6 mb-3">
 			              <label for="password">비밀번호</label>
 			              <input type="password" class="form-control" name="user_pw" placeholder="" value="" required>
 			              <div class="invalid-feedback">

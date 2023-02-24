@@ -48,11 +48,11 @@
 					<table id="datatablesSimple">
 						<thead>
 							<tr>
-								<th>번호</th>
-								<th>타이틀</th>
-								<th>상품명</th>
-								<th>가 격</th>
-								<th>분류</th>
+								<th><div style="text-align:center;">번호</div></th>
+								<th><div>타이틀</div></th>
+								<th><div style="text-align:center;">상품명</div></th>
+								<th><div style="text-align:center;">가 격</div></th>
+								<th><div style="text-align:center;">분류</div></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -60,7 +60,7 @@
 
 								<tr>
 									<th>
-										<div class="text_black">
+										<div class="text_black" style="text-align:center;">
 											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_id }</a>
 										</div>
 									</th>
@@ -70,17 +70,17 @@
 										</div>
 									</td>
 									<td>
-										<div class="text_black">
+										<div class="text_black" style="text-align:center;">
 											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_nm }</a>
 										</div>
 									</td>
 									<td>
-										<div class="text_black">
+										<div class="text_black" style="text-align:center;">
 											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_price }원</a>
 										</div>
 									</td>
 									<td>
-										<div class="text_black">
+										<div class="text_black" style="text-align:center;">
 											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_list }</a>
 										</div>
 									</td>

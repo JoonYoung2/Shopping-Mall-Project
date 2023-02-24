@@ -57,6 +57,17 @@
 									name='prdt_color' /></td>
 							</tr>
 							<tr>
+								<td style="width: 80px; height: 40px;" align="right">상품 분류</td>
+								<td style="width: 570px; height: 40px;">
+									<select name="prdt_list">
+									    <option value="0">all</option>
+									    <option value="1">Main</option>
+									    <option value="2">New</option>
+									    <option value="3">Best</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
 								<td colspan=2 align="right"><textarea
 										style="width: 650px; height: 300px" name="prdt_info"></textarea></td>
 							</tr>

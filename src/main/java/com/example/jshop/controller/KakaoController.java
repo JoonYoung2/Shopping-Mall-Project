@@ -59,6 +59,7 @@ public class KakaoController {
 				session.setAttribute("user_id", check.getUser_id());
 				session.setAttribute("loginType", check.getLoginType());
 				session.setAttribute("totalCart_cnt", check.getTotalCart_cnt());
+				session.setAttribute("result_price", check.getResult_price());
 				memberService.loginLogger(check);
 				return "redirect:/";
 			}
