@@ -64,7 +64,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="page-section" id="services">
+	<section class="page-section bg-light" id="services">
 		<div class="container">
 			<div class="text-left">
 				<h4 class="section-heading text-uppercase">배송안내</h4>

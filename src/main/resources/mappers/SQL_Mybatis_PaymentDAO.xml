@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jshop.repository.PaymentRepository">
+    <select id="userInfo_select" resultType="com.example.jshop.dto.MemberDTO">
+    	SELECT * FROM sh_join_info WHERE user_id = #{user_id}
+    </select>
+</mapper>  

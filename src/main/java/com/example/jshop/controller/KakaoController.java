@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.jshop.dto.LoginLoggerDTO;
 import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.service.KakaoService;
@@ -29,6 +30,7 @@ public class KakaoController {
 	private MemberService memberService;
 	@Autowired 
 	private MemberRepository repo;
+	
 	 
 	@GetMapping("kakao_login")
     public String redirectkakao(@RequestParam("code") String code, Model model) throws IOException {
@@ -57,6 +59,7 @@ public class KakaoController {
 				session.setAttribute("user_id", check.getUser_id());
 				session.setAttribute("loginType", check.getLoginType());
 				session.setAttribute("totalCart_cnt", check.getTotalCart_cnt());
+				session.setAttribute("result_price", check.getResult_price());
 				memberService.loginLogger(check);
 				return "redirect:/";
 			}
@@ -84,6 +87,16 @@ public class KakaoController {
 	
 	@GetMapping("/kakao_logout")
 	public String kakao_logout() {
+		String login_time = (String)session.getAttribute("login_time");
+    	LoginLoggerDTO logger;
+		try {
+			logger = repo.findLoginLogger(login_time);
+			memberService.logoutLogger(logger);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
 		session.invalidate();
 		return "redirect:/";
 	}

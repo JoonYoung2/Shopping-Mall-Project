@@ -31,8 +31,13 @@ public class AdminService {
 		String prdt_price = multi.getParameter("prdt_price");
 		String prdt_color = multi.getParameter("prdt_color");
 		String prdt_info = multi.getParameter("prdt_info");
+		int prdt_list = Integer.parseInt(multi.getParameter("prdt_list"));
 		MultipartFile img_id = multi.getFile("file");
+		System.out.println("img_id----------------->" + img_id.getSize());
 		System.out.println("admin_id -------------> " + admin_id);
+		if(img_id.getSize() == 0) {
+			return "업로드 파일을 등록해주세요.";
+		}
 		AdminDTO admin = new AdminDTO();
 		admin.setAdmin_id(admin_id);
 		admin.setPrdt_title(prdt_title);
@@ -40,6 +45,7 @@ public class AdminService {
 		admin.setPrdt_price(prdt_price);
 		admin.setPrdt_color(prdt_color);
 		admin.setPrdt_info(prdt_info);
+		admin.setPrdt_list(prdt_list);
 		admin.setImg_id("임시저장");
 		try { 
 			repo.prdt_write(admin);

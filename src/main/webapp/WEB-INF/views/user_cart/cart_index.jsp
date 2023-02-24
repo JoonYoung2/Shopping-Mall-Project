@@ -75,7 +75,7 @@
 				<div class="fs-5 mb-5">장바구니 요약</div>
 					<div class="fs-5 mb-5">상품 금액 ${sessionScope.result_price }</div>
 					<div class="fs-5 mb-5">합계 ${sessionScope.result_price }</div>
-					<button class="btn btn-primary btn-lg btn-block">결재진행</button>
+					<button class="btn btn-primary btn-lg btn-block"><a href="/payment?user_id=${sessionScope.user_id }&customer_uid=${sessionScope.user_id }" style="color:white;">결제진행</a></button>
 				</div>
 				</div>
 				</div>
