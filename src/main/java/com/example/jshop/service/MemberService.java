@@ -92,7 +92,7 @@ public class MemberService  {
         session.setAttribute("login_time", login_time);
         
         System.out.println("login_time ===> " + session.getAttribute("login_time"));
-        
+        		
         try {
 			repo.loginLogger(logger);
 		} catch (Exception e) {

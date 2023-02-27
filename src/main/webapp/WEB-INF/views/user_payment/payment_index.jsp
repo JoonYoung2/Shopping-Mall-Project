@@ -144,7 +144,7 @@
 					<div class="fs-5 mb-5">결제내용 요약</div>
 					<div class="fs-5 mb-5">상품주문 금액 ${sessionScope.result_price }</div>
 					<div class="fs-5 mb-5">결재예정 금액 ${sessionScope.result_price }</div>
-					<a id="final-support-submit" class="btn btn-primary btn-lg btn-block" href="/kakaoPayment?price=${sessionScope.result_price }&jshop=jshop-상품" style="color:white;">${sessionScope.result_price }원
+					<a id="final-support-submit" class="btn btn-primary btn-lg btn-block" href="/kakaoPayment?price=${sessionScope.result_price }&jshop=jshop-상품&user_id=${sessionScope.user_id}" style="color:white;">${sessionScope.result_price }원
 						결제하기</a>
 				</div>
 			</div>

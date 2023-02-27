@@ -27,10 +27,11 @@
     	SELECT i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
     </select>
     
-<!--     <update id="totalCntUpdate" parameterType="String"> -->
-<!--     	<selectkey order="BEFORE" keyProperty="user_id" resultType="Integer"> -->
-<!--     		SELECT count(addCart_cnt) as total_cnt FROM sh_prdt_tmp WHERE user_id=#{user_id} -->
-<!--     	</selectkey> -->
-<!--     	UPDATE sh_join_info SET total_cnt=#{total_cnt} WHERE user_id=#{user_id} -->
-<!--     </update> -->
+    <select id="creditInfoSelect" resultType="com.example.jshop.dto.OrderHistoryDTO">
+    	SELECT t.user_id, i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
+    </select>
+    
+    <delete id="tmpDelete" parameterType="String">
+    	DELETE FROM sh_prdt_tmp WHERE user_id = #{user_id}
+    </delete>
 </mapper>
