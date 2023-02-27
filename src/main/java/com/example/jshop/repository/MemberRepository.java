@@ -17,8 +17,8 @@ public interface MemberRepository {
 	
 	public LoginLoggerDTO findLoginLogger(String login_time) throws Exception;
 	
-	public void totalCntUpdate(int totalCart_cnt, String user_id);
+	public void totalCntUpdate(int totalCart_cnt, String user_id) throws Exception;
 
-	public void resultPriceUpdate(int result_price, String user_id);
+	public void resultPriceUpdate(int result_price, String user_id) throws Exception;
 }
   

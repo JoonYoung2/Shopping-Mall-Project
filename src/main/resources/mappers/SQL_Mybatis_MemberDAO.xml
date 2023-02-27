@@ -33,5 +33,4 @@
     <update id="resultPriceUpdate" parameterType="com.example.jshop.dto.MemberDTO">
     	UPDATE sh_join_info SET result_price = #{result_price} WHERE user_id=#{user_id}
     </update>
-    
 </mapper>  

@@ -46,7 +46,7 @@
         var IMP = window.IMP; // 생략가능
         IMP.init('imp22624237'); //가맹점 식별코드 삽입
         var msg;
-        
+        var user_id;
         //@@@@@@@@ 2번 @@@@@@@@
         //url에서 parameter 가져오기 --> price값 알기 위해서
         var getParam = function(key){
@@ -61,7 +61,7 @@
 
             return _parammap[key];
         };
-        
+        user_id = getParam('user_id');
 		//@@@@@@ 3번 @@@@@@@
             IMP.request_pay({
             pg : 'kakaopay',
@@ -104,7 +104,7 @@
                     }
                 });
                 //성공시 이동할 페이지
-                location.href='/?msg='+msg;
+                location.href='/orders?user_id='+user_id;
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;

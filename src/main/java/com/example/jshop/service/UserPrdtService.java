@@ -35,7 +35,12 @@ public class UserPrdtService {
 				for(int i = 0; i < list.size(); ++i) {
 					sum += list.get(i).getAddCart_cnt();
 				}
-				MemberRepo.totalCntUpdate(sum, add.getUser_id());
+				try {
+					MemberRepo.totalCntUpdate(sum, add.getUser_id());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				session.setAttribute("totalCart_cnt", sum);
 				
 				//----------------------CartAdd 갯수 파악-----------------------
@@ -47,7 +52,12 @@ public class UserPrdtService {
 				for(int i = 0; i < list2.size(); ++i) {
 					sum2 += list2.get(i).getTotal_price();
 				}
-				MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
+				try {
+					MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				session.setAttribute("result_price", sum2);
 				
 				//----------------------Cart총 결재 금액-------------------------
@@ -66,7 +76,12 @@ public class UserPrdtService {
 		for(int i = 0; i < list.size(); ++i) {
 			sum += list.get(i).getAddCart_cnt();
 		}
-		MemberRepo.totalCntUpdate(sum, add.getUser_id());
+		try {
+			MemberRepo.totalCntUpdate(sum, add.getUser_id());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		session.setAttribute("totalCart_cnt", sum);
 		
 		//----------------------CartAdd 갯수 파악-----------------------
@@ -78,7 +93,12 @@ public class UserPrdtService {
 		for(int i = 0; i < list2.size(); ++i) {
 			sum2 += list2.get(i).getTotal_price();
 		}
-		MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
+		try {
+			MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		session.setAttribute("result_price", sum2);
 		
 		//----------------------Cart총 결재 금액-------------------------
