@@ -100,4 +100,14 @@ public class KakaoController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	@GetMapping("/kakao_infoDelete")
+	public String kakao_infoDelete() {
+		String user_id = (String)session.getAttribute("user_id");
+		repo.infoDelete(user_id);
+		repo.tmpDelete(user_id);
+		repo.creditDelete(user_id);
+		session.invalidate();
+    	return "redirect:/";
+	}
 }

@@ -17,6 +17,8 @@ public interface UserPrdtRepository {
 	public void cartUpdate(AddCartDTO add);
 
 	public void cartInsert(AddCartDTO add);
+	
+	public void cartDelete(String user_id, int prdt_id);
 
 	public List<AddCartDTO> selectTotalTmpInfo(String user_id);
 	

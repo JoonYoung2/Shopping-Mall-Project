@@ -19,12 +19,16 @@
     	INSERT INTO sh_prdt_tmp VALUES(#{user_id}, #{prdt_id}, #{prdt_price}, #{addCart_cnt}, #{total_price})
     </insert>
     
+    <delete id="cartDelete" parameterType="com.example.jshop.dto.AddCartDTO">
+    	DELETE FROM sh_prdt_tmp WHERE user_id=#{user_id} AND prdt_id=#{prdt_id}
+    </delete>
+    
     <select id="selectTotalTmpInfo" resultType="com.example.jshop.dto.AddCartDTO">
     	SELECT * FROM sh_prdt_tmp WHERE user_id=#{user_id}
     </select>
     
     <select id="cartInfoSelect" resultType="com.example.jshop.dto.AddCartDTO">
-    	SELECT i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
+    	SELECT t.user_id ,i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
     </select>
     
     <select id="creditInfoSelect" resultType="com.example.jshop.dto.OrderHistoryDTO">

@@ -143,4 +143,48 @@ public class MemberController {
 		session.invalidate();
     	return "redirect:/";
     }
+    
+    @GetMapping("/info")
+    public String info() {
+    	return "/user_info/info_index";
+    }
+    
+    @PostMapping("/info")
+    public String info(String user_id, Model model) {
+    	try {
+			MemberDTO member = repo.findId(user_id);
+			model.addAttribute("member", member);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return "/user_info/infomation";
+    }
+    
+    @PostMapping("kakao_infoUpdate")
+    public String kakao_infoUpdate(MemberDTO member) {
+    	repo.kakao_infoUpdate(member);
+    	return "/user_info/info_index";
+    }
+    
+    @PostMapping("infoUpdate")
+    public String infoUpdate(MemberDTO member) {
+    	repo.infoUpdate(member);
+    	return "/user_info/info_index";
+    }
+    
+    @GetMapping("/infoDelete")
+    public String infoDelete() {
+    	return "/user_info/infoDelete";
+    }
+    
+    @PostMapping("/infoDelete")
+    public String infoDelete(MemberDTO member, String sessionId, Model model) {
+    	String msg = service.infoDelete(member, sessionId);
+    	if(msg.equals("아이디 또는 비밀번호가 일치하지 않습니다.")) {
+    		model.addAttribute("msg", msg);
+    		return "/user_info/infoDelete";
+    	}
+    	session.invalidate();
+    	return "redirect:/";
+    }
 }

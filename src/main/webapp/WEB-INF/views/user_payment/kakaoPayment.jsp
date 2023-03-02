@@ -41,13 +41,11 @@
 	<script>
 
     $(function(){
-    
-    	//@@@@@@ 1번 @@@@@@@
-        var IMP = window.IMP; // 생략가능
+        var IMP = window.IMP;
         IMP.init('imp22624237'); //가맹점 식별코드 삽입
         var msg;
         var user_id;
-        //@@@@@@@@ 2번 @@@@@@@@
+        
         //url에서 parameter 가져오기 --> price값 알기 위해서
         var getParam = function(key){
             var _parammap = {};

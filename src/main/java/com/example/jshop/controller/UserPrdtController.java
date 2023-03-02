@@ -29,7 +29,12 @@ public class UserPrdtController {
 	}
 	
 	@PostMapping("/addCart")
-	public String addCart(AddCartDTO add) {
+	public String addCart(AddCartDTO add, Model model) {
+		if(add.getAddCart_cnt() < 1) {
+			String msg = "0개 이하의 갯수는 담을 수 없습니다.";
+			model.addAttribute("msg", msg);
+			return "redirect:/prdt_index?prdt_id=" + add.getPrdt_id();
+		}
 		service.addCart(add);
 		return "redirect:/prdt_index?prdt_id=" + add.getPrdt_id();
 	}
@@ -38,5 +43,13 @@ public class UserPrdtController {
 	public String cartInfo(@RequestParam("user_id") String user_id, Model model) {
 		model.addAttribute("datas", repo.cartInfoSelect(user_id));
 		return "/user_cart/cart_index";
+	}
+	
+	@PostMapping("/cartDelete")
+	public String cartDelete(String user_id, int prdt_id) {
+		String msg = service.cartDelete(user_id, prdt_id);
+		System.out.println("user_id ========>" + user_id);
+		System.out.println("prdt_id ========>" + prdt_id);
+		return "redirect:cartInfo?user_id=" + user_id;
 	}
 } 
