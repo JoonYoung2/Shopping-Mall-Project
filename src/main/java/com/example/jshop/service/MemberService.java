@@ -111,4 +111,21 @@ public class MemberService  {
 			log.error("Logger Error ---> {}", e);
 		}
 	}
+
+	public String infoDelete(MemberDTO member, String sessionId) {
+		try {
+			MemberDTO check = repo.findId(sessionId);
+			
+			if(check.getUser_id().equals(member.getUser_id()) && passwordEncoder.matches(member.getUser_pw(), check.getUser_pw())) {
+				repo.infoDelete(member.getUser_id());
+				repo.tmpDelete(member.getUser_id());
+				repo.creditDelete(member.getUser_id());
+				return "삭제 완료";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "아이디 또는 비밀번호가 일치하지 않습니다.";
+		
+	}
 }

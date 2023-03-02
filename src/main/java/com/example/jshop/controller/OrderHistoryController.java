@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.jshop.dto.OrderHistoryDTO;
@@ -73,6 +74,13 @@ public class OrderHistoryController {
 		List<OrderRepository> list2 = repo.orderViewSelect(user_id);
 		model.addAttribute("datas", list2);
 		
+		return "user_orders/orders_index";
+	}
+	
+	@PostMapping("/orders")
+	public String orderss(String user_id, Model model) {
+		List<OrderRepository> list2 = repo.orderViewSelect(user_id);
+		model.addAttribute("datas", list2);
 		return "user_orders/orders_index";
 	}
 }

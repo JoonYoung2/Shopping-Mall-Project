@@ -20,5 +20,15 @@ public interface MemberRepository {
 	public void totalCntUpdate(int totalCart_cnt, String user_id) throws Exception;
 
 	public void resultPriceUpdate(int result_price, String user_id) throws Exception;
+
+	public void kakao_infoUpdate(MemberDTO member);
+	
+	public void infoUpdate(MemberDTO member);
+
+	public void infoDelete(String user_id);
+	
+	public void tmpDelete(String user_id);
+
+	public void creditDelete(String user_id);
 }
   

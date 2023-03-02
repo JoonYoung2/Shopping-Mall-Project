@@ -59,6 +59,7 @@
 								<i class="bi-cart-fill me-1"></i> 장바구니 담기
 							</button>
 						</form>
+						${msg }
 					</div>
 				</div>
 			</div>

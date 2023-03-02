@@ -132,7 +132,7 @@
 							<div class="col-md-4">			
 								<span>상품 주문금액</span><br>
 								<span>결제예정금액</span>
-								<a id="final-support-submit" class="btn btn-primary btn-lg btn-block" href="/kakaoPayment?price=${sessionScope.result_price }&jshop=jshop-상품" style="color:white;">${sessionScope.result_price }원
+								<a id="final-support-submit" class="btn btn-primary btn-lg btn-block" href="/kakaoPayment?price=${sessionScope.result_price }&jshop=jshop-상품&user_id=${sessionScope.user_id}" style="color:white;">${sessionScope.result_price }원
 						결제하기</a>
 							</div>
 						</div>

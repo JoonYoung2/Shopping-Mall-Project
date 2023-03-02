@@ -33,4 +33,24 @@
     <update id="resultPriceUpdate" parameterType="com.example.jshop.dto.MemberDTO">
     	UPDATE sh_join_info SET result_price = #{result_price} WHERE user_id=#{user_id}
     </update>
+    
+    <update id="kakao_infoUpdate" parameterType="com.example.jshop.dto.MemberDTO">
+    	UPDATE sh_join_info SET user_email=#{user_email}, user_nm=#{user_nm}, user_phoneNum=#{user_phoneNum}, zip_cd=#{zip_cd}, address_info=#{address_info}, address_detail=#{address_detail} WHERE user_id=#{user_id} 
+    </update>
+    
+    <update id="infoUpdate" parameterType="com.example.jshop.dto.MemberDTO">
+    	UPDATE sh_join_info SET user_email=#{user_email}, user_nm=#{user_nm}, user_phoneNum=#{user_phoneNum}, zip_cd=#{zip_cd}, address_info=#{address_info}, address_detail=#{address_detail} WHERE user_id=#{user_id} 
+    </update>
+    
+    <delete id="infoDelete" parameterType="com.example.jshop.dto.MemberDTO">
+    	DELETE FROM sh_join_info WHERE user_id=#{user_id}
+    </delete>
+    
+    <delete id="tmpDelete" parameterType="com.example.jshop.dto.MemberDTO">
+    	DELETE FROM sh_prdt_tmp WHERE user_id=#{user_id}
+    </delete>
+    
+    <delete id="creditDelete" parameterType="com.example.jshop.dto.MemberDTO">
+    	DELETE FROM sh_credit_history WHERE user_id=#{user_id}
+    </delete>
 </mapper>  

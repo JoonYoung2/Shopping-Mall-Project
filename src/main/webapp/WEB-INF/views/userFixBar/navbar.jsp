@@ -45,6 +45,7 @@
 								</button>
 							</a>
 						</li>
+						<li class="nav-item"><a class="nav-link" href="/info">My</a></li>
 							<c:if test="${sessionScope.loginType eq 3}">
 								<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
 							</c:if> 
