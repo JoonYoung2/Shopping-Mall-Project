@@ -18,12 +18,6 @@
 			<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 				<c:choose>
 					<c:when test="${empty sessionScope.user_id }">
-						<form class="d-flex">
-							<button class="btn btn-outline-dark" type="submit">
-								<i class="bi-cart-fill me-1"></i> <span
-									class="badge bg-dark text-white ms-1 rounded-pill">${sessionScope.totalCart_cnt }</span>
-							</button>
-						</form>
 						<li class="nav-item"><a class="nav-link" href="register">signup</a></li>
 						<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 					</c:when>

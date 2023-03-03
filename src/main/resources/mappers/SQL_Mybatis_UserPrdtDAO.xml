@@ -28,11 +28,11 @@
     </select>
     
     <select id="cartInfoSelect" resultType="com.example.jshop.dto.AddCartDTO">
-    	SELECT t.user_id ,i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
+    	SELECT i.prdt_nm, t.user_id ,i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
     </select>
     
     <select id="creditInfoSelect" resultType="com.example.jshop.dto.OrderHistoryDTO">
-    	SELECT t.user_id, i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
+    	SELECT i.prdt_nm, t.user_id, i.prdt_id, i.prdt_title, i.prdt_price, i.prdt_color, i.img_id, t.total_price, t.addCart_cnt FROM sh_prdt_info i INNER JOIN sh_prdt_tmp t ON t.prdt_id = i.prdt_id WHERE t.user_id=#{user_id}
     </select>
     
     <delete id="tmpDelete" parameterType="String">

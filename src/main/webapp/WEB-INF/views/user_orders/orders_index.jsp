@@ -44,7 +44,9 @@
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
-				<div class="col-md-9">
+			<div class="col-md-3">
+			</div>
+				<div class="col-md-7">
 				
 				
 					<div class="container px-4 px-lg-5 my-5">
@@ -56,41 +58,48 @@
 					</div>
 
 
-					<c:forEach var="prdts" items="${datas }">
-						<div class="container px-4 px-lg-5 my-5">
-							<div class="row gx-4 gx-lg-5 align-items-center">
-								<div class="col-md-4">
-									<img class="card-img-top mb-5 mb-md-0"
-										src="resources/upload/${prdts.prdt_id }/${prdts.img_id}"
-										alt="..." />
-								</div>
-								<div class="col-md-4">
-									<h1 class="display-5 fw-bolder">${prdts.prdt_title }</h1>
-									<div class="fs-5 mb-5">
-										<span class="text-decoration-line-through"> <!-- sale price -->
-										</span> <span>가격 : ${prdts.prdt_price }원</span>
+					<c:forEach var="datas" items="${datas }">
+						주문일 - ${datas.payment_time }
+							<div class="container px-4 px-lg-5 my-5">
+								<div class="row gx-4 gx-lg-5 align-items-center">
+								
+									<div class="col-md-3">
+										<img class="card-img-top mb-3 mb-md-0"
+											src="resources/upload/${datas.prdt_id }/${datas.img_id}"
+											alt="..." />
 									</div>
-									<div class="fs-5 mb-5">
-										<span class="text-decoration-line-through"> <!-- sale price -->
-										</span> <span>색상 : ${prdts.prdt_color }</span>
+									
+									<div class="col-md-5">
+										<a class="fs-6 fw-bolder" style="color:black;">${datas.prdt_title }</a>
+										<div class="fs-6 mb-1">
+											<span class="text-decoration-line-through"> <!-- sale price -->
+											</span> <span>${datas.prdt_price }원</span>
+										</div>
+										<div class="fs-6 mb-1">
+											<span>색상 : ${datas.prdt_color }</span>
+										</div>
+									</div>
+									
+									<div class="col-md-2">
+										<div class="fs-6 mb-0">
+											 <input type="text"
+												value="${datas.addCart_cnt }" readonly="readonly"
+												style="width: 60%; text-align: center;" />
+										</div>
+									</div>
+									
+									<div class="col-md-2" style="padding:0;">
+										<div class="fs-6 mb-0" style="font-weight:bold;">${datas.total_price }원</div>
 									</div>
 
-								</div>
-								<div class="col-md-4">
-									<div class="fs-5 mb-5">${prdts.total_price }원</div>
-									<div class="fs-5 mb-5">
-										<span class="text-decoration-line-through"> <!-- sale price -->
-										</span> <span>수량 <input type="text"
-											value="${prdts.addCart_cnt }" readonly="readonly"
-											style="width: 15%; text-align: center;" /></span>
-									</div>
-								</div>
 
+								</div>
 							</div>
-						</div>
-					</c:forEach>
+						</c:forEach>
 
 				</div>
+				<div class="col-md-4">
+			</div>
 			</div>
 		</div>
 
