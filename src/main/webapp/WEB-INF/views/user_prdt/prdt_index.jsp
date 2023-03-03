@@ -41,25 +41,40 @@
 				</div>
 				<div class="col-md-6">
 					<div class="small mb-1">Product : ${datas.prdt_nm }</div>
-					<h1 class="display-5 fw-bolder">${datas.prdt_title }</h1>
+					<h5 class="display-8 fw-bolder">${datas.prdt_title }</h5>
 					<div class="fs-5 mb-5">
-						<span class="text-decoration-line-through">
-							<!-- sale price -->
+						<span class="text-decoration-line-through"> <!-- sale price -->
 						</span> <span>${datas.prdt_price }원</span>
 					</div>
-					<p class="lead">${datas.prdt_info }</p>
+					<p class="lead" style="font-size: 15px;">${datas.prdt_info }</p>
 					<div class="d-flex">
-						<form action="addCart" method="post">
-							<input type="hidden" name="prdt_id" value="${datas.prdt_id }"/>
-							<input type="hidden" name="prdt_price" value="${datas.prdt_price }"/>
-							<input type="hidden" name="user_id" value="${sessionScope.user_id}"/>
-							<input class="form-control text-center me-3" id="inputQuantity"
-								name="addCart_cnt" type="text" value="1" style="max-width: 3rem" />
-							<button class="btn btn-outline-dark flex-shrink-0" type="submit">
-								<i class="bi-cart-fill me-1"></i> 장바구니 담기
-							</button>
-						</form>
-						${msg }
+						<c:if
+							test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 2 || sessionScope.loginType eq 3}">
+							<form action="addCart" method="post">
+								<input type="hidden" name="prdt_id" value="${datas.prdt_id }" />
+								<div class="number-input">
+									<div
+										onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></div>
+									<sqan style="padding-left:100px;"></sqan>
+									<input type="hidden" name="prdt_price"
+										value="${datas.prdt_price }" /> <input type="hidden"
+										name="user_id" value="${sessionScope.user_id}" /> <input
+										class="quantity" id="inputQuantity" name="addCart_cnt"
+										type="number" value="1" min="1" max="99" step="1"
+										style="max-width: 20rem" />
+									<sqan style="padding-left:100px;"></sqan>
+									<div
+										onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+										class="plus"></div>
+								</div>
+								<br>
+								<!-- 								<button class="btn btn-outline-dark flex-shrink-0" type="submit"> -->
+								<button class="btn btn-primary btn-lg btn-block" style="width:100%" type="submit">
+									<i class="bi-cart-fill me-1"></i> 장바구니 담기
+								</button><br>
+								<a class="btn btn-outline-dark btn-lg btn-block" style="width:100%; border-color:rgba(255, 200, 0, 1);" href="cartInfo?user_id=${sessionScope.user_id }"><i class="bi-cart-fill me-1"></i>장바구니 보기</a>
+							</form>
+						</c:if>
 					</div>
 				</div>
 			</div>

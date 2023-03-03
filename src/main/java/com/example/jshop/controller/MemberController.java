@@ -137,6 +137,7 @@ public class MemberController {
     @GetMapping("logout2")
     public String logout() throws Exception {
     	String login_time = (String)session.getAttribute("login_time");
+    	System.out.println("login_time ==========> " + login_time);
     	LoginLoggerDTO logger = repo.findLoginLogger(login_time);
     	service.logoutLogger(logger);
     	

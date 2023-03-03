@@ -7,6 +7,6 @@
     	INSERT INTO sh_credit_history VALUES(#{user_id}, #{prdt_id}, #{prdt_price}, #{addCart_cnt}, #{total_price}, #{prdt_title}, #{prdt_color}, #{img_id}, #{payment_time}, #{order_type})
     </insert>
     <select id="orderViewSelect" resultType="com.example.jshop.dto.OrderHistoryDTO">
-    	SELECT * FROM sh_credit_history WHERE user_id = #{user_id}
+    	SELECT * FROM sh_credit_history WHERE user_id = #{user_id} ORDER BY payment_time DESC
     </select>
 </mapper>  
