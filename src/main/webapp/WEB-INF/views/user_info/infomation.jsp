@@ -13,7 +13,7 @@
 <title>Joon - shop</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="resources/main_templates/assets/favicon.ico" />
+	href="resources/main_templates/assets/j-letter-37763.png" />
 <!-- Font Awesome icons (free version) -->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -90,158 +90,171 @@
 <body>
 	<%@ include file="../user_infoFixBar/navbar.jsp"%>
 	<c:if test="${member.loginType eq 1 || member.loginType eq 3 }">
-	<section class="page-section bg-light" id="register">
-		<div class="container">
-			<div class="text-center">
-				<h2 class="section-heading text-uppercase">개인정보</h2>
-				<h3 class="section-subheading text-muted">Enter your
-					information!</h3>
-				<font color="red"> ${msg }</font>
-			</div>
+		<section class="page-section bg-light" id="register">
 			<div class="container">
-				<!-- register -->
-				<div class="input-form-backgroud row">
-					<div class="input-form col-md-12 mx-auto">
-						<h4 class="mb-3">수정하기</h4>
-						<form class="validation-form" novalidate action="infoUpdate"
-							method="post">
-							<div class="row">
-								<div class="col-md-6 mb-3">
-									<label for="id">아이디</label> <input type="text"
-										class="form-control" name="user_id" placeholder=""
-										value="${member.user_id }" readonly="readonly" oninput="test(this.value)">
-									<p id="check_id"></p>
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="name">핸드폰</label> <input type="text"
-										class="form-control" name="user_phoneNum"
-										placeholder="(-제외 ex.01012345678)"
-										value="${member.user_phoneNum }" required>
-									<div class="invalid-feedback">핸드폰 번호를 입력해주세요(-제외)</div>
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="name">이름</label> <input type="text"
-										class="form-control" name="user_nm" placeholder=""
-										value="${member.user_nm }" required>
-									<div class="invalid-feedback">이름을 입력해주세요.</div>
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="email">이메일</label> <input type="email"
-										class="form-control" name="user_email"
-										value="${member.user_email }" placeholder="you@example.com"
-										required>
-									<div class="invalid-feedback">이메일을 입력해주세요.</div>
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_postcode" placeholder="우편번호"
-										value="${member.zip_cd }" name="zip_cd" readonly="readonly">
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="button" onclick="sample6_execDaumPostcode()"
-										value="우편번호 찾기"><br>
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_address" placeholder="주소"
-										name="address_info" value="${member.address_info }"
-										readonly="readonly"><br>
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_detailAddress"
-										placeholder="상세주소" name="address_detail"
-										value="${member.address_detail }">
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_extraAddress" placeholder="참고항목"
-										readonly="readonly">
+				<div class="text-center">
+					<h2 class="section-heading text-uppercase">개인정보</h2>
+					<h3 class="section-subheading text-muted">Enter your
+						information!</h3>
+					<font color="red"> ${msg }</font>
+				</div>
+				<div class="container">
+					<!-- register -->
+					<div class="row">
+						<div class="col-lg-4 col-sm-3 mb-4"></div>
+						<div class="col-lg-4 col-sm-6 mb-4">
+							<div class="input-form-backgroud row">
+								<div class="input-form col-md-12 mx-auto">
+									<h4 class="mb-3">수정하기</h4>
+									<form class="validation-form" novalidate action="infoUpdate"
+										method="post">
+										<div class="row">
+											<div class="col-md-12 mb-3">
+												<input type="text" class="form-control" name="user_id"
+													placeholder="" value="${member.user_id }"
+													readonly="readonly" oninput="test(this.value)">
+											</div>
+											<div class="col-md-12 mb-3">
+												<input type="text" class="form-control" name="user_phoneNum"
+													placeholder="휴대폰번호(-없이 입력)"
+													value="${member.user_phoneNum }" required>
+												<div class="invalid-feedback">핸드폰 번호를 입력해주세요(-제외)</div>
+											</div>
+											<div class="col-md-12 mb-3">
+												<input type="text" class="form-control" name="user_nm"
+													placeholder="이름" value="${member.user_nm }" required>
+												<div class="invalid-feedback">이름을 입력해주세요.</div>
+											</div>
+											<div class="col-md-12 mb-3">
+												<input type="email" class="form-control" name="user_email"
+													value="${member.user_email }" placeholder="이메일" required>
+												<div class="invalid-feedback">이메일을 입력해주세요.</div>
+											</div>
+											<div class="col-md-6 mb-3">
+												<input type="text" id="sample6_postcode" placeholder="우편번호"
+													value="${member.zip_cd }" name="zip_cd" readonly="readonly">
+											</div>
+											<div class="col-md-6 mb-3">
+												<input type="button" onclick="sample6_execDaumPostcode()"
+													value="우편번호 찾기"><br>
+											</div>
+											<div class="col-md-7 mb-3">
+												<input type="text" id="sample6_address" placeholder="주소"
+													name="address_info" value="${member.address_info }"
+													readonly="readonly"><br>
+											</div>
+											<div class="col-md-7 mb-1">
+												<input type="text" id="sample6_detailAddress"
+													placeholder="상세주소" name="address_detail"
+													value="${member.address_detail }">
+											</div>
+											<div class="col-md-7 mb-1">
+												<input type="hidden" id="sample6_extraAddress"
+													placeholder="참고항목" readonly="readonly">
+											</div>
+										</div>
+										<hr class="mb-4">
+
+										<button class="btn btn-secondary btn-lg btn-block"
+											style="width: 49%;" type="submit">수정하기</button>
+										<a class="btn btn-secondary btn-lg btn-block"
+											style="width: 49%;" onclick="window.history.back()">뒤로가기</a>
+									</form>
 								</div>
 							</div>
-							<hr class="mb-4">
-							<div class="mb-4"></div>
-							<button class="btn btn-primary btn-lg btn-block" type="submit">수정
-								하기</button>
-						</form>
+
+
+
+						</div>
+						<div class="col-lg-4 col-sm-3 mb-4"></div>
+
 					</div>
-					<footer class="my-3 text-center text-small"> </footer>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 	</c:if>
 	<c:if test="${member.loginType eq 2 }">
-	<section class="page-section bg-light" id="register">
-		<div class="container">
-			<div class="text-center">
-				<h2 class="section-heading text-uppercase">개인정보</h2>
-				<h3 class="section-subheading text-muted">Enter your
-					information!</h3>
-				<font color="red"> ${msg }</font>
-			</div>
+		<section class="page-section bg-light" id="register">
 			<div class="container">
-				<!-- register -->
-				<div class="input-form-backgroud row">
-					<div class="input-form col-md-12 mx-auto">
-						<h4 class="mb-3">수정하기</h4>
-						<form class="validation-form" novalidate action="kakao_infoUpdate"
-							method="post">
-							<div class="row">
-								<input type="hidden"
-										class="form-control" name="user_id" placeholder=""
-										value="${member.user_id }" oninput="test(this.value)">
-									
-								<div class="col-md-6 mb-3">
-									<label for="name">핸드폰</label> <input type="text"
-										class="form-control" name="user_phoneNum"
-										placeholder="(-제외 ex.01012345678)"
-										value="${member.user_phoneNum }" required>
-									<div class="invalid-feedback">핸드폰 번호를 입력해주세요(-제외)</div>
+				<div class="text-center">
+					<h2 class="section-heading text-uppercase">개인정보</h2>
+					<h3 class="section-subheading text-muted">Enter your
+						information!</h3>
+					<font color="red"> ${msg }</font>
+				</div>
+				<div class="container">
+					<!-- register -->
+					<div class="row">
+						<div class="col-lg-4 col-sm-3 mb-4"></div>
+						<div class="col-lg-4 col-sm-6 mb-4">
+							<div class="input-form-backgroud row">
+								<div class="input-form col-md-12 mx-auto">
+									<h4 class="mb-3">수정하기</h4>
+									<form class="validation-form" novalidate
+										action="kakao_infoUpdate" method="post">
+										<div class="row">
+											<input type="hidden" class="form-control" name="user_id"
+												placeholder="" value="${member.user_id }"
+												oninput="test(this.value)">
+
+											<div class="col-md-12 mb-3">
+												<input type="text" class="form-control" name="user_phoneNum"
+													placeholder="휴대폰번호(-없이 입력)"
+													value="${member.user_phoneNum }" required>
+												<div class="invalid-feedback">핸드폰 번호를 입력해주세요(-제외)</div>
+											</div>
+											<div class="col-md-12 mb-3">
+												<input type="text" class="form-control" name="user_nm"
+													placeholder="이름" value="${member.user_nm }" required>
+												<div class="invalid-feedback">이름을 입력해주세요.</div>
+											</div>
+											<div class="col-md-12 mb-3">
+												<input type="email" class="form-control" name="user_email"
+													value="${member.user_email }" placeholder="이메일" required>
+												<div class="invalid-feedback">이메일을 입력해주세요.</div>
+											</div>
+											<div class="col-md-6 mb-3">
+												<input type="text" id="sample6_postcode" placeholder="우편번호"
+													value="${member.zip_cd }" name="zip_cd" readonly="readonly">
+											</div>
+											<div class="col-md-6 mb-3">
+												<input type="button" onclick="sample6_execDaumPostcode()"
+													value="우편번호 찾기"><br>
+											</div>
+											<div class="col-md-7 mb-3">
+												<input type="text" id="sample6_address" placeholder="주소"
+													name="address_info" value="${member.address_info }"
+													readonly="readonly"><br>
+											</div>
+											<div class="col-md-7 mb-1">
+												<input type="text" id="sample6_detailAddress"
+													placeholder="상세주소" name="address_detail"
+													value="${member.address_detail }">
+											</div>
+											<div class="col-md-7 mb-1">
+												<input type="hidden" id="sample6_extraAddress"
+													placeholder="참고항목" readonly="readonly">
+											</div>
+										</div>
+										<hr class="mb-4">
+										<button class="btn btn-secondary btn-lg btn-block"
+											style="width: 49%;" type="submit">수정하기</button>
+										<a class="btn btn-secondary btn-lg btn-block"
+											style="width: 49%;" onclick="window.history.back()">뒤로가기</a>
+									</form>
 								</div>
-								<div class="col-md-6 mb-3">
-									<label for="name">이름</label> <input type="text"
-										class="form-control" name="user_nm" placeholder=""
-										value="${member.user_nm }" required>
-									<div class="invalid-feedback">이름을 입력해주세요.</div>
-								</div>
-								<div class="col-md-6 mb-3">
-									<label for="email">이메일</label> <input type="email"
-										class="form-control" name="user_email"
-										value="${member.user_email }" placeholder="you@example.com"
-										required>
-									<div class="invalid-feedback">이메일을 입력해주세요.</div>
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_postcode" placeholder="우편번호"
-										value="${member.zip_cd }" name="zip_cd" readonly="readonly">
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="button" onclick="sample6_execDaumPostcode()"
-										value="우편번호 찾기"><br>
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_address" placeholder="주소"
-										name="address_info" value="${member.address_info }"
-										readonly="readonly"><br>
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_detailAddress"
-										placeholder="상세주소" name="address_detail"
-										value="${member.address_detail }">
-								</div>
-								<div class="col-md-7 mb-3">
-									<input type="text" id="sample6_extraAddress" placeholder="참고항목"
-										readonly="readonly">
-								</div>
+								<footer class="my-3 text-center text-small"> </footer>
 							</div>
-							<hr class="mb-4">
-							<div class="mb-4"></div>
-							<button class="btn btn-primary btn-lg btn-block" type="submit">수정
-								하기</button>
-						</form>
+
+
+
+						</div>
+						<div class="col-lg-4 col-sm-3 mb-4"></div>
 					</div>
-					<footer class="my-3 text-center text-small"> </footer>
+
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 	</c:if>
 	<%@ include file="../user_infoFixBar/footer.jsp"%>
 </body>

@@ -13,7 +13,7 @@
 <title>Joon - shop</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="resources/main_templates/assets/favicon.ico" />
+	href="resources/main_templates/assets/j-letter-37763.png" />
 <!-- Font Awesome icons (free version) -->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -46,7 +46,11 @@
 						<span class="text-decoration-line-through"> <!-- sale price -->
 						</span> <span>${datas.prdt_price }원</span>
 					</div>
-					<p class="lead" style="font-size: 15px;">${datas.prdt_info }</p>
+					<p class="lead mb-5" style="font-size: 15px;">${datas.prdt_info }</p>
+					<c:if test="${sessionScope.loginType eq '' || sessionScope.loginType eq null }">
+							<div class="fs-8">상품 구매는 로그인 후 이용가능합니다.</div>
+							<div>로그인 후 이용하려면? <a href="login" style="text-decoration: none;">로그인하러 가기</a></div>
+						</c:if>
 					<div class="d-flex">
 						<c:if
 							test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 2 || sessionScope.loginType eq 3}">
