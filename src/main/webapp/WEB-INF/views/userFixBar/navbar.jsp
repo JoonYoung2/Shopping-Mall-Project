@@ -18,26 +18,26 @@
 			<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 				<c:choose>
 					<c:when test="${empty sessionScope.user_id }">
-						<li class="nav-item"><a class="nav-link" href="#top">Top</a></li>
+						<li class="nav-item"><a class="nav-link" href="#top">HOME</a></li>
 						<li class="nav-item"><a class="nav-link" href="#new">NEW
-								ARRIVALS</a></li>
+								</a></li>
 						<li class="nav-item"><a class="nav-link" href="#best">BEST
-								ARRIVALS</a></li>
+								</a></li>
 						<li class="nav-item"><a class="nav-link" href="#all">ALL
-								ARRIVALS</a></li>
+								</a></li>
 						<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="nav-item"><a class="nav-link" href="#top">Top</a></li>
+						<li class="nav-item"><a class="nav-link" href="#top">HOME</a></li>
 						<li class="nav-item"><a class="nav-link" href="#new">NEW
-								ARRIVALS</a></li>
+								</a></li>
 						<li class="nav-item"><a class="nav-link" href="#best">BEST
-								ARRIVALS</a></li>
+								</a></li>
 						<li class="nav-item"><a class="nav-link" href="#all">ALL
-								ARRIVALS</a></li>
+								</a></li>
 						<li class="nav-item">
 							<a href="cartInfo?user_id=${sessionScope.user_id }">
-								<button class="btn btn-outline-dark">
+								<button class="btn btn-outline-dark" style="background-color:none;">
 									<i class="bi-cart-fill me-1"></i> 
 									<span class="badge bg-dark text-white ms-1 rounded-pill">
 										${sessionScope.totalCart_cnt }
@@ -47,7 +47,7 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="/info">My</a></li>
 							<c:if test="${sessionScope.loginType eq 3}">
-								<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
+								<li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
 							</c:if> 
 						<c:if test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 3}">
 							<li class="nav-item"><a class="nav-link" href="logout2">logout</a></li>

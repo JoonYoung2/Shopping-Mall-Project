@@ -13,7 +13,7 @@
 <title>Joon - shop</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="resources/main_templates/assets/favicon.ico" />
+	href="resources/main_templates/assets/j-letter-37763.png" />
 <!-- Font Awesome icons (free version) -->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -107,7 +107,7 @@
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="redirect:/payment";
+                location.href="/payment?user_id="+user_id;
                 alert(msg);
             }
         });

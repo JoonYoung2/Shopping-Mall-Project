@@ -12,7 +12,7 @@
 <title>Joon - shop</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="resources/main_templates/assets/favicon.ico" />
+	href="resources/main_templates/assets/j-letter-37763.png" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>

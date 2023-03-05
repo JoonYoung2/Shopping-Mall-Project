@@ -13,7 +13,7 @@
 <title>Joon - shop</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="resources/main_templates/assets/favicon.ico" />
+	href="resources/main_templates/assets/j-letter-37763.png" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
@@ -28,8 +28,8 @@
 <link href="resources/main_templates/css/styles.css" rel="stylesheet" />
  
 <!-- prdt_slide -->
-<link href="resources/prdt_slide/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<!-- <link href="resources/prdt_slide/vendor/bootstrap/css/bootstrap.min.css" -->
+<!-- 	rel="stylesheet"> -->
 
 <link rel="stylesheet"
 	href="resources/prdt_slide/asset/css/fontawesome.css">
@@ -179,7 +179,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<!--         <script src="resources/js/scripts.js"></script> -->
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
 
 
 
@@ -187,12 +187,12 @@
 
 	<!-- 222222222222222222 -->
 	<script src="resources/prdt_slide/vendor/jquery/jquery.min.js"></script>
-	<script src="resources/prdt_slide/vendor/bootstrap/js/bootstrap.min.js"></script>
+	
 
 	<!--   <script src="resources/asset/js/isotope.min.js"></script> -->
 	<script src="resources/prdt_slide/asset/js/owl-carousel.js"></script>
-	<script src="resources/prdt_slide/asset/js/tabs.js"></script>
-	<script src="resources/prdt_slide/asset/js/popup.js"></script>
+<!-- 	<script src="resources/prdt_slide/asset/js/tabs.js"></script> -->
+<!-- 	<script src="resources/prdt_slide/asset/js/popup.js"></script> -->
 	<script src="resources/prdt_slide/asset/js/custom.js"></script>
 </body>
 </html>
