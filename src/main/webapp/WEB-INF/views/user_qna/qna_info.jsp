@@ -27,19 +27,6 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
 	rel="stylesheet" />
-<script>
-	
-
-	function check() {
-		var qna_content = document.getElementById('content').value;
-		if (qna_content == "" || qna_content == null) {
-			document.getElementById('msg').innerHTML = "<div style='padding-bottom:20px;'>본문 내용은 필수입니다.</div>";
-			return;
-		}
-		
-		document.getElementById('f').submit();
-	}
-</script>
 </head>
 <body>
 	<%@ include file="../user_prdtFixBar/navbar.jsp"%>
@@ -54,42 +41,31 @@
 			<div class="container">
 				<div class="card mb-4">
 					<center>
-						<form action="qna_write" method="post" id="f"
-							enctype="multipart/form-data">
 							<input type='hidden' name='user_id'
 								value='${sessionScope.user_id }' />
 							<table style="width: 650px;">
 								<tr>
 									<td colspan="2" style="width: 80px; height: 40px;" align="left">제
 										목</td>
-									<td style="width: 570px; height: 40px;"><select
-										name="qna_title">
-											<option value="상품 문의">상품 문의</option>
-											<option value="주문/결제 문의">주문/결제 문의</option>
-											<option value="배송 문의">배송 문의</option>
-											<option value="반품/환불 문의">반품/환불 문의</option>
-									</select></td>
+									<td style="width: 570px; height: 40px;">
+										<input type="text" value="${data.qna_title }" readonly="readonly"/>
+										<span style="padding-left:190px;">파일명 : ${data.qna_file }</span>
+									</td>
 								</tr>
 								<tr>
 									<td style="width: 80px; height: 40px;" align="left">본문</td>
 									<td colspan="2"><textarea
-											style="width: 550px; height: 300px" name="qna_content"
-											id="content"></textarea></td>
-								</tr>
-								<tr>
-									<td style="text-align: right; padding-right: 60px;" height=40
-										colspan=3><input type=file style="width: 300px;" 
-										name="file" /></td>
+											style="width: 550px; height: 300px" name="qna_content" readonly="readonly">${data.qna_content }</textarea></td>
 								</tr>
 								<tr>
 									<td colspan="3" align='center' height=40>
-									<input type='button' value='등록' style="width: 120px;" onclick="check();" class="btn btn-secondary btn-sm btn-block" /> 
-									<input type=reset value='취소' style="width: 120px;" class="btn btn-secondary btn-sm btn-block" /> <input
-										type=button value='뒤로가기' style="width: 120px;"
-										onclick="history.back()" class="btn btn-secondary btn-sm btn-block"/></td>
+									<a class="btn btn-secondary btn-sm btn-block">수정하기</a> 
+									<a class="btn btn-secondary btn-sm btn-block">삭제하기</a>
+									<a
+									type=button style="width: 120px;"
+										onclick="history.back()" class="btn btn-secondary btn-sm btn-block">뒤로가기</a>
 								</tr>
 							</table>
-						</form>
 					</center>
 				</div>
 			</div>

@@ -35,13 +35,7 @@ public class QnaService {
 		MultipartFile qna_file = multi.getFile("file");
 		String write_time = sdf.format(cal.getTime());
 		
-		System.out.println("user_id ========> " + user_id);
-		System.out.println("qna_title =========>" + qna_title);
-		System.out.println("qna_content =========>" + qna_content);
-		System.out.println("qna_file =========>" + qna_file);
-		System.out.println("write_tile ==========>" + write_time);
-		
-		if(qna_content == "" || qna_content == null) {
+		if(qna_content.equals("") || qna_content.equals(null)) {
 			return "본문 내용은 필수입니다.";
 		}
 		
@@ -59,7 +53,7 @@ public class QnaService {
 			e1.printStackTrace();
 		}
 		
-		int max_id = repo.maxFindId(); // 고유한 폴더에 img파일을 보관하기 or img_id를 update하기 위해서..
+		int max_id = repo.maxFindId(); // 고유한 폴더에 첨부파일을 보관하기 or 첨부파일를 update하기 위해서..
 
 		String fName = "";
 		if (qna_file != null && qna_file.getSize() != 0) {

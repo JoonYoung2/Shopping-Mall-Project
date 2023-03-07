@@ -17,4 +17,6 @@ public interface QnaRepository {
 	public void fileUpdate(int qna_num, String qna_file);
 
 	public List<QnaDTO> qna_list(String user_id);
+
+	public QnaDTO qna_select(int qna_num);
 }
