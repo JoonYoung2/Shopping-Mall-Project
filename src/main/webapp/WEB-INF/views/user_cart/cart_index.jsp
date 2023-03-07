@@ -85,30 +85,31 @@
 					</div>
 
 					<div class="col-md-3">
-						<div class="side-fixbar" style="padding: 30px; border: 1px solid rgba(0, 0, 0, 0.5);">
-						<div class="fs-7 mb-0">
-							<span style="font-weight: bold;">장바구니 요약</span>
-						</div>
-						<hr class="mb-1" style="margin: 16px 0 8px;">
-						<div class="fs-7 mb-0"
-							style="display: flex; justify-content: space-between;">상품
-							금액</div>
-						<c:forEach var="datas" items="${datas }">
-							<div class="fs-7 mb-0"
-								style="display: flex; justify-content: space-between;">${datas.prdt_nm }<div
-									style="text-align: right;">${datas.total_price }원</div>
+						<div class="side-fixbar"
+							style="padding: 30px; border: 1px solid rgba(0, 0, 0, 0.5);">
+							<div class="fs-7 mb-0">
+								<span style="font-weight: bold;">장바구니 요약</span>
 							</div>
-						</c:forEach>
-						<hr class="mb-2" style="margin: 5px 0 8px;">
-						<div class="fs-7 mb-3"
-							style="display: flex; justify-content: space-between;">
-							<span style="font-weight: bold;">합계</span>
-							<div style="text-align: right; color: red; font-weight: bold;">${sessionScope.result_price }원</div>
+							<hr class="mb-1" style="margin: 16px 0 8px;">
+							<div class="fs-7 mb-0"
+								style="display: flex; justify-content: space-between;">상품
+								금액</div>
+							<c:forEach var="datas" items="${datas }">
+								<div class="fs-7 mb-0"
+									style="display: flex; justify-content: space-between;">${datas.prdt_nm }<div
+										style="text-align: right;">${datas.total_price }원</div>
+								</div>
+							</c:forEach>
+							<hr class="mb-2" style="margin: 5px 0 8px;">
+							<div class="fs-7 mb-3"
+								style="display: flex; justify-content: space-between;">
+								<span style="font-weight: bold;">합계</span>
+								<div style="text-align: right; color: red; font-weight: bold;">${sessionScope.result_price }원</div>
+							</div>
+							<a class="btn btn-outline-dark btn-sm btn-block"
+								href="/payment?user_id=${sessionScope.user_id }&customer_uid=${sessionScope.user_id }"
+								style="width: 100%; border-color: rgba(0, 0, 0, 1); color: black; font-family: nanum-barun-gothic">결제진행</a>
 						</div>
-						<a class="btn btn-outline-dark btn-sm btn-block"
-							href="/payment?user_id=${sessionScope.user_id }&customer_uid=${sessionScope.user_id }"
-							style="width: 100%; border-color: rgba(0, 0, 0, 1); color: black; font-family: nanum-barun-gothic">결제진행</a>
-					</div>
 					</div>
 				</div>
 			</div>
