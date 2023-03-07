@@ -36,7 +36,7 @@
 		}
 		
 		var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-		var phoneRegex = /^[0-9]{8,13}$/;
+		var phoneRegex = /^[0-9]{11,11}$/;
 		
 		var emailr = emailRegex.test(email);
 		var phoner = phoneRegex.test(phone);

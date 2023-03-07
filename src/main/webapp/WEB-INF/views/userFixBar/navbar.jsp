@@ -25,6 +25,7 @@
 								</a></li>
 						<li class="nav-item"><a class="nav-link" href="#all">ALL
 								</a></li>
+								<li class="nav-item"><a class="nav-link" href="/qna">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 					</c:when>
 					<c:otherwise>
@@ -49,6 +50,7 @@
 							<c:if test="${sessionScope.loginType eq 3}">
 								<li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
 							</c:if> 
+							<li class="nav-item"><a class="nav-link" href="/qna">Q&A</a></li>
 						<c:if test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 3}">
 							<li class="nav-item"><a class="nav-link" href="logout2">logout</a></li>
 						</c:if> <c:if test="${sessionScope.loginType eq 2}">

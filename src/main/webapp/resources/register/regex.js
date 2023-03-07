@@ -71,7 +71,7 @@ function id_click(){
 		var idRegex = /^[A-Za-z]{1}[A-Za-z0-9_-]{5,19}$/;
 		var pwRegex = /(?=.*\d)(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,19}/;
 		var emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-		var phoneRegex = /^[0-9]{8,13}$/;
+		var phoneRegex = /^[0-9]{11,11}$/;
 		
 		var idr = idRegex.test(id);
 		var pwr = pwRegex.test(pw);
