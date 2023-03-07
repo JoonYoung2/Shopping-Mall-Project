@@ -7,8 +7,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink"
 	id="mainNav">
 	<div class="container">
-		<a class="navbar-brand" href="/"><img
-			src="resources/main_templates/assets/img/navbar-logo.svg" alt="..." /></a>
+		<a class="navbar-brand" href="/"><!-- <img
+			src="resources/main_templates/assets/img/navbar-logo.svg" alt="..." />--></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">
