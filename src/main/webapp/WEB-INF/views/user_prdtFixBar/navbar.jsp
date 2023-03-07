@@ -19,6 +19,7 @@
 				<c:choose>
 					<c:when test="${empty sessionScope.user_id }">
 						<li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+						<li class="nav-item"><a class="nav-link" href="/qna">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="register">signup</a></li>
 						<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 					</c:when>
@@ -38,6 +39,7 @@
 						<c:if test="${sessionScope.loginType eq 3}">
 							<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
 						</c:if>
+						<li class="nav-item"><a class="nav-link" href="/qna">Q&A</a></li>
 						<c:if
 							test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 3}">
 							<li class="nav-item"><a class="nav-link" href="logout">logout</a></li>

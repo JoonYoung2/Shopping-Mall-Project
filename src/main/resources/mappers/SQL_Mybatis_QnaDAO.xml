@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jshop.repository.QnaRepository">
+
+    <insert id="qna_insert" parameterType="com.example.jshop.dto.QnaDTO">
+    	<selectKey order="BEFORE" keyProperty="qna_num" resultType="Integer">
+			SELECT nvl(max(qna_num),20000)+1 FROM sh_qna_info
+		</selectKey>
+    	INSERT INTO sh_qna_info VALUES(#{qna_num}, #{user_id}, #{qna_title}, #{qna_content}, #{qna_file}, #{write_time})
+    </insert>
+    
+    <select id="maxFindId" resultType="Integer">
+		SELECT max(qna_num) FROM sh_qna_info
+    </select>
+    
+    <update id="fileUpdate" parameterType="com.example.jshop.dto.QnaDTO">
+    	UPDATE sh_qna_info SET qna_file=#{qna_file} WHERE qna_num = #{qna_num}
+    </update>
+    
+    <select id="qna_list" resultType="com.example.jshop.dto.QnaDTO">
+    	SELECT * FROM sh_qna_info WHERE user_id=#{user_id}
+    </select>
+</mapper>  
