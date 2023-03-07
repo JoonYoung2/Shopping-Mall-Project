@@ -90,47 +90,18 @@ public class MemberController {
     @PostMapping("register")
     public String register(@Valid MemberDTO member, BindingResult bindingResult, Model model,
 						   HttpServletRequest request) {
-		log.info("Request url -> {}", request.getRequestURI());
-		log.info("params -> {}", member);
+		
+    	String msg = "";
     	try {
-			MemberDTO check = repo.findId(member.getUser_id());
-			if(check != null) {
-				String msg = "동일한 아이디가 존재합니다.";
-				model.addAttribute("msg", msg);
-				return "signup/register";
-			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			msg = service.register(member, bindingResult, request);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		if(bindingResult.hasErrors()){
-			String msg = "비밀번호는 필수 입니다.";
-			if(member.getUser_pw() == null || member.getUser_pw().equals("")){
-				log.warn("Password esential..");
-				model.addAttribute("msg", msg);
-				return "signup/register";
-
-			}
-			log.warn("Password esential..");
-			msg = "비밀번호형식이 올바르지않습니다.";
-			model.addAttribute("msg", msg);
-			return "signup/register";
-		}
-
-        String msg = "null"; 
-        try{
-            msg = service.register(member);
-            
-        }catch (Exception e){
-            log.info("Error -> {}", e);
-        }
-        if(!msg.equals("null")) {
-            if (msg.equals("등록 완료")) {
-                return "redirect:login";
-            }
-        }
-        
-        model.addAttribute("msg", msg);
+    	if(msg.equals("등록 완료")) {
+    		model.addAttribute("msg", "회원가입 완료");
+    		return "login/login";
+    	}
+    	model.addAttribute("msg", msg);
         return "signup/register";
     }
     

@@ -10,5 +10,5 @@ import com.example.jshop.dto.OrderHistoryDTO;
 public interface OrderRepository {
 	public void orderInsert(OrderHistoryDTO order);
 
-	public List<OrderRepository> orderViewSelect(String user_id);
+	public List<OrderHistoryDTO> orderViewSelect(String user_id);
 }

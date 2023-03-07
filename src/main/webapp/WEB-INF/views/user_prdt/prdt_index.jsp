@@ -47,10 +47,14 @@
 						</span> <span>${datas.prdt_price }원</span>
 					</div>
 					<p class="lead mb-5" style="font-size: 15px;">${datas.prdt_info }</p>
-					<c:if test="${sessionScope.loginType eq '' || sessionScope.loginType eq null }">
-							<div class="fs-8">상품 구매는 로그인 후 이용가능합니다.</div>
-							<div>로그인 후 이용하려면? <a href="login" style="text-decoration: none;">로그인하러 가기</a></div>
-						</c:if>
+					<c:if
+						test="${sessionScope.loginType eq '' || sessionScope.loginType eq null }">
+						<div class="fs-8">상품 구매는 로그인 후 이용가능합니다.</div>
+						<div>
+							<a href="login" style="text-decoration: none;"><span
+								style="color: red;">로그인</span>하러 가기</a>
+						</div>
+					</c:if>
 					<div class="d-flex">
 						<c:if
 							test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 2 || sessionScope.loginType eq 3}">
@@ -73,10 +77,14 @@
 								</div>
 								<br>
 								<!-- 								<button class="btn btn-outline-dark flex-shrink-0" type="submit"> -->
-								<button class="btn btn-primary btn-lg btn-block" style="width:100%" type="submit">
+								<button class="btn btn-primary btn-lg btn-block"
+									style="width: 100%" type="submit">
 									<i class="bi-cart-fill me-1"></i> 장바구니 담기
-								</button><br>
-								<a class="btn btn-outline-dark btn-lg btn-block" style="width:100%; border-color:rgba(255, 200, 0, 1);" href="cartInfo?user_id=${sessionScope.user_id }"><i class="bi-cart-fill me-1"></i>장바구니 보기</a>
+								</button>
+								<br> <a class="btn btn-outline-dark btn-lg btn-block"
+									style="width: 100%; border-color: rgba(255, 200, 0, 1);"
+									href="cartInfo?user_id=${sessionScope.user_id }"><i
+									class="bi-cart-fill me-1"></i>장바구니 보기</a>
 							</form>
 						</c:if>
 					</div>

@@ -48,8 +48,6 @@
 
 	<%@ include file="../userFixBar/navbar.jsp"%>
 
-	<%@ include file="../userFixBar/header.jsp"%>
-
 	<section class="page-section" id="top">
 		<div class="projects section" id="projects">
 			<div class="container-fluid">

@@ -31,60 +31,6 @@
 	rel="stylesheet" />
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-	function sample6_execDaumPostcode() {
-		new daum.Postcode(
-				{
-					oncomplete : function(data) {
-						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-						var addr = ''; // 주소 변수
-						var extraAddr = ''; // 참고항목 변수
-
-						//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-							addr = data.roadAddress;
-						} else { // 사용자가 지번 주소를 선택했을 경우(J)
-							addr = data.jibunAddress;
-						}
-
-						// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-						if (data.userSelectedType === 'R') {
-							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-							if (data.bname !== ''
-									&& /[동|로|가]$/g.test(data.bname)) {
-								extraAddr += data.bname;
-							}
-							// 건물명이 있고, 공동주택일 경우 추가한다.
-							if (data.buildingName !== ''
-									&& data.apartment === 'Y') {
-								extraAddr += (extraAddr !== '' ? ', '
-										+ data.buildingName : data.buildingName);
-							}
-							// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-							if (extraAddr !== '') {
-								extraAddr = ' (' + extraAddr + ')';
-							}
-							// 조합된 참고항목을 해당 필드에 넣는다.
-							document.getElementById("sample6_extraAddress").value = extraAddr;
-
-						} else {
-							document.getElementById("sample6_extraAddress").value = '';
-						}
-
-						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('sample6_postcode').value = data.zonecode;
-						document.getElementById("sample6_address").value = addr;
-						// 커서를 상세주소 필드로 이동한다.
-						document.getElementById("sample6_detailAddress")
-								.focus();
-					}
-				}).open();
-	}
-</script>
 </head>
 </head>
 <body>
@@ -96,7 +42,8 @@
 					<h2 class="section-heading text-uppercase">개인정보</h2>
 					<h3 class="section-subheading text-muted">Enter your
 						information!</h3>
-					<font color="red"> ${msg }</font>
+					<font color="red" id="msg"> ${msg }</font>
+					<div class ="mb-3"></div>
 				</div>
 				<div class="container">
 					<!-- register -->
@@ -105,30 +52,35 @@
 						<div class="col-lg-4 col-sm-6 mb-4">
 							<div class="input-form-backgroud row">
 								<div class="input-form col-md-12 mx-auto">
-									<h4 class="mb-3">수정하기</h4>
+									<!-- 									<h4 class="mb-3">수정하기</h4> -->
 									<form class="validation-form" novalidate action="infoUpdate"
-										method="post">
+										id="f" method="post">
 										<div class="row">
 											<div class="col-md-12 mb-3">
 												<input type="text" class="form-control" name="user_id"
+													onkeydown="id_click();" onblur="id_blur();" id="id"
 													placeholder="" value="${member.user_id }"
-													readonly="readonly" oninput="test(this.value)">
+													readonly="readonly" oninput="test(this.value)"> <span
+													id="user_id" style="color: red"></span>
+
 											</div>
 											<div class="col-md-12 mb-3">
 												<input type="text" class="form-control" name="user_phoneNum"
-													placeholder="휴대폰번호(-없이 입력)"
-													value="${member.user_phoneNum }" required>
-												<div class="invalid-feedback">핸드폰 번호를 입력해주세요(-제외)</div>
+													onkeydown="phone_click();" onblur="phone_blur();"
+													id="phone" placeholder="휴대폰번호(-없이 입력)"
+													value="${member.user_phoneNum }" required> <span
+													id="user_phone" style="color: red"></span>
 											</div>
 											<div class="col-md-12 mb-3">
 												<input type="text" class="form-control" name="user_nm"
-													placeholder="이름" value="${member.user_nm }" required>
-												<div class="invalid-feedback">이름을 입력해주세요.</div>
+													id="nm" placeholder="이름" value="${member.user_nm }"
+													required>
 											</div>
 											<div class="col-md-12 mb-3">
 												<input type="email" class="form-control" name="user_email"
-													value="${member.user_email }" placeholder="이메일" required>
-												<div class="invalid-feedback">이메일을 입력해주세요.</div>
+													onkeydown="email_click();" onblur="email_blur();"
+													id="email" value="${member.user_email }" placeholder="이메일"
+													required> <span id="user_email" style="color: red"></span>
 											</div>
 											<div class="col-md-6 mb-3">
 												<input type="text" id="sample6_postcode" placeholder="우편번호"
@@ -155,9 +107,10 @@
 										</div>
 										<hr class="mb-4">
 
-										<button class="btn btn-secondary btn-lg btn-block"
-											style="width: 49%;" type="submit">수정하기</button>
-										<a class="btn btn-secondary btn-lg btn-block"
+										<input class="btn btn-secondary btn-lg btn-block"
+											style="width: 49%;" type="button" value="수정 하기"
+											onclick="check();"> <a
+											class="btn btn-secondary btn-lg btn-block"
 											style="width: 49%;" onclick="window.history.back()">뒤로가기</a>
 									</form>
 								</div>
@@ -172,6 +125,7 @@
 				</div>
 			</div>
 		</section>
+		<script src="resources/infoUpdate/regex.js"></script>
 	</c:if>
 	<c:if test="${member.loginType eq 2 }">
 		<section class="page-section bg-light" id="register">
@@ -180,7 +134,7 @@
 					<h2 class="section-heading text-uppercase">개인정보</h2>
 					<h3 class="section-subheading text-muted">Enter your
 						information!</h3>
-					<font color="red"> ${msg }</font>
+					<font color="red" id="msg"> ${msg }</font>
 				</div>
 				<div class="container">
 					<!-- register -->
@@ -189,9 +143,9 @@
 						<div class="col-lg-4 col-sm-6 mb-4">
 							<div class="input-form-backgroud row">
 								<div class="input-form col-md-12 mx-auto">
-									<h4 class="mb-3">수정하기</h4>
-									<form class="validation-form" novalidate
-										action="kakao_infoUpdate" method="post">
+									<!-- 									<h4 class="mb-3">수정하기</h4> -->
+									<form class="validation-form" id="f" action="kakao_infoUpdate"
+										method="post">
 										<div class="row">
 											<input type="hidden" class="form-control" name="user_id"
 												placeholder="" value="${member.user_id }"
@@ -199,19 +153,21 @@
 
 											<div class="col-md-12 mb-3">
 												<input type="text" class="form-control" name="user_phoneNum"
-													placeholder="휴대폰번호(-없이 입력)"
-													value="${member.user_phoneNum }" required>
-												<div class="invalid-feedback">핸드폰 번호를 입력해주세요(-제외)</div>
+													onkeydown="phone_click();" onblur="phone_blur();"
+													id="phone" placeholder="휴대폰번호(-없이 입력)"
+													value="${member.user_phoneNum }" required> <span
+													id="user_phone" style="color: red"></span>
 											</div>
 											<div class="col-md-12 mb-3">
 												<input type="text" class="form-control" name="user_nm"
-													placeholder="이름" value="${member.user_nm }" required>
-												<div class="invalid-feedback">이름을 입력해주세요.</div>
+													id="nm" placeholder="이름" value="${member.user_nm }"
+													required>
 											</div>
 											<div class="col-md-12 mb-3">
 												<input type="email" class="form-control" name="user_email"
-													value="${member.user_email }" placeholder="이메일" required>
-												<div class="invalid-feedback">이메일을 입력해주세요.</div>
+													onkeydown="email_click();" onblur="email_blur();"
+													id="email" value="${member.user_email }" placeholder="이메일"
+													required> <span id="user_email" style="color: red"></span>
 											</div>
 											<div class="col-md-6 mb-3">
 												<input type="text" id="sample6_postcode" placeholder="우편번호"
@@ -237,16 +193,15 @@
 											</div>
 										</div>
 										<hr class="mb-4">
-										<button class="btn btn-secondary btn-lg btn-block"
-											style="width: 49%;" type="submit">수정하기</button>
-										<a class="btn btn-secondary btn-lg btn-block"
+										<input class="btn btn-secondary btn-lg btn-block"
+											style="width: 49%;" type="button" onclick="check();"
+											value="수정 하기"> <a
+											class="btn btn-secondary btn-lg btn-block"
 											style="width: 49%;" onclick="window.history.back()">뒤로가기</a>
 									</form>
 								</div>
 								<footer class="my-3 text-center text-small"> </footer>
 							</div>
-
-
 
 						</div>
 						<div class="col-lg-4 col-sm-3 mb-4"></div>
@@ -255,6 +210,7 @@
 				</div>
 			</div>
 		</section>
+		<script src="resources/infoUpdate/kakaoRegex.js"></script>
 	</c:if>
 	<%@ include file="../user_infoFixBar/footer.jsp"%>
 </body>

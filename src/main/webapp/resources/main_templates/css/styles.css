@@ -12080,14 +12080,27 @@ input[type=number]::-webkit-outer-spin-button {
 /* 담기 버튼 */
 
 /* 사이드 요약 */
-.side-fixbar2{
-  position: relative;
-}
+
 .side-fixbar{
-  position: sticky;
-/*   position: absolute; */
-  top: 0px;
+  
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    width: 300px;
+    position: fixed;
+    box-sizing: border-box;
+    z-index: 1;
+    top: 0;
   
 }
 
 /* 사이드 요약 */
+
+/* 주문테이블 */
+
+.order_table{
+	display:flex;
+	padding-top: 10px;
+}
+
+/* 주문테이블 */
