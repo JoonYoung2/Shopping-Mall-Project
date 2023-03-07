@@ -22,4 +22,8 @@
     <select id="qna_list" resultType="com.example.jshop.dto.QnaDTO">
     	SELECT * FROM sh_qna_info WHERE user_id=#{user_id}
     </select>
+    
+    <select id="qna_select" resultType="com.example.jshop.dto.QnaDTO">
+    	SELECT * FROM sh_qna_info WHERE qna_num=#{qna_num}
+    </select>
 </mapper>  

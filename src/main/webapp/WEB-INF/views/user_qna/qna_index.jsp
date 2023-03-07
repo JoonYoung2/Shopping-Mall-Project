@@ -44,65 +44,72 @@
 <body>
 	<%@ include file="../user_prdtFixBar/navbar.jsp"%>
 
-<div class="row">
-				<div class="col-lg-3 col-sm-3 mb-4"></div>
-				<div class="col-lg-6 col-sm-6 mb-4">
-	<section class="page-section" id="about">
-		<div class="container">
-			<div class="card mb-4">
-				<div class="card-header">
-					<i class="fas fa-table me-1"></i> Q&A Info
-				</div>
-				<div class="card-body">
-					<table id="datatablesSimple">
-						<thead>
-							<tr>
-								<th><div style="text-align: center;">번호</div></th>
-								<th><div style="text-align: center;">아이디</div></th>
-								<th><div style="text-align: center;">타이틀</div></th>
-								<th><div style="text-align: center;">작성일</div></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="data" items="${datas }">
+	<div class="row">
+		<div class="col-lg-3 col-sm-3 mb-4"></div>
+		<div class="col-lg-6 col-sm-6 mb-4">
+			<section class="page-section" id="about">
+				<div class="container">
+					<div class="card mb-4">
+						<div class="card-header">
+							<i class="fas fa-table me-1"></i> Q&A Info
+						</div>
+						<div class="card-body">
+							<table id="datatablesSimple">
+								<thead>
+									<tr>
+										<th><div style="text-align: center;">번호</div></th>
+										<th><div style="text-align: center;">아이디</div></th>
+										<th><div style="text-align: center;">타이틀</div></th>
+										<th><div style="text-align: center;">작성일</div></th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="data" items="${datas }">
 
-								<tr>
-									<th>
-										<div class="text_black" style="text-align: center;">
-											${data.qna_sequence }
-										</div>
-									</th>
-									<td>
-										<div class="text_black" style="text-align: center;">
-											${data.user_id }
-										</div>
-									</td>
-									<td>
-										<div class="text_black" style="text-align: center;">
-											${data.qna_title }
-										</div>
-									</td>
-									<td>
-										<div class="text_black" style="text-align: center;">
-											${data.write_time }
-										</div>
-									</td>
-								</tr>
+										<tr>
+											<th>
+										<a href="/qna_info?qna_num=${data.qna_num }">
+													<div class="text_black" style="text-align: center;">
+														${data.qna_sequence }</div>
+											</a>
+											</th>
+											<td>
+											<a href="/qna_info?qna_num=${data.qna_num }">
+												<div class="text_black" style="text-align: center;">
+													${data.user_id }</div>
+													</a>
+											</td>
+											<td>
+											<a href="/qna_info?qna_num=${data.qna_num }">
+											
+												<div class="text_black" style="text-align: center;">
+													${data.qna_title }</div>
+													</a>
+											</td>
+											<td>
+											<a href="/qna_info?qna_num=${data.qna_num }">
+												<div class="text_black" style="text-align: center;">
+													${data.write_time }</div>
+													</a>
+											</td>
+										</tr>
 
-							</c:forEach>
-						</tbody>
-					</table>
-					<div style="text-align:right;"><a href="/qna_write" class="btn btn-secondary btn-sm btn-block">글쓰기</a></div>
+									</c:forEach>
+								</tbody>
+							</table>
+							<div style="text-align: right;">
+								<a href="/qna_write" class="btn btn-secondary btn-sm btn-block">글쓰기</a>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
+			</section>
 		</div>
-	</section>
-</div>
 
-				<div class="col-lg-3 col-sm-3 mb-4"></div>
-				</div>
+		<div class="col-lg-3 col-sm-3 mb-4"></div>
+	</div>
 	<%@ include file="../user_prdtFixBar/footer.jsp"%>
-	
+
 	<!-- Q&A list -->
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 		crossorigin="anonymous"></script>

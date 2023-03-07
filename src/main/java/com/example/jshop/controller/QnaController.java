@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.example.jshop.dto.QnaDTO;
@@ -61,5 +62,15 @@ public class QnaController {
 		}
 		model.addAttribute("msg", msg);
 		return "user_qna/qna_write";
+	}
+	
+	@GetMapping("/qna_info")
+	public String qna_info(@RequestParam("qna_num") int qna_num, Model model) {
+		QnaDTO qna = repo.qna_select(qna_num);
+		String file = qna.getQna_file();
+		String[] qna_file = file.split("-", 15);
+		qna.setQna_file(qna_file[1]);
+		model.addAttribute("data", qna);
+		return "user_qna/qna_info";
 	}
 }
