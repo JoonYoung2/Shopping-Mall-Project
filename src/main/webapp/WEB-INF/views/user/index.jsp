@@ -26,7 +26,7 @@
 <c:url var="context" value="/" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="resources/main_templates/css/styles.css" rel="stylesheet" />
- 
+
 <!-- prdt_slide -->
 <!-- <link href="resources/prdt_slide/vendor/bootstrap/css/bootstrap.min.css" -->
 <!-- 	rel="stylesheet"> -->
@@ -42,14 +42,16 @@
 <!-- prdt_slide -->
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	rel="stylesheet" />
 </head>
 <body id="page-top">
 
 	<%@ include file="../userFixBar/navbar.jsp"%>
 
 	<section class="page-section" id="top">
-		<div class="projects section" id="projects">
+		<div class="projects section" id="projects" style="margin-top:0">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
@@ -159,8 +161,7 @@
 									style="text-align: center;">${prdt.prdt_title }</div>
 								<div class="portfolio-caption-subheading text-muted"
 									style="text-align: center;">
-									<span class="text-muted text-decoration-line-through"> 
-										<!-- sale price -->
+									<span class="text-muted text-decoration-line-through"> <!-- sale price -->
 									</span> ${prdt.prdt_price }윈
 								</div>
 							</div>
@@ -177,7 +178,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<!--         <script src="resources/js/scripts.js"></script> -->
-<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+	<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
 
 
 
@@ -185,12 +186,12 @@
 
 	<!-- 222222222222222222 -->
 	<script src="resources/prdt_slide/vendor/jquery/jquery.min.js"></script>
-	
+
 
 	<!--   <script src="resources/asset/js/isotope.min.js"></script> -->
 	<script src="resources/prdt_slide/asset/js/owl-carousel.js"></script>
-<!-- 	<script src="resources/prdt_slide/asset/js/tabs.js"></script> -->
-<!-- 	<script src="resources/prdt_slide/asset/js/popup.js"></script> -->
+	<!-- 	<script src="resources/prdt_slide/asset/js/tabs.js"></script> -->
+	<!-- 	<script src="resources/prdt_slide/asset/js/popup.js"></script> -->
 	<script src="resources/prdt_slide/asset/js/custom.js"></script>
 </body>
 </html>
