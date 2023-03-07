@@ -57,7 +57,7 @@
 							<c:forEach var="prdt" items="${prdts }">
 								<c:if test="${prdt.prdt_list == 1}">
 									<div class="item">
-										<img src="resources/upload/${prdt.prdt_id}/${prdt.img_id}"
+										<img src="resources/upload/${prdt.prdt_id}/${prdt.img_id}" 
 											alt="">
 									</div>
 								</c:if>
