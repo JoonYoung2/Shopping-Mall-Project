@@ -41,7 +41,7 @@ public class QnaService {
 		
 		QnaDTO qna = new QnaDTO();
 		qna.setQna_content(qna_content);
-		qna.setQna_file(" ");
+		qna.setQna_file("등록된 파일이 없습니다.");
 		qna.setQna_title(qna_title);
 		qna.setUser_id(user_id);
 		qna.setWrite_time(write_time);

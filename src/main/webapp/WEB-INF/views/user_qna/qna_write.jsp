@@ -74,7 +74,7 @@
 									<td style="width: 80px; height: 40px;" align="left">본문</td>
 									<td colspan="2"><textarea
 											style="width: 550px; height: 300px" name="qna_content"
-											id="content"></textarea></td>
+											id="content">${msg1 }</textarea></td>
 								</tr>
 								<tr>
 									<td style="text-align: right; padding-right: 60px;" height=40

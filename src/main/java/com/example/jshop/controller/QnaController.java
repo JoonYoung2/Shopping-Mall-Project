@@ -1,7 +1,12 @@
 package com.example.jshop.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +21,10 @@ import com.example.jshop.dto.QnaDTO;
 import com.example.jshop.repository.QnaRepository;
 import com.example.jshop.service.QnaService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class QnaController {
 	@Autowired
 	private QnaService service;
@@ -28,10 +36,14 @@ public class QnaController {
 	private HttpSession session;
 	
 	@GetMapping("/qna")
-	public String qna(Model model) {
-		
+	public String qna(Model model, HttpServletResponse response, String msg) {
 		String user_id = (String)session.getAttribute("user_id");
 		
+		// 비회원 접근 제한
+		if(user_id == null) {
+			return "redirect:/";
+		}
+		// 비회원 접근 제한
 		List<QnaDTO> list = repo.qna_list(user_id);
 		
 		//~~~~~~~~~~~~~1~list 번호 주기위해서~~~~~~~~
@@ -50,7 +62,10 @@ public class QnaController {
 	}
 	
 	@GetMapping("/qna_write")
-	public String qna_write() {
+	public String qna_write(Model model) {
+		String message = repo.getMessage();
+		System.out.println(message);
+		model.addAttribute("msg1", message);
 		return "user_qna/qna_write";
 	}
 	
@@ -66,11 +81,30 @@ public class QnaController {
 	
 	@GetMapping("/qna_info")
 	public String qna_info(@RequestParam("qna_num") int qna_num, Model model) {
-		QnaDTO qna = repo.qna_select(qna_num);
-		String file = qna.getQna_file();
-		String[] qna_file = file.split("-", 15);
-		qna.setQna_file(qna_file[1]);
+		
+		QnaDTO qna = null;
+		try {
+			qna = repo.qna_select(qna_num);
+			String file = qna.getQna_file();
+			
+			//등록된 파일이 있으면 파일명만 나오게~~~~~~ 아니면 등록된 파일이 없습니다로 세팅
+			if(file != "등록된 파일이 없습니다.") {
+				String[] qna_file = file.split("-", 15);
+				qna.setQna_file(qna_file[1]);			
+			}
+		}catch(Exception e) {
+			log.error("qna_info error -> {}", e);
+		}
+		
+		System.out.println("file ====================> " + qna.getQna_file());
 		model.addAttribute("data", qna);
 		return "user_qna/qna_info";
+	}
+	
+	@GetMapping("/qna_update")
+	public String qna_update() {
+		
+		
+		return "user_qna/qna_update";
 	}
 }

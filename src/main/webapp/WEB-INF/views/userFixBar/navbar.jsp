@@ -25,7 +25,9 @@
 								</a></li>
 						<li class="nav-item"><a class="nav-link" href="#all">ALL
 								</a></li>
+								<c:if test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 2 || sessionScope.loginType eq 3}">
 								<li class="nav-item"><a class="nav-link" href="/qna">Q&A</a></li>
+								</c:if>
 						<li class="nav-item"><a class="nav-link" href="login">login</a></li>
 					</c:when>
 					<c:otherwise>
