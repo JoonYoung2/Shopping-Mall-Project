@@ -39,16 +39,52 @@
 </head>
 <body>
 	<%@ include file="../adminFixBar/navbar.jsp"%>
-
 	<section class="page-section" id="about">
 		<div class="container">
-			<div class="mb-4">
-				<a href="tableQna">Q&A목록</a> / <a href="tablePrdt">상품목록</a>
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-table me-1"></i> Q&A info
+				</div>
+				<div class="card-body">
+					<table id="datatablesSimple">
+						<thead>
+							<tr>
+								<th><div style="text-align: center;">번호</div></th>
+								<th><div style="text-align: center;">아이디</div></th>
+								<th><div style="text-align: center;">타이틀</div></th>
+								<th><div style="text-align: center;">작성일</div></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="data" items="${datas }">
+
+								<tr>
+									<th><a href="/qna_info?qna_num=${data.qna_num }">
+											<div class="text_black" style="text-align: center;">
+												${data.qna_sequence }</div>
+									</a></th>
+									<td><a href="/qna_info?qna_num=${data.qna_num }">
+											<div class="text_black" style="text-align: center;">
+												${data.user_id }</div>
+									</a></td>
+									<td><a href="/qna_info?qna_num=${data.qna_num }">
+
+											<div class="text_black" style="text-align: center;">
+												${data.qna_title }</div>
+									</a></td>
+									<td><a href="/qna_info?qna_num=${data.qna_num }">
+											<div class="text_black" style="text-align: center;">
+												${data.write_time }</div>
+									</a></td>
+								</tr>
+
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</section>
-	
-	
 	<%@ include file="../adminFixBar/footer.jsp"%>
 
 

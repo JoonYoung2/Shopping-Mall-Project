@@ -1,5 +1,7 @@
 package com.example.jshop.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.example.jshop.dto.AdminDTO;
+import com.example.jshop.dto.QnaDTO;
 import com.example.jshop.repository.AdminRepository;
 import com.example.jshop.service.AdminService;
 
@@ -32,8 +35,28 @@ public class AdminController {
 			return "redirect:/";
 		}
 		model.addAttribute("datas", repo.getAllPrdtInfo());
-		
 		return "/admin/adminView";
+	}
+	
+	@GetMapping("/tablePrdt")
+	public String prdtTable(Model model){
+		model.addAttribute("datas", repo.getAllPrdtInfo());
+		return "/admin/tablePrdt";
+	}
+	
+	@GetMapping("/tableQna")
+	public String qnaTable(Model model) {
+		List<QnaDTO> list = repo.getQnaInfo();
+		int sum = 0;
+		for(int i = 0; i < list.size(); ++i) {
+			++sum;
+			list.get(i).setQna_sequence(sum);
+			String time = list.get(i).getWrite_time();
+			time = time.substring(0, 10);
+			list.get(i).setWrite_time(time);
+		}
+		model.addAttribute("datas", list);
+		return "admin/tableQna";
 	}
 	
 	@GetMapping("/prdtWrite")
@@ -56,7 +79,7 @@ public class AdminController {
 			return "/admin/prdtWrite";
 		}
 		if(msg.equals("등록 완료")) {
-			return "redirect:/admin";			
+			return "redirect:/tablePrdt";			
 		}
 		
 		return "/admin/prdtWrite"; 
@@ -81,7 +104,7 @@ public class AdminController {
 		if(msg.equals("수정 완료") == false) {
 			return "/admin/prdtUpdate";
 		}
-		return "redirect:/admin";
+		return "redirect:/tablePrdt";
 	}
 	
 	@GetMapping("/prdtDelete")
@@ -97,7 +120,7 @@ public class AdminController {
 			return "/admin/prdtDelete";
 		}
 		repo.prdtDelete(prdt_id);
-		return "redirect:/admin";
+		return "redirect:/tablePrdt";
 	}
 	
 	@GetMapping("/ex1")

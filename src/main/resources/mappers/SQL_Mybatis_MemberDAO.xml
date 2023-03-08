@@ -53,4 +53,12 @@
     <delete id="creditDelete" parameterType="com.example.jshop.dto.MemberDTO">
     	DELETE FROM sh_credit_history WHERE user_id=#{user_id}
     </delete>
+    
+    <delete id="qnaDelete" parameterType="String">
+    	DELETE FROM sh_qna_info WHERE user_id=#{user_id}
+    </delete>
+    
+    <select id="qna_upload_select" resultType="Integer">
+    	SELECT qna_num FROM sh_qna_info WHERE user_id=#{user_id}
+    </select>
 </mapper>  

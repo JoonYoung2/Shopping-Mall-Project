@@ -65,7 +65,7 @@
 								<tr>
 									<td colspan="3" align='center' height=40>
 									<a href="qna_update?qna_num=${data.qna_num }" class="btn btn-secondary btn-sm btn-block">수정하기</a> 
-									<a class="btn btn-secondary btn-sm btn-block">삭제하기</a>
+									<a href="qna_delete?qna_num=${data.qna_num }&user_id=${sessionScope.user_id }" class="btn btn-secondary btn-sm btn-block">삭제하기</a>
 									<a
 									type=button
 										onclick="history.back()" class="btn btn-secondary btn-sm btn-block">뒤로가기</a>
