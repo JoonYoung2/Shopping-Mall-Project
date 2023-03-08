@@ -95,15 +95,37 @@ public class QnaController {
 		}catch(Exception e) {
 			log.error("qna_info error -> {}", e);
 		}
-		
-		System.out.println("file ====================> " + qna.getQna_file());
 		model.addAttribute("data", qna);
 		return "user_qna/qna_info";
 	}
 	
 	@GetMapping("/qna_update")
-	public String qna_update() {
-		
+	public String qna_update(@RequestParam("qna_num") int qna_num, Model model) {
+		QnaDTO qna = null;
+		try {
+			qna = repo.qna_select(qna_num);
+			String file = qna.getQna_file();
+			
+			//등록된 파일이 있으면 파일명만 나오게~~~~~~ 아니면 등록된 파일이 없습니다로 세팅
+			if(file != "등록된 파일이 없습니다.") {
+				String[] qna_file = file.split("-", 15);
+				qna.setQna_file(qna_file[1]);			
+			}
+		}catch(Exception e) {
+			log.error("qna_info error -> {}", e);
+		}
+		model.addAttribute("data", qna);
+		return "user_qna/qna_update";
+	}
+	
+	@PostMapping("/qna_update")
+	public String qna_update(MultipartHttpServletRequest multi, Model model) {
+		String msg = service.qna_update(multi);
+		String num = multi.getParameter("qna_num");
+		int qna_num = Integer.parseInt(num);
+		if(msg.equals("수정 완료")) {
+			return "redirect:qna";
+		}
 		
 		return "user_qna/qna_update";
 	}
