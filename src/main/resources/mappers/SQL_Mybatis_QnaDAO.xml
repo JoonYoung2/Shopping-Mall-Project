@@ -30,4 +30,12 @@
     <select id="getMessage" resultType="String">
     	SELECT message FROM sh_message_info WHERE id=1
     </select>
+    
+    <select id="getFile" resultType="String">
+    	SELECT qna_file FROM sh_qna_info WHERE qna_num=#{qna_num}
+    </select>
+    
+    <update id="qna_update" parameterType="com.example.jshop.dto.QnaDTO">
+    	UPDATE sh_qna_info SET qna_title=#{qna_title}, qna_content=#{qna_content}, qna_file=#{qna_file} WHERE qna_num=#{qna_num}
+    </update>
 </mapper>  

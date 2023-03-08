@@ -21,4 +21,8 @@ public interface QnaRepository {
 	public QnaDTO qna_select(int qna_num);
 
 	public String getMessage();
+
+	public String getFile(int qna_num);
+
+	public void qna_update(QnaDTO qna);
 }

@@ -41,36 +41,48 @@
 			<div class="container">
 				<div class="card mb-4">
 					<center>
+						<form action="/qna_update" method="post" enctype="multipart/form-data">
 							<input type='hidden' name='user_id'
 								value='${sessionScope.user_id }' />
+							<input type='hidden' name='qna_num' value='${data.qna_num }' />
 							<table style="width: 650px;">
 								<tr>
 									<td colspan="2" style="width: 80px; height: 40px;" align="left">제
 										목</td>
-									<td style="width: 570px; height: 40px;">
-										<input type="text" value="${data.qna_title }" readonly="readonly"/>
-									</td>
+									<td style="width: 570px; height: 40px;"><select
+										name="qna_title">
+											<option value="상품 문의" ${data.qna_title == "상품 문의" ? 'selected="selected"' : ''}>상품 문의</option>
+											<option value="주문/결제 문의" ${data.qna_title == "주문/결제 문의" ? 'selected="selected"' : ''}>주문/결제 문의</option>
+											<option value="배송 문의" ${data.qna_title == "배송 문의" ? 'selected="selected"' : ''}>배송 문의</option>
+											<option value="반품/환불 문의" ${data.qna_title == "반품/환불 문의" ? 'selected="selected"' : ''}>반품/환불 문의</option>
+									</select></td>
 								</tr>
 								<tr>
 									<td colspan="2" style="width: 80px; height: 40px;" align="left">파일명</td>
-									<td style="width: 570px; height: 40px;">
-										<span>${data.qna_file }</span>
+									<td style="width: 570px; height: 40px;"><span>${data.qna_file }</span>
 									</td>
 								</tr>
 								<tr>
 									<td style="width: 80px; height: 40px;" align="left">본문</td>
 									<td colspan="2"><textarea
-											style="width: 550px; height: 300px" name="qna_content" readonly="readonly">${data.qna_content }</textarea></td>
+											style="width: 550px; height: 300px" name="qna_content"
+											>${data.qna_content }</textarea></td>
+								</tr>
+								<tr>
+									<td style="text-align: right; padding-right: 60px;" height=40
+										colspan=3><input type=file style="width: 300px;" 
+										name="file" /></td>
 								</tr>
 								<tr>
 									<td colspan="3" align='center' height=40>
-									<a href="qna_update" class="btn btn-secondary btn-sm btn-block">수정하기</a> 
-									<a class="btn btn-secondary btn-sm btn-block">삭제하기</a>
-									<a
-									type=button
-										onclick="history.back()" class="btn btn-secondary btn-sm btn-block">뒤로가기</a>
+									<button type="submit"
+										class="btn btn-secondary btn-sm btn-block">수정완료</button>
+										<a
+										type=button onclick="history.back()"
+										class="btn btn-secondary btn-sm btn-block">뒤로가기</a>
 								</tr>
 							</table>
+						</form>
 					</center>
 				</div>
 			</div>
