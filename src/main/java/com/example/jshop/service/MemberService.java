@@ -18,9 +18,11 @@ import com.example.jshop.repository.MemberRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -171,6 +173,34 @@ public class MemberService {
 				repo.infoDelete(member.getUser_id());
 				repo.tmpDelete(member.getUser_id());
 				repo.creditDelete(member.getUser_id());
+				
+				// 회원탈퇴 시 Q&A에 등록한 모든 파일을 삭제하기 위해서~~~~
+				List<Integer> list = repo.qna_upload_select(member.getUser_id());
+				for(int i = 0; i < list.size(); ++i) {
+					int qna_num = list.get(i); 
+					String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\";
+					String path = dir + qna_num;
+					File folder = new File(path);
+					try {
+						while (folder.exists()) {
+							File[] folder_list = folder.listFiles(); // 파일리스트 얻어오기
+
+							for (int j = 0; j < folder_list.length; j++) {
+								folder_list[j].delete(); // 파일 삭제
+								System.out.println("파일이 삭제되었습니다.");
+
+							}
+							if (folder_list.length == 0 && folder.isDirectory()) {
+								folder.delete();
+							}
+						}
+					} catch (Exception e) {
+						log.error("folder error : {}", e);
+					}
+				}
+				// 회원탈퇴 시 Q&A에 등록한 모든 파일을 삭제하기 위해서~~~~
+				
+				repo.qnaDelete(member.getUser_id());
 				return "삭제 완료";
 			}
 		} catch (Exception e) {

@@ -34,4 +34,8 @@
     	DELETE FROM sh_prdt_info WHERE prdt_id = #{prdt_id}
     </delete>
     
+    <select id="getQnaInfo" resultType="com.example.jshop.dto.QnaDTO">
+    	SELECT * FROM sh_qna_info ORDER BY qna_num DESC
+    </select>
+    
 </mapper>  

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.dto.QnaDTO;
 import com.example.jshop.repository.QnaRepository;
 import com.example.jshop.service.QnaService;
@@ -128,5 +129,28 @@ public class QnaController {
 		}
 		
 		return "user_qna/qna_update";
+	}
+	
+	@GetMapping("/qna_delete")
+	public String qna_delete(@RequestParam("qna_num") int qna_num, Model model) {
+		model.addAttribute("data", qna_num);
+		return "user_qna/qna_delete";
+	}
+	
+	@PostMapping("/qna_delete")
+	public String qna_delete(MemberDTO member, int qna_num, String sessionId, Model model) {
+		String msg = service.qna_delete(member, qna_num, sessionId);
+		if(msg.equals("삭제 완료")) {
+			return "redirect:qna";
+		}
+		
+		model.addAttribute("msg", msg);
+		return "redirect:qna_delete?qna_num=" + qna_num;
+	}
+	
+	@GetMapping("kakao_qna_delete")
+	public String kakao_qna_delete(@RequestParam("qna_num") int qna_num) {
+		service.kakao_qna_delete(qna_num);
+		return "redirect:qna";
 	}
 }

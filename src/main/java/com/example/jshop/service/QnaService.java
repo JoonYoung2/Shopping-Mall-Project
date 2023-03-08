@@ -8,11 +8,14 @@ import java.util.Calendar;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.dto.QnaDTO;
+import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.repository.QnaRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +27,10 @@ public class QnaService {
 	private QnaRepository repo;
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private MemberRepository memberRepo;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public String qna_write(MultipartHttpServletRequest multi) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -151,5 +158,72 @@ public class QnaService {
 		
 
 		return "수정 완료";
+	}
+
+	public String qna_delete(MemberDTO member, int qna_num, String sessionId) {
+		try {
+			MemberDTO check = memberRepo.findId(sessionId);
+			if(member.getUser_id().equals(check.getUser_id()) == false) {
+				return "아이디가 일치하지 않습니다.";
+			}
+			if(passwordEncoder.matches(member.getUser_pw(), check.getUser_pw()) == false) {
+				return "비밀번호가 일치하지 않습니다.";
+			}
+			if(member.getUser_id().equals(check.getUser_id()) && passwordEncoder.matches(member.getUser_pw(), check.getUser_pw())) {
+				//파일 삭제하기 위해서~~~~
+				String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\";
+				String path = dir + qna_num;
+				File folder = new File(path);
+				try {
+					while (folder.exists()) {
+						File[] folder_list = folder.listFiles(); // 파일리스트 얻어오기
+
+						for (int j = 0; j < folder_list.length; j++) {
+							folder_list[j].delete(); // 파일 삭제
+							System.out.println("파일이 삭제되었습니다.");
+
+						}
+						if (folder_list.length == 0 && folder.isDirectory()) {
+							folder.delete();
+						}
+					}
+				} catch (Exception e) {
+					log.error("folder error : {}", e);
+				}
+				//파일 삭제하기 위해서~~~~~
+				repo.qna_delete(qna_num);
+				return "삭제 완료";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return "아이디 또는 비밀번호를 정확하게 입력해주세요.";
+	}
+
+	public void kakao_qna_delete(int qna_num) {
+		String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\";
+		String path = dir + qna_num;
+		File folder = new File(path);
+		try {
+			while (folder.exists()) {
+				File[] folder_list = folder.listFiles(); // 파일리스트 얻어오기
+
+				for (int j = 0; j < folder_list.length; j++) {
+					folder_list[j].delete(); // 파일 삭제
+					System.out.println("파일이 삭제되었습니다.");
+
+				}
+				if (folder_list.length == 0 && folder.isDirectory()) {
+					folder.delete();
+				}
+			}
+		} catch (Exception e) {
+			log.error("folder error : {}", e);
+		}
+		//파일 삭제하기 위해서~~~~~
+		repo.qna_delete(qna_num);
 	}
 }
