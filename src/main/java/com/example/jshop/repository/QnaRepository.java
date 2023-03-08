@@ -19,4 +19,6 @@ public interface QnaRepository {
 	public List<QnaDTO> qna_list(String user_id);
 
 	public QnaDTO qna_select(int qna_num);
+
+	public String getMessage();
 }
