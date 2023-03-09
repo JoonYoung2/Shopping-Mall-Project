@@ -89,6 +89,9 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					<div style="text-align: right;">
+						<a href="/prdtWrite" class="btn btn-secondary btn-sm btn-block">상품등록</a>
+					</div>
 				</div>
 			</div>
 		</div>

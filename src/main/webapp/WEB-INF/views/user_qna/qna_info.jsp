@@ -54,7 +54,11 @@
 								<tr>
 									<td colspan="2" style="width: 80px; height: 40px;" align="left">파일명</td>
 									<td style="width: 570px; height: 40px;">
-										<span>${data.qna_file }</span>
+										<span><span style="padding-right:30px;">${data.qna_file }</span>
+										<c:if test="${data.qna_file != '등록된 파일이 없습니다.' }"> 
+										<a href="/download?qna_num=${data.qna_num }" class="btn btn-secondary btn-sm btn-block">다운로드</a>
+										</c:if>
+										</span>
 									</td>
 								</tr>
 								<tr>
