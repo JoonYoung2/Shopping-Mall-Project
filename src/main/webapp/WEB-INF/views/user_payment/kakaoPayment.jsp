@@ -116,8 +116,6 @@
 </script>
 </head>
 <body>
-	<%@ include file="../user_prdtFixBar/navbar.jsp"%>
 	
-	<%@ include file="../user_prdtFixBar/footer.jsp"%>
 </body>
 </html>
