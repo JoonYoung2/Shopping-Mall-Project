@@ -163,7 +163,8 @@
 
 
 				<div class="col-md-3">
-					<div class="side-fixbar" style="padding: 30px; border: 1px solid rgba(0, 0, 0, 0.5);">
+					<div class="side-fixbar"
+						style="padding: 30px; border: 1px solid rgba(0, 0, 0, 0.5);">
 						<div class="fs-4 mb-0">
 							<span style="font-weight: bold;">결제내용 요약</span>
 						</div>
