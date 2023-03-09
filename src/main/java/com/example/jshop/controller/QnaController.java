@@ -69,7 +69,6 @@ public class QnaController {
 	@GetMapping("/qna_write")
 	public String qna_write(Model model) {
 		String message = repo.getMessage();
-		System.out.println(message);
 		model.addAttribute("msg1", message);
 		return "user_qna/qna_write";
 	}
@@ -98,7 +97,7 @@ public class QnaController {
 				qna.setQna_file(qna_file[1]);			
 			}
 		}catch(Exception e) {
-			log.error("qna_info error -> {}", e);
+			log.error("error QnaController qna_info() -> {}", e);
 		}
 		model.addAttribute("data", qna);
 		return "user_qna/qna_info";
@@ -117,7 +116,7 @@ public class QnaController {
 				qna.setQna_file(qna_file[1]);			
 			}
 		}catch(Exception e) {
-			log.error("qna_info error -> {}", e);
+			log.error("error QnaController qna_info() -> {}", e);
 		}
 		model.addAttribute("data", qna);
 		return "user_qna/qna_update";
@@ -176,8 +175,7 @@ public class QnaController {
 		try {
 			fName = URLEncoder.encode(fName, "UTF-8");	//다운로드 시 한글 특수문자 깨짐
 		} catch (UnsupportedEncodingException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
+			log.error("error QnaController download() -> {}", e2);
 		}
 		res.addHeader("content-disposition", "attchment;filename="+fName);
 		FileInputStream fis = null;
@@ -189,7 +187,7 @@ public class QnaController {
 					if(fis != null)
 						fis.close();
 				} catch (IOException e1) {
-					e1.printStackTrace();
+					log.error("error QnaController download() -> {} ", e1);
 				}
 			return;
 		}
@@ -198,7 +196,7 @@ public class QnaController {
 			if(fis != null)
 				fis.close();
 		} catch (IOException e1) {
-			e1.printStackTrace();
+			log.error("error QnaController download() -> {} ", e1);
 		}
 		
 	}

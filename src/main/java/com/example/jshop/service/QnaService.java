@@ -56,8 +56,7 @@ public class QnaService {
 		try {
 			repo.qna_insert(qna);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			log.error("error QnaService qna_write() -> {}", e1);
 		}
 
 		int max_id = repo.maxFindId(); // 고유한 폴더에 첨부파일을 보관하기 or 첨부파일를 update하기 위해서..
@@ -80,7 +79,7 @@ public class QnaService {
 
 				repo.fileUpdate(max_id, fName);
 			} catch (Exception e) {
-				log.error("img_id error ---> {}", e);
+				log.error("error QnaService qna_write() -> {}", e);
 			}
 		}
 
@@ -93,7 +92,7 @@ public class QnaService {
 		try {
 			qna_num = Integer.parseInt(num);
 		} catch (Exception e) {
-			log.error("qna_update -> {}", e);
+			log.error("error QnaService qna_update() -> {}", e);
 		}
 		String qna_title = (String) multi.getParameter("qna_title");
 		String qna_content = (String) multi.getParameter("qna_content");
@@ -120,7 +119,7 @@ public class QnaService {
 
 					for (int j = 0; j < folder_list.length; j++) {
 						folder_list[j].delete(); // 파일 삭제
-						System.out.println("파일이 삭제되었습니다.");
+						log.info("파일이 삭제되었습니다.");
 
 					}
 					if (folder_list.length == 0 && folder.isDirectory()) {
@@ -142,12 +141,12 @@ public class QnaService {
 						mfile.transferTo(file);
 						qna.setQna_file(fName);
 					} catch (Exception e) {
-						log.error("img_id error ---> {}", e);
+						log.error("error QnaService qna_update -> {}", e);
 					}
 				}
 				
-			} catch (Exception e) {
-				log.error("folder error : {}", e);
+			} catch (Exception e1) {
+				log.error("error QnaService qna_update -> {}", e1);
 			}
 		} else {
 			qna_file = repo.getFile(qna_num);
@@ -180,7 +179,7 @@ public class QnaService {
 
 						for (int j = 0; j < folder_list.length; j++) {
 							folder_list[j].delete(); // 파일 삭제
-							System.out.println("파일이 삭제되었습니다.");
+							log.info("파일이 삭제되었습니다.");
 
 						}
 						if (folder_list.length == 0 && folder.isDirectory()) {
@@ -188,7 +187,7 @@ public class QnaService {
 						}
 					}
 				} catch (Exception e) {
-					log.error("folder error : {}", e);
+					log.error("error QnaService qna_delete() -> {}", e);
 				}
 				//파일 삭제하기 위해서~~~~~
 				repo.qna_delete(qna_num);
@@ -213,7 +212,7 @@ public class QnaService {
 
 				for (int j = 0; j < folder_list.length; j++) {
 					folder_list[j].delete(); // 파일 삭제
-					System.out.println("파일이 삭제되었습니다.");
+					log.info("파일이 삭제되었습니다.");
 
 				}
 				if (folder_list.length == 0 && folder.isDirectory()) {
@@ -221,7 +220,7 @@ public class QnaService {
 				}
 			}
 		} catch (Exception e) {
-			log.error("folder error : {}", e);
+			log.error("error QnaService qna_delete() -> {}", e);
 		}
 		//파일 삭제하기 위해서~~~~~
 		repo.qna_delete(qna_num);

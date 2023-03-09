@@ -55,11 +55,9 @@ public class MemberController {
     public String login(MemberDTO member, Model model) {
     	String rawPassword = member.getUser_pw();
     	log.info("암호화 : {}", passwordEncoder.encode(rawPassword));
-    	System.out.println("비밀번호 암호화 : " + passwordEncoder.encode(rawPassword));
     	try {
 			MemberDTO check = repo.findId(member.getUser_id());
-			System.out.println("비밀번호 복호화 : " + passwordEncoder.matches(member.getUser_pw(), check.getUser_pw()));
-			log.info("복호화 : {}", passwordEncoder.matches(member.getUser_pw(), check.getUser_pw()));
+			log.info("비밀번호 복호화 : {}", passwordEncoder.matches(member.getUser_pw(), check.getUser_pw()));
 			if(check != null) {
 				if(check.getUser_id().equals(member.getUser_id()) && passwordEncoder.matches(member.getUser_pw(), check.getUser_pw())) {
 					session.setAttribute("user_id", member.getUser_id());
@@ -108,7 +106,6 @@ public class MemberController {
     @GetMapping("logout2")
     public String logout() throws Exception {
     	String login_time = (String)session.getAttribute("login_time");
-    	System.out.println("login_time ==========> " + login_time);
     	LoginLoggerDTO logger = repo.findLoginLogger(login_time);
     	service.logoutLogger(logger);
     	

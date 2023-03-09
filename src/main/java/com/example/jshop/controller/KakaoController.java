@@ -22,37 +22,36 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class KakaoController {
-	@Autowired 
+	@Autowired
 	private HttpSession session;
-	@Autowired 
+	@Autowired
 	private KakaoService service;
 	@Autowired
 	private MemberService memberService;
-	@Autowired 
+	@Autowired
 	private MemberRepository repo;
-	
-	 
-	@GetMapping("kakao_login")
-    public String redirectkakao(@RequestParam("code") String code, Model model) throws IOException {
-            
-            //접속토큰 get
-            String kakaoToken = service.getReturnAccessToken(code);
-            
-            //접속자 정보 get
-            MemberDTO result = service.getUserInfo(kakaoToken);
 
-            String user_id = result.getUser_id();
-            String user_nm = result.getUser_nm();
-            model.addAttribute("msg1", user_id);
-            model.addAttribute("msg2", user_nm);
-            
-            System.out.println(user_id);
-            return "forward:kakao_register?id=" + user_id;
-    }
+	@GetMapping("kakao_login")
+	public String redirectkakao(@RequestParam("code") String code, Model model) throws IOException {
+
+		// 접속토큰 get
+		String kakaoToken = service.getReturnAccessToken(code);
+
+		// 접속자 정보 get
+		MemberDTO result = service.getUserInfo(kakaoToken);
+
+		String user_id = result.getUser_id();
+		String user_nm = result.getUser_nm();
+		model.addAttribute("msg1", user_id);
+		model.addAttribute("msg2", user_nm);
+
+		return "forward:kakao_register?id=" + user_id;
+	}
+
 	@GetMapping("kakao_register")
 	public String kakao_register(@RequestParam("id") String id) {
 		try {
-			if(repo.findId(id) != null) {
+			if (repo.findId(id) != null) {
 				MemberDTO check = repo.findId(id);
 				session.setAttribute("user_id", check.getUser_id());
 				session.setAttribute("loginType", check.getLoginType());
@@ -60,18 +59,19 @@ public class KakaoController {
 				session.setAttribute("result_price", check.getResult_price());
 				memberService.loginLogger(check);
 				return "redirect:/";
-				
+
 			}
 		} catch (Exception e) {
-			log.error("errorasdfsdafsfdasfasdf -> {}", e);
+			log.error("error -> {}", e);
 		}
 		return "signup/kakao_register";
 	}
+
 	@PostMapping("kakao_register")
 	public String kakao_register(MemberDTO member, Model model) {
-		try { 
+		try {
 			String msg = service.kakao_register(member);
-			if("이미 등록".equals(msg) || "등록 완료".equals(msg)) {
+			if ("이미 등록".equals(msg) || "등록 완료".equals(msg)) {
 				return "redirect:/";
 			}
 			model.addAttribute("msg", msg);
@@ -83,30 +83,29 @@ public class KakaoController {
 		}
 		return "redirect:kakao_register";
 	}
-	
+
 	@GetMapping("/kakao_logout")
 	public String kakao_logout() {
-		String login_time = (String)session.getAttribute("login_time");
-    	LoginLoggerDTO logger;
+		String login_time = (String) session.getAttribute("login_time");
+		LoginLoggerDTO logger;
 		try {
 			logger = repo.findLoginLogger(login_time);
 			memberService.logoutLogger(logger);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("error -> {}", e);
 		}
-    	
+
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/kakao_infoDelete")
 	public String kakao_infoDelete() {
-		String user_id = (String)session.getAttribute("user_id");
+		String user_id = (String) session.getAttribute("user_id");
 		repo.infoDelete(user_id);
 		repo.tmpDelete(user_id);
 		repo.creditDelete(user_id);
 		session.invalidate();
-    	return "redirect:/";
+		return "redirect:/";
 	}
 }

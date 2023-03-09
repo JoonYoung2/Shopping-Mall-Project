@@ -11,7 +11,10 @@ import com.example.jshop.dto.AddCartDTO;
 import com.example.jshop.repository.MemberRepository;
 import com.example.jshop.repository.UserPrdtRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class UserPrdtService {
 	@Autowired
 	private UserPrdtRepository repo;
@@ -39,7 +42,7 @@ public class UserPrdtService {
 					MemberRepo.totalCntUpdate(sum, add.getUser_id());
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error("error UserPrdtService addCart() -> {} ", e);
 				}
 				session.setAttribute("totalCart_cnt", sum);
 
@@ -54,9 +57,9 @@ public class UserPrdtService {
 				}
 				try {
 					MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
-				} catch (Exception e) {
+				} catch (Exception e2) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error("error UserPrdtService addCart() -> {} ", e2);
 				}
 				session.setAttribute("result_price", sum2);
 
@@ -78,9 +81,8 @@ public class UserPrdtService {
 		}
 		try {
 			MemberRepo.totalCntUpdate(sum, add.getUser_id());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e3) {
+			log.error("error UserPrdtService addCart() -> {} ", e3);
 		}
 		session.setAttribute("totalCart_cnt", sum);
 
@@ -95,9 +97,8 @@ public class UserPrdtService {
 		}
 		try {
 			MemberRepo.resultPriceUpdate(sum2, add.getUser_id());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e4) {
+			log.error("error UserPrdtService addCart() -> {} ", e4);
 		}
 		session.setAttribute("result_price", sum2);
 
@@ -117,8 +118,7 @@ public class UserPrdtService {
 		try {
 			MemberRepo.totalCntUpdate(sum, user_id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("error UserPrdtService cartDelete() -> {} ", e);
 		}
 		session.setAttribute("totalCart_cnt", sum);
 
@@ -133,9 +133,8 @@ public class UserPrdtService {
 		}
 		try {
 			MemberRepo.resultPriceUpdate(sum2, user_id);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e2) {
+			log.error("error UserPrdtService cartDelete() -> {} ", e2);
 		}
 		session.setAttribute("result_price", sum2);
 
