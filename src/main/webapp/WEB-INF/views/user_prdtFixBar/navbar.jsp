@@ -42,7 +42,7 @@
 						<li class="nav-item"><a class="nav-link" href="/qna">Q&A</a></li>
 						<c:if
 							test="${sessionScope.loginType eq 1 || sessionScope.loginType eq 3}">
-							<li class="nav-item"><a class="nav-link" href="logout">logout</a></li>
+							<li class="nav-item"><a class="nav-link" href="logout2">logout</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginType eq 2}">
 							<li class="nav-item"><a class="nav-link"

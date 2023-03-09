@@ -59,20 +59,20 @@
 							<c:forEach var="data" items="${datas }">
 
 								<tr>
-									<th><a href="/qna_info?qna_num=${data.qna_num }">
+									<th><a href="/qnaView?qna_num=${data.qna_num }">
 											<div class="text_black" style="text-align: center;">
 												${data.qna_sequence }</div>
 									</a></th>
-									<td><a href="/qna_info?qna_num=${data.qna_num }">
+									<td><a href="/qnaView?qna_num=${data.qna_num }">
 											<div class="text_black" style="text-align: center;">
 												${data.user_id }</div>
 									</a></td>
-									<td><a href="/qna_info?qna_num=${data.qna_num }">
+									<td><a href="/qnaView?qna_num=${data.qna_num }">
 
 											<div class="text_black" style="text-align: center;">
 												${data.qna_title }</div>
 									</a></td>
-									<td><a href="/qna_info?qna_num=${data.qna_num }">
+									<td><a href="/qnaView?qna_num=${data.qna_num }">
 											<div class="text_black" style="text-align: center;">
 												${data.write_time }</div>
 									</a></td>

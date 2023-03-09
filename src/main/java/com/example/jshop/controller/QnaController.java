@@ -93,7 +93,7 @@ public class QnaController {
 			String file = qna.getQna_file();
 			
 			//등록된 파일이 있으면 파일명만 나오게~~~~~~ 아니면 등록된 파일이 없습니다로 세팅
-			if(file != "등록된 파일이 없습니다.") {
+			if(file.equals("등록된 파일이 없습니다.") == false) {
 				String[] qna_file = file.split("-", 15);
 				qna.setQna_file(qna_file[1]);			
 			}
@@ -112,7 +112,7 @@ public class QnaController {
 			String file = qna.getQna_file();
 			
 			//등록된 파일이 있으면 파일명만 나오게~~~~~~ 아니면 등록된 파일이 없습니다로 세팅
-			if(file != "등록된 파일이 없습니다.") {
+			if(file.equals("등록된 파일이 없습니다.") == false) {
 				String[] qna_file = file.split("-", 15);
 				qna.setQna_file(qna_file[1]);			
 			}
@@ -161,7 +161,7 @@ public class QnaController {
 	@GetMapping("/download")
 	public void download(int qna_num, HttpServletResponse res) {
 		String fName = repo.getFile(qna_num);
-		if(fName == "등록된 파일이 없습니다." || fName.isEmpty())
+		if(fName.equals("등록된 파일이 없습니다.") || fName.isEmpty())
 			return;
 		
 		String path = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\" + qna_num + "\\";
