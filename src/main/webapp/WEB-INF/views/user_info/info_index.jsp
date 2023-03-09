@@ -44,7 +44,7 @@
 						class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
 					</span>
 					<h4 class="my-3">My Order</h4>
-					<p class="text-muted">주문 내역, 상태, 배송 정보 등을 확인할 수 있습니다.</p>
+					<p class="text-muted">주문 내역을 확인할 수 있습니다.</p>
 					<form action='/orders' method='post'>
 						<input type='hidden' name='user_id'
 							value='${sessionScope.user_id }' />
@@ -58,7 +58,7 @@
 						class="fas fa-lock fa-stack-1x fa-inverse"></i>
 					</span>
 					<h4 class="my-3">My Privacy</h4>
-					<p class="text-muted">이름, 주소, 계정, 비밀번호 등을 수정할 수 있습니다.</p>
+					<p class="text-muted">이름, 주소, 비밀번호 등을 수정할 수 있습니다.</p>
 					<form action='/info' method='post'>
 						<input type='hidden' name='user_id'
 							value='${sessionScope.user_id }' />

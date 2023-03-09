@@ -1,7 +1,10 @@
 package com.example.jshop.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.net.URLEncoder;
 import java.util.List;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -152,5 +156,50 @@ public class QnaController {
 	public String kakao_qna_delete(@RequestParam("qna_num") int qna_num) {
 		service.kakao_qna_delete(qna_num);
 		return "redirect:qna";
+	}
+	
+	@GetMapping("/download")
+	public void download(int qna_num, HttpServletResponse res) {
+		String fName = repo.getFile(qna_num);
+		if(fName == "등록된 파일이 없습니다." || fName.isEmpty())
+			return;
+		
+		String path = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\" + qna_num + "\\";
+		path = path + fName;
+		
+		File file = new File(path);
+		if(file.exists() == false)
+			return;
+		
+//		String[] fn = fName.split("-");
+		fName = fName.substring(15);
+		try {
+			fName = URLEncoder.encode(fName, "UTF-8");	//다운로드 시 한글 특수문자 깨짐
+		} catch (UnsupportedEncodingException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		res.addHeader("content-disposition", "attchment;filename="+fName);
+		FileInputStream fis = null;
+		try {
+			fis = new FileInputStream(file);
+			FileCopyUtils.copy(fis, res.getOutputStream());
+		} catch (Exception e) {
+				try {
+					if(fis != null)
+						fis.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			return;
+		}
+		
+		try {
+			if(fis != null)
+				fis.close();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 	}
 }
