@@ -38,4 +38,8 @@
     	SELECT * FROM sh_qna_info ORDER BY qna_num DESC
     </select>
     
+    <select id="getMemberInfo" resultType="com.example.jshop.dto.MemberDTO">
+    	SELECT * FROM sh_join_info
+    </select>
+    
 </mapper>  
