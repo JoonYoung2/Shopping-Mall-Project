@@ -63,7 +63,7 @@ public class KakaoController {
 				
 			}
 		} catch (Exception e) {
-			log.error("errorasdfsdafsfdasfasdf -> {}", e);
+			log.error("error -> {}", e);
 		}
 		return "signup/kakao_register";
 	}
@@ -92,8 +92,7 @@ public class KakaoController {
 			logger = repo.findLoginLogger(login_time);
 			memberService.logoutLogger(logger);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error("error -> {}", e);
 		}
     	
 		session.invalidate();
