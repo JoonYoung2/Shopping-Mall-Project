@@ -34,15 +34,13 @@ public class KakaoController {
 	 
 	@GetMapping("kakao_login")
     public String redirectkakao(@RequestParam("code") String code, Model model) throws IOException {
-            System.out.println("code : " + code);
             
             //접속토큰 get
             String kakaoToken = service.getReturnAccessToken(code);
             
-            System.out.println("kakaoToken : " + kakaoToken);
             //접속자 정보 get
             MemberDTO result = service.getUserInfo(kakaoToken);
-            System.out.println("user_id = "+result.getUser_id()+"user_nm = "+result.getUser_nm());
+
             String user_id = result.getUser_id();
             String user_nm = result.getUser_nm();
             model.addAttribute("msg1", user_id);
@@ -54,17 +52,18 @@ public class KakaoController {
 	@GetMapping("kakao_register")
 	public String kakao_register(@RequestParam("id") String id) {
 		try {
-			MemberDTO check = repo.findId(id);
-			if(check.getUser_id() != null || check.getUser_id() != "") {
+			if(repo.findId(id) != null) {
+				MemberDTO check = repo.findId(id);
 				session.setAttribute("user_id", check.getUser_id());
 				session.setAttribute("loginType", check.getLoginType());
 				session.setAttribute("totalCart_cnt", check.getTotalCart_cnt());
 				session.setAttribute("result_price", check.getResult_price());
 				memberService.loginLogger(check);
 				return "redirect:/";
+				
 			}
 		} catch (Exception e) {
-			log.error("error -> {}", e);
+			log.error("errorasdfsdafsfdasfasdf -> {}", e);
 		}
 		return "signup/kakao_register";
 	}

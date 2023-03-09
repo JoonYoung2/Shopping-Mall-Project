@@ -1,5 +1,7 @@
 package com.example.jshop.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,10 @@ public class UserPrdtController {
 	
 	@GetMapping("/prdt_index")
 	public String podt_index(@RequestParam("prdt_id") String prdt_id, Model model) {
+		if(repo.getData(prdt_id) == null) {
+			return "redirect:/";
+		}
 		AdminDTO datas = repo.getData(prdt_id);
-		
 		model.addAttribute("datas", datas);
 		
 		return "/user_prdt/prdt_index";
@@ -48,8 +52,7 @@ public class UserPrdtController {
 	@PostMapping("/cartDelete")
 	public String cartDelete(String user_id, int prdt_id) {
 		String msg = service.cartDelete(user_id, prdt_id);
-		System.out.println("user_id ========>" + user_id);
-		System.out.println("prdt_id ========>" + prdt_id);
+
 		return "redirect:cartInfo?user_id=" + user_id;
 	}
 } 
