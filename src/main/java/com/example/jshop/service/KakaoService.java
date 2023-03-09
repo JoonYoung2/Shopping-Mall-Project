@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.repository.MemberRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -21,6 +23,7 @@ import java.util.Map;
 
 
 @Service
+@Slf4j
 public class KakaoService {
 	@Autowired 
 	private MemberRepository repo;
@@ -36,19 +39,20 @@ public class KakaoService {
 			urlConnection.setDoOutput(true); // 데이터 기록 알려주기
 
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream()));
-			System.out.println("start.......");
-			System.out.println("code2: "+code);
+			
+			log.info("start.............");
+			log.info("code2: {} ", code);
 			String sb = "grant_type=authorization_code" +
 					"&client_id=8558b06f798d38a90a338f54282456f2" +
 					"&redirect_uri=http://127.0.0.1:8080/kakao_login" +
 					"&code=" + code;
-			System.out.println("sb: "+sb);
+			log.info("sb: {}", sb);
 
 			bw.write(sb);
 			bw.flush();
  
 			int responseCode = urlConnection.getResponseCode();
-			System.out.println("responseCode = " + responseCode);
+			log.info("reponseCode = {}", responseCode);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 			String line = "";
@@ -56,7 +60,7 @@ public class KakaoService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("result = " + result);
+			log.info("result = {} ", result);
 
 			// json parsing
 			JSONParser parser = new JSONParser();
@@ -64,15 +68,16 @@ public class KakaoService {
 
 			String access_token = elem.get("access_token").toString();
 			String refresh_token = elem.get("refresh_token").toString();
-			System.out.println("access_token = " + access_token);
-			System.out.println("refresh_token = " + refresh_token);
+			
+			log.info("access_token = {}", access_token);
+			log.info("refresh_token = {}", refresh_token);
 
 			token = access_token;
 
 			br.close();
 			bw.close();
 		} catch (IOException | ParseException e) {
-			System.out.println("예외발생!!!!!!!!!! : " + e);
+			log.error("kakaoService getReturnAccessToken() -> {} ", e);
 		}
 
 		return token;
@@ -89,7 +94,7 @@ public class KakaoService {
 			urlConnection.setRequestMethod("GET");
 
 			int responseCode = urlConnection.getResponseCode();
-			System.out.println("responseCode1: " + responseCode);
+			log.info("responseCode1: {} ", responseCode);
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 			String line = "";
@@ -97,7 +102,7 @@ public class KakaoService {
 			while((line = br.readLine()) != null)
 				res += line;
 
-			System.out.println("res = " + res);
+			log.info("res = {} ", res);
 
 			JSONParser parser = new JSONParser();
 			JSONObject obj = (JSONObject) parser.parse(res);

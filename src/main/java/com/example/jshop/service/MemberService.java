@@ -143,12 +143,10 @@ public class MemberService {
 
 		session.setAttribute("login_time", login_time);
 
-		System.out.println("login_time ===> " + session.getAttribute("login_time"));
-
 		try {
 			repo.loginLogger(logger);
 		} catch (Exception e) {
-			log.error("Logger Error ---> {}", e);
+			log.error("error MemberService loginLogger() -> {}", e);
 		}
 	}
 
@@ -187,7 +185,7 @@ public class MemberService {
 
 							for (int j = 0; j < folder_list.length; j++) {
 								folder_list[j].delete(); // 파일 삭제
-								System.out.println("파일이 삭제되었습니다.");
+								log.info("파일이 삭제되었습니다.");
 
 							}
 							if (folder_list.length == 0 && folder.isDirectory()) {
@@ -195,7 +193,7 @@ public class MemberService {
 							}
 						}
 					} catch (Exception e) {
-						log.error("folder error : {}", e);
+						log.error("error MemberService infoDelete() -> {}", e);
 					}
 				}
 				// 회원탈퇴 시 Q&A에 등록한 모든 파일을 삭제하기 위해서~~~~
@@ -204,7 +202,7 @@ public class MemberService {
 				return "삭제 완료";
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("error MemberService infoDelete() -> {}", e);
 		}
 		return "아이디 또는 비밀번호가 일치하지 않습니다.";
 

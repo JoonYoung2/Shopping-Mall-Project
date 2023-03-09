@@ -12,7 +12,10 @@ import com.example.jshop.dto.AdminDTO;
 import com.example.jshop.repository.UserPrdtRepository;
 import com.example.jshop.service.UserPrdtService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class UserPrdtController {
 	@Autowired
 	private UserPrdtRepository repo;
@@ -26,7 +29,6 @@ public class UserPrdtController {
 		}
 		AdminDTO datas = repo.getData(prdt_id);
 		model.addAttribute("datas", datas);
-		
 		return "/user_prdt/prdt_index";
 	}
 	

@@ -32,8 +32,6 @@ public class AdminService {
 		String prdt_info = multi.getParameter("prdt_info");
 		int prdt_list = Integer.parseInt(multi.getParameter("prdt_list"));
 		MultipartFile img_id = multi.getFile("file");
-		System.out.println("img_id----------------->" + img_id.getSize());
-		System.out.println("admin_id -------------> " + admin_id);
 		if(img_id.getSize() == 0) {
 			return "업로드 파일을 등록해주세요.";
 		}
@@ -49,7 +47,7 @@ public class AdminService {
 		try { 
 			repo.prdt_write(admin);
 		} catch (IOException e) {
-			log.error("service repo.prdt_write error ========> {}", e);;
+			log.error("error Adminservice prdtWrite() repo.prdt_write error ========> {}", e);;
 		}
 		
 		int max_id = repo.maxFindId(); //고유한 폴더에 img파일을 보관하기 or img_id를 update하기 위해서..
@@ -97,9 +95,7 @@ public class AdminService {
 			File[] folder_list = folder.listFiles(); //파일리스트 얻어오기
 					
 			for (int j = 0; j < folder_list.length; j++) {
-				folder_list[j].delete(); //파일 삭제 
-				System.out.println("파일이 삭제되었습니다.");
-						
+				folder_list[j].delete(); //파일 삭제 						
 			}
 			if(folder_list.length == 0 && folder.isDirectory()) {
 				folder.delete();
@@ -107,7 +103,7 @@ public class AdminService {
 			}
 		    }
 		}catch(Exception e) {
-			log.error("folder error : {}", e);
+			log.error("error AdminService folderdelete() -> {}", e);
 		}
 		return "폴더가 없습니다";
 	}
