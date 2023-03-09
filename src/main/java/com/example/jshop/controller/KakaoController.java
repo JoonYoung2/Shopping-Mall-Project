@@ -133,6 +133,14 @@ public class KakaoController {
 		}
 		// 회원탈퇴 시 Q&A에 등록한 모든 파일을 삭제하기 위해서~~~~
 		repo.qnaDelete(user_id);
+		String login_time = (String) session.getAttribute("login_time");
+		LoginLoggerDTO logger;
+		try {
+			logger = repo.findLoginLogger(login_time);
+			memberService.logoutLogger(logger);
+		} catch (Exception e) {
+			log.error("error -> {}", e);
+		}
 		session.invalidate();
 		return "redirect:/";
 	}

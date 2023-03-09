@@ -147,12 +147,15 @@ public class MemberController {
     }
     
     @PostMapping("/infoDelete")
-    public String infoDelete(MemberDTO member, String sessionId, Model model) {
+    public String infoDelete(MemberDTO member, String sessionId, Model model) throws Exception {
     	String msg = service.infoDelete(member, sessionId);
     	if(msg.equals("아이디 또는 비밀번호가 일치하지 않습니다.")) {
     		model.addAttribute("msg", msg);
     		return "/user_info/infoDelete";
     	}
+    	String login_time = (String)session.getAttribute("login_time");
+    	LoginLoggerDTO logger = repo.findLoginLogger(login_time);
+    	service.logoutLogger(logger);
     	session.invalidate();
     	return "redirect:/";
     }
