@@ -1,6 +1,8 @@
 package com.example.jshop.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -105,6 +107,32 @@ public class KakaoController {
 		repo.infoDelete(user_id);
 		repo.tmpDelete(user_id);
 		repo.creditDelete(user_id);
+		// 회원탈퇴 시 Q&A에 등록한 모든 파일을 삭제하기 위해서~~~~
+		List<Integer> list = repo.qna_upload_select(user_id);
+		for(int i = 0; i < list.size(); ++i) {
+			int qna_num = list.get(i); 
+			String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\";
+			String path = dir + qna_num;
+			File folder = new File(path);
+			try {
+				while (folder.exists()) {
+					File[] folder_list = folder.listFiles(); // 파일리스트 얻어오기
+
+					for (int j = 0; j < folder_list.length; j++) {
+						folder_list[j].delete(); // 파일 삭제
+						log.info("파일이 삭제되었습니다.");
+
+					}
+					if (folder_list.length == 0 && folder.isDirectory()) {
+						folder.delete();
+					}
+				}
+			} catch (Exception e) {
+				log.error("error MemberService infoDelete() -> {}", e);
+			}
+		}
+		// 회원탈퇴 시 Q&A에 등록한 모든 파일을 삭제하기 위해서~~~~
+		repo.qnaDelete(user_id);
 		session.invalidate();
 		return "redirect:/";
 	}
