@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.jshop.dto.AdminDTO;
+import com.example.jshop.dto.MemberDTO;
 import com.example.jshop.dto.QnaDTO;
 
 @Mapper
@@ -25,6 +26,8 @@ public interface AdminRepository {
 	public void prdtDelete(String prdt_id);
 
 	public List<QnaDTO> getQnaInfo();
+
+	public List<MemberDTO> getMemberInfo();
 
 }
   

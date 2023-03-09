@@ -59,6 +59,12 @@ public class AdminController {
 		return "admin/tableQna";
 	}
 	
+	@GetMapping("/tableMember")
+	public String tableMember(Model model) {
+		model.addAttribute("datas", repo.getMemberInfo());
+		return "admin/tableMember";
+	}
+	
 	@GetMapping("/prdtWrite")
 	public String prdtWrite() {
 		if((Integer)session.getAttribute("loginType") != 3) {

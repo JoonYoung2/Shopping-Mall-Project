@@ -39,16 +39,61 @@
 </head>
 <body>
 	<%@ include file="../adminFixBar/navbar.jsp"%>
-
 	<section class="page-section" id="about">
 		<div class="container">
-			<div class="mb-4">
-				<a href="/tableQna">Q&A목록</a> / <a href="/tablePrdt">상품목록</a> / <a href="/tableMember">회원목록</a>
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-table me-1"></i> Q&A info
+				</div>
+				<div class="card-body">
+					<table id="datatablesSimple">
+						<thead>
+							<tr>
+								<th><div style="text-align: center;">아이디</div></th>
+								<th><div style="text-align: center;">이름</div></th>
+								<th><div style="text-align: center;">전화번호</div></th>
+								<th><div style="text-align: center;">로그인정보</div></th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="data" items="${datas }">
+
+								<tr>
+									<th>
+											<div class="text_black" style="text-align: center;">
+												${data.user_id }</div>
+									</th>
+									<td>
+											<div class="text_black" style="text-align: center;">
+												${data.user_nm }</div>
+									</td>
+									<td>
+
+											<div class="text_black" style="text-align: center;">
+												${data.user_phoneNum }</div>
+									</td>
+									<td>	
+									<c:if test="${data.loginType eq 1 }">
+										<div class="text_black" style="text-align: center;">
+												일반회원</div>
+									</c:if>
+									<c:if test="${data.loginType eq 2 }">
+										<div class="text_black" style="text-align: center;">
+												카카오</div>
+									</c:if>
+									<c:if test="${data.loginType eq 3 }">
+										<div class="text_black" style="text-align: center;">
+												관리자</div>
+									</c:if>
+								</tr>
+
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</section>
-	
-	
 	<%@ include file="../adminFixBar/footer.jsp"%>
 
 
