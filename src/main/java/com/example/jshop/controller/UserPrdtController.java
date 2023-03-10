@@ -23,7 +23,7 @@ public class UserPrdtController {
 	private UserPrdtService service;
 	
 	@GetMapping("/prdt_index")
-	public String podt_index(@RequestParam("prdt_id") String prdt_id, Model model) {
+	public String prdt_index(@RequestParam("prdt_id") String prdt_id, Model model) {
 		if(repo.getData(prdt_id) == null) {
 			return "redirect:/";
 		}

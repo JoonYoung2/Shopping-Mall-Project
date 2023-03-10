@@ -41,6 +41,9 @@
 	<%@ include file="../adminFixBar/navbar.jsp"%>
 	<section class="page-section" id="about">
 		<div class="container">
+		<div class="text-center">
+				<font color="red"><div id="msg">${msg }</div></font>
+			</div>
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i> Q&A info

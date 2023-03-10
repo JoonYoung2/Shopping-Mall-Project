@@ -1,5 +1,6 @@
 package com.example.jshop.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -147,6 +148,44 @@ public class AdminController {
 		model.addAttribute("data", qna);
 
 		return "/admin/qnaView";
+	}
+	
+	@GetMapping("qnaDelete")
+	public String qnaDelete(@RequestParam("qna_num") int qna_num, Model model) {
+		//파일 삭제하기 위해서~~~~
+		String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\";
+		String path = dir + qna_num;
+		File folder = new File(path);
+		try {
+			while (folder.exists()) {
+				File[] folder_list = folder.listFiles(); // 파일리스트 얻어오기
+
+				for (int j = 0; j < folder_list.length; j++) {
+					folder_list[j].delete(); // 파일 삭제
+					log.info("파일이 삭제되었습니다.");
+
+				}
+				if (folder_list.length == 0 && folder.isDirectory()) {
+					folder.delete();
+				}
+			}
+		} catch (Exception e) {
+			log.error("error AdminController qnaDelete() -> {}", e);
+		}
+		//파일 삭제하기 위해서~~~~~
+		qnaRepo.qna_delete(qna_num);
+		List<QnaDTO> list = repo.getQnaInfo();
+		int sum = 0;
+		for (int i = 0; i < list.size(); ++i) {
+			++sum;
+			list.get(i).setQna_sequence(sum);
+			String time = list.get(i).getWrite_time();
+			time = time.substring(0, 10);
+			list.get(i).setWrite_time(time);
+		}
+		model.addAttribute("datas", list);
+		model.addAttribute("msg", "Q&A게시글을 삭제하셨습니다.");
+		return "/admin/tableQna";
 	}
 
 	@GetMapping("/ex1")
