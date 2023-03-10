@@ -39,15 +39,33 @@
 </head>
 <body>
 	<%@ include file="../adminFixBar/navbar.jsp"%>
-
-	<section class="page-section" id="about">
+	<section class="page-section bg-light" id="services">
 		<div class="container">
-			<div class="mb-4">
-				<a href="/tableQna">Q&A목록</a> / <a href="/tablePrdt">상품목록</a> / <a href="/tableMember">회원목록</a>
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">ADMIN</h2>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					
+					
+					<p class="text-muted" style="font-size:20px;">Prodeuct List</p>
+					<a href="/tablePrdt" class="btn btn-secondary btn-lg btn-block">상품목록</a>
+				</div>
+				<div class="col-md-4">
+					
+					
+					<p class="text-muted" style="font-size:20px;">Q&A List</p>
+					<a href="/tableQna" class="btn btn-secondary btn-lg btn-block">Q&A목록</a>
+				</div>
+				<div class="col-md-4">
+					
+					
+					<p class="text-muted" style="font-size:20px;">Member List</p>
+					<a href="/tableMember" class="btn btn-secondary btn-lg btn-block">회원목록</a>
+				</div>
 			</div>
 		</div>
 	</section>
-	
 	
 	<%@ include file="../adminFixBar/footer.jsp"%>
 

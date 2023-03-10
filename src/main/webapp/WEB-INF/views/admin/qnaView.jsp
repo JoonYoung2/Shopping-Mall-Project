@@ -35,7 +35,7 @@
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">Q&A</h2>
 				<h3 class="section-subheading text-muted"
-					style="margin-bottom: 20px;">Q&A는 작성자와 관리자만 확인할 수 있습니다.</h3>
+					style="margin-bottom: 20px;">Admin페이지 입니다.</h3>
 				<font color="red"><div id="msg">${msg }</div></font>
 			</div>
 			<div class="container">
@@ -68,8 +68,8 @@
 								</tr>
 								<tr>
 									<td colspan="3" align='center' height=40>
-									<a href="qna_update?qna_num=${data.qna_num }" class="btn btn-secondary btn-sm btn-block">수정하기</a> 
-									<a href="qna_delete?qna_num=${data.qna_num }&user_id=${sessionScope.user_id }" class="btn btn-secondary btn-sm btn-block">삭제하기</a>
+<%-- 									<a href="qna_update?qna_num=${data.qna_num }" class="btn btn-secondary btn-sm btn-block">수정하기</a>  --%>
+									<a href="qnaDelete?qna_num=${data.qna_num }" class="btn btn-secondary btn-sm btn-block">삭제하기</a>
 									<a
 									type=button
 										onclick="history.back()" class="btn btn-secondary btn-sm btn-block">뒤로가기</a>
