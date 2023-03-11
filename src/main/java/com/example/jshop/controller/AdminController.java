@@ -44,12 +44,18 @@ public class AdminController {
 
 	@GetMapping("/tablePrdt")
 	public String prdtTable(Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		model.addAttribute("datas", repo.getAllPrdtInfo());
 		return "/admin/tablePrdt";
 	}
 
 	@GetMapping("/tableQna")
 	public String qnaTable(Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		List<QnaDTO> list = repo.getQnaInfo();
 		int sum = 0;
 		for (int i = 0; i < list.size(); ++i) {
@@ -65,6 +71,9 @@ public class AdminController {
 
 	@GetMapping("/tableMember")
 	public String tableMember(Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		model.addAttribute("datas", repo.getMemberInfo());
 		return "admin/tableMember";
 	}
@@ -98,6 +107,9 @@ public class AdminController {
 
 	@GetMapping("/prdtView")
 	public String prdtView(@RequestParam("prdt_id") String id, Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		int prdt_id = Integer.parseInt(id);
 		model.addAttribute("datas", repo.getSelectPrdtInfo(prdt_id));
 		return "/admin/prdtView";
@@ -105,6 +117,9 @@ public class AdminController {
 
 	@GetMapping("/prdtUpdate")
 	public String prdtUpdate(@RequestParam("prdt_id") String id, Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		int prdt_id = Integer.parseInt(id);
 		model.addAttribute("datas", repo.getSelectPrdtInfo(prdt_id));
 		return "/admin/prdtUpdate";
@@ -121,6 +136,9 @@ public class AdminController {
 
 	@GetMapping("/prdtDelete")
 	public String prdtDelete(@RequestParam("prdt_id") String id, Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		int prdt_id = Integer.parseInt(id);
 		model.addAttribute("datas", repo.getSelectPrdtInfo(prdt_id));
 		return "/admin/prdtDelete";
@@ -136,8 +154,11 @@ public class AdminController {
 		return "redirect:/tablePrdt";
 	}
 
-	@GetMapping("qnaView")
+	@GetMapping("qnaInfo")
 	public String qnaView(@RequestParam("qna_num") int qna_num, Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		QnaDTO qna = qnaRepo.qna_select(qna_num);
 
 		if (qna.getQna_file().equals("등록된 파일이 없습니다.") == false) {
@@ -147,11 +168,14 @@ public class AdminController {
 
 		model.addAttribute("data", qna);
 
-		return "/admin/qnaView";
+		return "/admin/qnaInfo";
 	}
 	
 	@GetMapping("qnaDelete")
 	public String qnaDelete(@RequestParam("qna_num") int qna_num, Model model) {
+		if ((Integer) session.getAttribute("loginType") != 3) {
+			return "redirect:/";
+		}
 		//파일 삭제하기 위해서~~~~
 		String dir = "D:\\springboots\\jshop_Springboot\\src\\main\\webapp\\resources\\qnaUpload\\";
 		String path = dir + qna_num;
