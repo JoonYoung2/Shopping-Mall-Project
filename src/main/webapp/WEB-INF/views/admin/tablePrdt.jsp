@@ -61,27 +61,27 @@
 								<tr>
 									<th>
 										<div class="text_black" style="text-align: center;">
-											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_id }</a>
+											<a href="/prdtInfo?prdt_id=${data.prdt_id }">${data.prdt_id }</a>
 										</div>
 									</th>
 									<td>
 										<div class="text_black">
-											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_title }</a>
+											<a href="/prdtInfo?prdt_id=${data.prdt_id }">${data.prdt_title }</a>
 										</div>
 									</td>
 									<td>
 										<div class="text_black" style="text-align: center;">
-											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_nm }</a>
+											<a href="/prdtInfo?prdt_id=${data.prdt_id }">${data.prdt_nm }</a>
 										</div>
 									</td>
 									<td>
 										<div class="text_black" style="text-align: center;">
-											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_price }원</a>
+											<a href="/prdtInfo?prdt_id=${data.prdt_id }">${data.prdt_price }원</a>
 										</div>
 									</td>
 									<td>
 										<div class="text_black" style="text-align: center;">
-											<a href="/prdtView?prdt_id=${data.prdt_id }">${data.prdt_list }</a>
+											<a href="/prdtInfo?prdt_id=${data.prdt_id }">${data.prdt_list }</a>
 										</div>
 									</td>
 								</tr>

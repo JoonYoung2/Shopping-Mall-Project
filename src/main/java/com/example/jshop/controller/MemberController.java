@@ -69,7 +69,7 @@ public class MemberController {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("error MemberController login() -> {}", e);
 		}
     	String msg = "아이디 또는 비밀번호가 일치하지 않습니다.";
     	model.addAttribute("msg", msg);
@@ -93,7 +93,7 @@ public class MemberController {
     	try {
 			msg = service.register(member, bindingResult, request);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("error MemberController register() -> {}", e);
 		}
     	if(msg.equals("등록 완료")) {
     		model.addAttribute("msg", "회원가입 완료");
@@ -124,7 +124,7 @@ public class MemberController {
 			MemberDTO member = repo.findId(user_id);
 			model.addAttribute("member", member);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("error MemberController info() -> {}", e);
 		}
     	return "/user_info/infomation";
     }

@@ -38,12 +38,11 @@ public class AdminController {
 		if ((Integer) session.getAttribute("loginType") != 3) {
 			return "redirect:/";
 		}
-		model.addAttribute("datas", repo.getAllPrdtInfo());
 		return "/admin/adminView";
 	}
 
 	@GetMapping("/tablePrdt")
-	public String prdtTable(Model model) {
+	public String tablePrdt(Model model) {
 		if ((Integer) session.getAttribute("loginType") != 3) {
 			return "redirect:/";
 		}
@@ -52,7 +51,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/tableQna")
-	public String qnaTable(Model model) {
+	public String tableQna(Model model) {
 		if ((Integer) session.getAttribute("loginType") != 3) {
 			return "redirect:/";
 		}
@@ -87,7 +86,7 @@ public class AdminController {
 	}
 
 	@PostMapping("write")
-	public String prdtFrom(MultipartHttpServletRequest multi, Model model) {
+	public String prdtForm(MultipartHttpServletRequest multi, Model model) {
 		String msg = "";
 		try {
 			msg = service.prdtWrite(multi);
@@ -105,14 +104,14 @@ public class AdminController {
 		return "/admin/prdtWrite";
 	}
 
-	@GetMapping("/prdtView")
-	public String prdtView(@RequestParam("prdt_id") String id, Model model) {
+	@GetMapping("/prdtInfo")
+	public String prdtInfo(@RequestParam("prdt_id") String id, Model model) {
 		if ((Integer) session.getAttribute("loginType") != 3) {
 			return "redirect:/";
 		}
 		int prdt_id = Integer.parseInt(id);
 		model.addAttribute("datas", repo.getSelectPrdtInfo(prdt_id));
-		return "/admin/prdtView";
+		return "/admin/prdtInfo";
 	}
 
 	@GetMapping("/prdtUpdate")
