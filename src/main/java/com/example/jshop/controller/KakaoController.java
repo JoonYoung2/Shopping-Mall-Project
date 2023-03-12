@@ -34,7 +34,7 @@ public class KakaoController {
 	private MemberRepository repo;
 
 	@GetMapping("kakao_login")
-	public String redirectkakao(@RequestParam("code") String code, Model model) throws IOException {
+	public String redirectKakao(@RequestParam("code") String code, Model model) throws IOException {
 
 		// 접속토큰 get
 		String kakaoToken = service.getReturnAccessToken(code);

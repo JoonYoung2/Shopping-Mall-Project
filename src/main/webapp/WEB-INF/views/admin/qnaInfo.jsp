@@ -29,7 +29,7 @@
 	rel="stylesheet" />
 </head>
 <body>
-	<%@ include file="../user_prdtFixBar/navbar.jsp"%>
+	<%@ include file="../adminFixBar/navbar.jsp"%>
 	<section class="page-section" id="about">
 		<div class="container">
 			<div class="text-center">
@@ -80,6 +80,6 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="../user_prdtFixBar/footer.jsp"%>
+	<%@ include file="../adminFixBar/footer.jsp"%>
 </body>
 </html>

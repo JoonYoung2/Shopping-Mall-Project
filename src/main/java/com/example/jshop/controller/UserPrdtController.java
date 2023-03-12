@@ -51,7 +51,7 @@ public class UserPrdtController {
 	
 	@PostMapping("/cartDelete")
 	public String cartDelete(String user_id, int prdt_id) {
-		String msg = service.cartDelete(user_id, prdt_id);
+		service.cartDelete(user_id, prdt_id);
 
 		return "redirect:cartInfo?user_id=" + user_id;
 	}
